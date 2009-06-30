@@ -1,0 +1,127 @@
+nstates 32
+xread 'Ny State geo'
+1 87
+A_NewYork_100_2002	c
+A_NewYork_101_2002	c
+A_NewYork_102_2002	b
+A_NewYork_103_2002	k
+A_NewYork_104_2002	q
+A_NewYork_105_2002	q
+A_NewYork_106_2002	d
+A_NewYork_107_2002	1
+A_NewYork_108_2002	1
+A_NewYork_109_2002	6
+A_NewYork_110_2002	5
+A_NewYork_111_2002	5
+A_NewYork_112_2002	u
+A_NewYork_113_2002	m
+A_NewYork_114_2002	m
+A_NewYork_115_2002	b
+A_NewYork_116_2002	a
+A_NewYork_117_2002	h
+A_NewYork_118_2002	n
+A_NewYork_119_2002	3
+A_NewYork_120_2002	0
+A_NewYork_121_2002	e
+A_NewYork_122_2002	i
+A_NewYork_124_2001	g
+A_NewYork_125_2002	9
+A_NewYork_126_2002	g
+A_NewYork_127_2001	0
+A_NewYork_128_2002	b
+A_NewYork_129_2002	m
+A_NewYork_130_2002	g
+A_NewYork_131_2001	b
+A_NewYork_132_2002	b
+A_NewYork_133_2002	b
+A_NewYork_134_2002	g
+A_NewYork_135_2002	g
+A_NewYork_136_2002	g
+A_NewYork_192_2003	b
+A_NewYork_202_2003	g
+A_NewYork_213_2003	r
+A_NewYork_215_2003	r
+A_NewYork_216_2003	r
+A_NewYork_273_2001	b
+A_NewYork_274_2002	b
+A_NewYork_275_2002	g
+A_NewYork_276_2002	g
+A_NewYork_401_2001	b
+A_NewYork_402_2001	b
+A_NewYork_403_2002	b
+A_NewYork_404_2002	b
+A_NewYork_405_2002	b
+A_NewYork_406_2002	b
+A_NewYork_407_2002	b
+A_NewYork_408_2002	b
+A_NewYork_409_2002	b
+A_NewYork_410_2002	b
+A_NewYork_411_2002	b
+A_NewYork_412_2002	b
+A_NewYork_413_2002	b
+A_NewYork_414_2002	b
+A_NewYork_415_2002	b
+A_NewYork_416_2002	b
+A_NewYork_418_2002	b
+A_NewYork_419_2002	b
+A_NewYork_420_2002	b
+A_NewYork_71_2001	f
+A_NewYork_74_2002	s
+A_NewYork_75_2002	s
+A_NewYork_76_2002	f
+A_NewYork_77_2001	0
+A_NewYork_80_2001	l
+A_NewYork_81_2002	l
+A_NewYork_82_2001	p
+A_NewYork_83_2001	4
+A_NewYork_84_2001	7
+A_NewYork_85_2001	g
+A_NewYork_86_2002	g
+A_NewYork_87_2002	8
+A_NewYork_88_2002	8
+A_NewYork_89_2002	t
+A_NewYork_90_2002	t
+A_NewYork_91_2002	k
+A_NewYork_92_2002	2
+A_NewYork_93_2002	2
+A_NewYork_94_2001	b
+A_NewYork_95_2002	b
+A_NewYork_97_2002	o
+A_NewYork_99_2002	j
+;
+cnames{ 0 Geo
+Albany
+Broome
+Chemung
+Chenango
+Clinton
+Columbia
+Cortland
+Delaware
+Dutchess
+Essex
+Livingston
+LongIsland
+Madison
+Monroe
+Montgomery
+NewYork
+Onondaga
+Ontario
+Oswego
+Otsego
+Rensselaer
+Rockland
+SaintLawrence
+Saratoga
+Schenectady
+Schoharie
+Tompkins
+Washington
+Wayne
+Westchester
+Yates
+;
+;
+outgroup A_NewYork_76_2002;
+proc/;
