@@ -2,8 +2,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <!-- <meta name="layout" content="main" /> -->
-        <title>Home</title>
+        <title>Routemap</title>
 	<link rel="stylesheet" href="/routemap/css/main.css" />
+    <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
 <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRTcn_-zYPKvuGhF03K7CRCK0gn1chQ4BJbLKMAJh60-GTgOKuUpkyFKrQ"> </script>
 <script type="text/javascript">
 google.load("earth", "1");
