@@ -23,7 +23,7 @@ class BuildKMLService {
 			out.write("encoding=\"utf-8\"?>\r\n");  
 			out.write("<kml xmlns=\"http://earth.google.com/kml/2.1\">\r\n");
 			out.write("\t<Document>\r\n"); 
-			out.write("\t\t<Name>Transmissions</Name><open>1</open>\r\n");
+			out.write("\t\t<Name>H5N1 Transmissions</Name><open>1</open>\r\n");
 			
 			origin2 = ""; destination2 = "";
 			
