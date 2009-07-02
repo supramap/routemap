@@ -27,7 +27,7 @@
             </div>
             </g:hasErrors>
             <p style="margin-left:20px;width:80%">
-                <g:link action="download" params="[file:'nycoordinates.csv',content:'application/csv',static:'true']">Sample file</g:link>
+                <a href="${createLinkTo(dir:'files',file:'nycoordinates.csv')}">Sample File</a>
             </p>
             <g:form action="generateScript" method="post" enctype="multipart/form-data">
                 <div class="dialog">

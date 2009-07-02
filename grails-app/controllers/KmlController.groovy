@@ -190,19 +190,14 @@ class KmlController {
         def download
         byte[] data
 
-        if (params.static ==  null) { //If the file is a kmlInstance
+        if (params.file ==  null) { //If the file is a kmlInstance
             download = Kml.get(params.id)
             name = download.name.replaceAll("\\s+","_")+".kml"
             content = "application/vnd.google-earth.kml+xml"
             data = download.data
         }
         else { //If the file is something else
-            if (params.static == 'true') { //If the file was not produced by user input, the file is found in (grails-app)/web-app/files/
-                def absPath = grailsAttributes.getApplicationContext().getResource("files/").getFile().toString() + File.separatorChar + params.file
-                download = new File(absPath)
-            }
-            else //Otherwise the file is found in the temporary session.folder
-                download = new File("/tmp/routemap/${session.folder}/${params.file}")
+            download = new File("/tmp/routemap/${session.folder}/${params.file}")
             name = download.getName()
             content = params.content           
             data = download.readBytes()

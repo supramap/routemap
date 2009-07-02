@@ -24,7 +24,7 @@
                 <p style="margin-left:20px;width:80%">
                     Extract tnt to an empty directory.  This will be your work directory.<br/>
                     Start TNT in the console (./tnt) and perform the following operations:<br/><br/>
-                    1) Open the dna sequence data.  <g:link action="download" params="[file:'nydna.tnt',content:'plain/text',static:'true']">Sample file</g:link><br/>
+                    1) Open the dna sequence data.  <a href="${createLinkTo(dir:'files',file:'nydna.tnt')}">Sample File</a><br/>
                     tnt*>proc nydna.tnt;<br/><br/>
                     2) Expand the tree buffer.<br/>
                     tnt*>hold 10000;<br/><br/>

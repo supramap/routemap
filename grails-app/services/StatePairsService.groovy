@@ -38,11 +38,11 @@ class StatePairsService {
         //locations.eachWithIndex{ it, i -> println "${i} : ${it}"}
 
         //Writes the tnt script
-        output.append("quote Calculating transmission routes;\nsilent = console;\n")
+        output.append("quote Calculating transmission routes;\r\nsilent = console;\r\n")
         locations.eachWithIndex { change, i ->
             locations.eachWithIndex{ to, j ->
                 if (i != j) {
-                    output.append("log change${change}_to_${to}.txt ; change ]./0/ ${change} ${to} ; log /;\n")
+                    output.append("log change${change}_to_${to}.txt ; change ]./0/ ${change} ${to} ; log /;\r\n")
                 }
             }
         }

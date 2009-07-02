@@ -27,7 +27,7 @@
             </div>
             </g:hasErrors>
             <p style="margin-left:20px;width:80%">
-                It should resemble <g:link action="download" params="[file:'nymigrations.csv',content:'application/csv',static:'true']">this</g:link>.
+                It should resemble <a href="${createLinkTo(dir:'files',file:'nymigrations.csv')}">this</a>.
             </p>
             <g:form action="getMigrations" method="post" enctype="multipart/form-data">
                 <div class="dialog">
