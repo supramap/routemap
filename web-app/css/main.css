@@ -241,11 +241,11 @@ th.desc a {
 }
 
 .buttons input {
-    background: #fff;
+    background: transparent;
     border: 0;
     color: #333;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 10px;
     font-weight: bold;
     margin-left: 3px;
     overflow: visible;
