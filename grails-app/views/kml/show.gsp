@@ -48,8 +48,8 @@ function createNetworkLink() {
   }
 </script>
     </head>
-    <div id="Container">
     <body onload="init()" id='body'>
+      <div id="Container">
 	<div class="logo"><img src="/routemap/images/grails_logo.jpg" alt="Routemap" /></div>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
