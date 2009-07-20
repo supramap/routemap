@@ -26,7 +26,7 @@
                 <g:renderErrors bean="${kmlInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <p style="margin-left:20px;width:80%">
+            <p style="width:80%">
                 <a href="${createLinkTo(dir:'files',file:'nycoordinates.csv')}">Sample File</a>
             </p>
             <g:form action="generateScript" method="post" enctype="multipart/form-data">

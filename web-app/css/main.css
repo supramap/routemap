@@ -14,7 +14,7 @@ body {
    margin: 0 auto;
    text-align: left;
    background: #FFFFFF;
-   border: 1px solid #CCCCCC;
+   border: 1px solid black;
    padding-bottom: 25px;
 }
 
@@ -117,7 +117,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .message {
-    background: #DEDEDE url(../images/skin/information.png) 8px 50% no-repeat;
+    background: #FFFFFF url(../images/skin/information.png) 8px 50% no-repeat;
     border: 1px solid #ccc;
     color: #006dba;
     margin: 10px 0 5px 0;
