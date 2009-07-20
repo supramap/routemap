@@ -105,8 +105,8 @@ function createNetworkLink() {
             </div>
         </div>
 
-        <div id="map3d_container" style="border: 1px solid silver; height: 600px;clear:left;">
-          <div id="map3d" style="height: 100%;"></div>
+        <div id="map3d_container" style="margin-left: 15px; border: 1px solid silver; height: 500px; width: 800px; clear:left;">
+          <div id="map3d"></div>
         </div>
     </body>
 </html>
