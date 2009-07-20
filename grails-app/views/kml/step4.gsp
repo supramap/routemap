@@ -11,7 +11,7 @@
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
             <span class="menuButton"><g:link class="list" action="list">Kml List</g:link></span>
         </div>
-        <div class="body">
+        <div id="Content">
             <h1>Step 4: upload the migrations csv created by makecsv.sh</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>

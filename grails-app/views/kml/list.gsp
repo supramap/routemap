@@ -11,7 +11,7 @@
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
             <span class="menuButton"><g:link class="create" action="create">New Kml</g:link></span>
         </div>
-        <div class="body">
+        <div id="Content">
             <h1>Kml List</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>

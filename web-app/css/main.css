@@ -1,19 +1,32 @@
-
 html * {
     margin: 0;
     /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX*/
+}
+
+body {
+   background: #CCCCCC;
+   margin: 0;
+   text-align: center;
+}
+
+#Container {
+   width: 750px;
+   margin: 0 auto;
+   text-align: left;
+   background: #FFFFFF;
+   border: 1px solid #CCCCCC;
+   padding-bottom: 25px;
+}
+
+#Content {
+   padding-left: 10px;
+   padding-right: 10px;
 }
 
 .spinner {
     padding: 5px;
     position: absolute;
     right: 0;
-}
-
-body {
-    background: #fff;
-    color: #333;
-    font: 11px verdana, arial, helvetica, sans-serif;
 }
 
 a:link {
