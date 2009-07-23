@@ -9,9 +9,9 @@
     <body>
       <div id="nav1">
 	<ul id="menus">
-                <li class="current"><a href="${resource(dir:'')}">Home</a></li>
-		<li><g:link class="create" action="create">New Kml</g:link></li>
-		<li><g:link class="list" action="list">List Kmls</g:link></li>
+                <li><a href="${resource(dir:'')}">Home</a></li>
+		<li><g:link action="create">New Kml</g:link></li>
+		<li><g:link class ="current" action="list">List Kmls</g:link></li>
 	</ul>
       </div>
         <div id="Content">

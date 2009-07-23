@@ -12,7 +12,7 @@
 	<ul id="menus">
                 <li><a href="${resource(dir:'')}">Home</a></li>
 		<li class="current"><g:link class="create" action="create">New Kml</g:link></li>
-		<li><g:link class="list" action="list">List Kmls</g:link></li>
+		<li><g:link action="list">List Kmls</g:link></li>
 	</ul>
       </div>
       <div id="Content">

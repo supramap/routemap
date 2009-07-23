@@ -80,6 +80,11 @@ body {
 	border-right: 1px solid #bae1fc ;
 }
 
+#nav1 ul li a.current {
+	background-color:#9CC3DE;
+	color: #FFFFFF;
+}
+
 #nav1 ul li a:hover {
 	background: #222222 url( selectedMenu.jpg?z=82220 ) repeat-x;
 	color: #FFFFFF;
