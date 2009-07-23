@@ -7,11 +7,13 @@
         <title>Edit Kml</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Kml List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Kml</g:link></span>
-        </div>
+      <div id="nav1">
+	<ul id="menus">
+                <li><a href="${resource(dir:'')}">Home</a></li>
+		<li><g:link class="create" action="create">New Kml</g:link></li>
+		<li><g:link class="list" action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
         <div id="Content">
             <h1>Edit Kml</h1>
             <g:if test="${flash.message}">

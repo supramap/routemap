@@ -49,13 +49,15 @@ function createNetworkLink() {
 </script>
     </head>
     <body onload="init()" id='body'>
+      <div id="header"></div>
       <div id="Container">
-	<div class="logo"><img src="/routemap/images/grails_logo.jpg" alt="Routemap" /></div>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Kml List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Kml</g:link></span>
-        </div>
+      <div id="nav1">
+	<ul id="menus">
+                <li><a href="${resource(dir:'')}">Home</a></li>
+		<li><g:link class="create" action="create">New Kml</g:link></li>
+		<li><g:link class="list" action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
         <div id="Content">
             <h1>Show Kml</h1>
             <g:if test="${flash.message}">
@@ -106,9 +108,10 @@ function createNetworkLink() {
             </div>
         </div>
         <br/>
-        <div id="map3d_container" style="margin-left: 15px; border: 1px solid silver; height: 500px; width: 720px; clear:left;">
+        <div id="map3d_container" style="margin-left: 20px; border: 1px solid silver; height: 500px; width: 740px; clear:left;">
           <div id="map3d"></div>
-        </div>
+        </div><br/>
+        <div id="footer"></div>
     </div>
     </body>
 </html>

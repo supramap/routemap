@@ -7,10 +7,13 @@
         <title>Preparation</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Kml List</g:link></span>
-        </div>
+      <div id="nav1">
+	<ul id="menus">
+                <li><a href="${resource(dir:'')}">Home</a></li>
+		<li class="current"><g:link class="create" action="create">New Kml</g:link></li>
+		<li><g:link class="list" action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
         <div id="Content">
             <h1>Preparation</h1>
             <g:if test="${flash.message}">
@@ -21,7 +24,7 @@
                 <g:renderErrors bean="${kmlInstance}" as="list" />
             </div>
             </g:hasErrors>
-                <p style="margin-left:20px;width:80%">
+                <p style="width:80%">
                     You will need to do an analysis on your own machine(s).  There are several things you need before you begin the creation process:<br/>
                     1) TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/">here</a>.<br/>
                     3) Several input files (sample input files will be provided throughout the walkthrough):<br/><br/>

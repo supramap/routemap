@@ -47,12 +47,15 @@ function createNetworkLink() {
 </script>
     </head>
     <body onload="init()" id='body'>
+      <div id="header"></div>
       <div id="Container">
-	<div class="logo"><img src="/routemap/images/grails_logo.jpg" alt="Routemap" /></div>
-        <div class="nav">
-            <span class="menuButton"><g:link class="create" controller="kml" action="create">New Kml</g:link></span>
-            <span class="menuButton"><g:link class="list" controller="kml" action="list">Kml List</g:link></span>
-        </div>
+      <div id="nav1">
+	<ul id="menus">
+                <li class="current"><a href="${resource(dir:'')}">Home</a></li>
+		<li><g:link class="create" controller="kml" action="create">New Kml</g:link></li>
+		<li><g:link class="list" controller="kml" action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
         <div id="Content">
         <h1 style="margin-left:20px;">Welcome to Routemap</h1>
         <p style="margin-left:20px;width:80%">
@@ -61,10 +64,11 @@ function createNetworkLink() {
           To view kmls that have already been created, click <g:link controller="kml">here</g:link>.<br/>
           If you want to complete the entire process offline without the help of the web tutorial, the necessary files can be found <a href="http://people.mbi.ohio-state.edu/rhovmoller/routemap/walkthrough.zip">here</a>.<br/><br/>
         </p>
-        <div id="map3d_container" style="margin-left: 20px; border: 1px solid silver; height: 500px; width: 690px; clear:left;">
+        <div id="map3d_container" style="margin-left: 20px; border: 1px solid silver; height: 500px; width: 740px; clear:left;">
           <div id="map3d"></div>
+        </div><br/>
         </div>
-        </div>
+        <div id="footer"></div>
       </div>
     </body>
 </html>

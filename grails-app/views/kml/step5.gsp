@@ -7,10 +7,13 @@
         <title>Step 5</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Kml List</g:link></span>
-        </div>
+      <div id="nav1">
+	<ul id="menus">
+                <li><a href="${resource(dir:'')}">Home</a></li>
+		<li class="current"><g:link class="create" action="create">New Kml</g:link></li>
+		<li><g:link class="list" action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
         <div id="Content">
             <h1>Step 5: name kml and give description</h1>
             <g:if test="${flash.message}">
@@ -47,9 +50,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="buttons">
-                    <span class="button"><input class="save" type="submit" value="Create" /></span>
-                </div>
+                  <input type="submit" value="Create" />
             </g:form>
         </div>
     </body>

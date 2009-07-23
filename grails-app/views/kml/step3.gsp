@@ -7,10 +7,13 @@
         <title>Step 3</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Kml List</g:link></span>
-        </div>
+      <div id="nav1">
+	<ul id="menus">
+                <li><a href="${resource(dir:'')}">Home</a></li>
+		<li class="current"><g:link class="create" action="create">New Kml</g:link></li>
+		<li><g:link class="list" action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
         <div id="content">
             <h1>Step 3: collect information about transformation events</h1>
             <g:if test="${flash.message}">
@@ -22,11 +25,11 @@
             </div>
             </g:hasErrors>
 
-                <p style="margin-left:20px;width:80%">
+                <p style="width:80%">
                     Download the generated tnt script <g:link action="download" params="[file:'transmissions.script',content:'text/plain']">here</g:link>.<br/>
                     It should resemble <a href="${createLinkTo(dir:'files',file:'nytransmissions.script')}">this</a>.
-                </p>
-                <p style="margin-left:20px;width:80%">
+                </p><br/>
+                <p style="width:80%">
                     Start tnt again and perform the following operations:<br/><br/>
                     1) Load the geographic datafile and expand the tree buffer.  <a href="${createLinkTo(dir:'files',file:'nygeo.tnt')}">Sample File</a><br/>
                     tnt*>proc nygeo.tnt; hold 10000;<br/><br/>

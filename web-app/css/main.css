@@ -4,24 +4,88 @@ html * {
 }
 
 body {
-   background: #CCCCCC;
-   margin: 0;
-   text-align: center;
+	background-color:#C6C3C6;
+	margin:0;
+	padding:0;
+	text-align:center;
+	color:#525152;
+	font-family:Trebuchet MS, Arial, Tahoma, sans-serif;
+        font-size:9pt;
 }
 
 #Container {
-   width: 750px;
-   margin: 0 auto;
-   text-align: left;
-   background: #FFFFFF;
-   border: 1px solid black;
-   padding-bottom: 25px;
+    width:820px;
+    background:#C6C3C6 url(bg.jpg?z=82220) repeat-y center top;
+    margin:0 auto;
+    text-align:left;
 }
 
 #Content {
-   padding-left: 10px;
-   padding-right: 10px;
+	width: 780px;
+	margin: 0px auto;
+	padding: 0;
 }
+
+#header {
+	position: relative;
+    height:151px;
+	background: #caced1 url(header.jpg?z=82220) no-repeat center;
+	padding: 0;
+	color: #fff;
+	margin-left:auto;
+    margin-right:auto;
+	width:820px;
+}
+
+#footer {
+	color: #FFFFFF;
+	background: #C6C3C6 url(footer.jpg?z=82220) no-repeat center;
+	clear: both;
+	width:820px;
+	height: 80px;
+	text-align: center;
+	font-size: 8pt;
+}
+
+ #nav1 {
+	clear: both;
+	margin: 0 auto;
+	padding: 0;
+	background: #9CC3DE url(menu.jpg?z=82220) repeat-x;
+	font: bold 16px/40px "Trebuchet MS", Arial, Tahoma, Sans-serif;
+	height: 40px;
+	width: 780px;
+	border-top :0px solid #FFFFFF ;
+	border-bottom : 0px solid #FFFFFF ;
+}
+
+#nav1 ul {
+	float: left;
+	list-style: none;
+	margin:0;
+	padding: 0 ;
+}
+
+#nav1 ul li {
+	display: inline;
+}
+
+#nav1 ul li a {
+	display: block;
+	float: left;
+	padding: 0 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align:center;
+	border-right: 1px solid #bae1fc ;
+}
+
+#nav1 ul li a:hover {
+	background: #222222 url( selectedMenu.jpg?z=82220 ) repeat-x;
+	color: #FFFFFF;
+}
+
+/* End added things */
 
 .spinner {
     padding: 5px;
@@ -51,6 +115,7 @@ h1 {
     font-weight: bold;
     font-size: 16px;
     margin: .8em 0 .3em 0;
+    margin-left:20px;
 }
 
 ul {
@@ -85,11 +150,15 @@ input:focus, select:focus, textarea:focus {
 }
 
 .nav {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
-    border: 1px solid #ccc;
-    border-style: solid none solid none;	
-    margin-top: 5px;
-    padding: 7px 12px;
+	clear: both;
+	margin: 0 auto;
+	padding: 0;
+	background: #9CC3DE url(menu.jpg?z=82220) repeat-x;
+	font: bold 16px/40px "Trebuchet MS", Arial, Tahoma, Sans-serif;
+	height: 40px;
+	width: 780px;
+	border-top :0px solid #FFFFFF ;
+	border-bottom : 0px solid #FFFFFF ;
 }
 
 .menuButton {
@@ -275,4 +344,12 @@ th.desc a {
 .buttons input.save {
     background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
     padding-left: 28px;
+}
+
+p {
+    margin-left:40px;
+}
+
+input {
+    margin-left:20px;
 }

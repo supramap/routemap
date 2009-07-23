@@ -7,12 +7,18 @@
         <title>Step 4</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Kml List</g:link></span>
-        </div>
+      <div id="nav1">
+	<ul id="menus">
+                <li><a href="${resource(dir:'')}">Home</a></li>
+		<li class="current"><g:link class="create" action="create">New Kml</g:link></li>
+		<li><g:link class="list" action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
         <div id="Content">
             <h1>Step 4: upload the migrations csv created by makecsv.sh</h1>
+            <p style="margin-left:20px; width:80%">
+                <a href="${createLinkTo(dir:'files',file:'nymigrations.csv')}">Sample File</a>.
+            </p>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -26,9 +32,6 @@
                 <g:renderErrors bean="${kmlInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <p style="width:80%">
-                It should resemble <a href="${createLinkTo(dir:'files',file:'nymigrations.csv')}">this</a>.
-            </p>
             <g:form action="getMigrations" method="post" enctype="multipart/form-data">
                 <div class="dialog">
                     <table>
@@ -46,10 +49,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="buttons">
-                    <span class="button"><input type="submit" value="Next" /></span>
-                </div>
+                    <input type="submit" value="Next" />
             </g:form>
-        </div>
+            </div>
     </body>
 </html>
