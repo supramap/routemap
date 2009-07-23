@@ -106,11 +106,11 @@ function createNetworkLink() {
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </g:form>
             </div>
-        </div>
         <br/>
-        <div id="map3d_container" style="margin-left: 20px; border: 1px solid silver; height: 500px; width: 740px; clear:left;">
+        <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
           <div id="map3d"></div>
         </div><br/>
+        </div>
         <div id="footer"></div>
     </div>
     </body>
