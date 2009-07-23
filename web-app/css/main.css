@@ -98,22 +98,14 @@ body {
     right: 0;
 }
 
-a:link {
-    color: #0000EE;
-    font-weight: bold;
-    text-decoration: none;
-} 
+a, a:visited {
+	color:blue;
+	text-decoration:none;
+}
 
 a:hover {
-    color: #009ACD;
-    font-weight: bold;
-    text-decoration: none;
-} 
-
-a:visited {
-    color: navy;
-    font-weight: bold;
-    text-decoration: none;
+	color:#93C600;
+	text-decoration:underline;
 }
 
 h1 {

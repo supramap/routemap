@@ -38,11 +38,8 @@
                         <tbody>
 
                             <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="coordinates">Coordinates File:</label>
-                                </td>
                                 <td valign="top" class="value">
-                                    <input type="file" id="coordinates" name="coordinates" />
+                                    Coordinates File:<input type="file" id="coordinates" name="coordinates" />
                                 </td>
                             </tr>
                             

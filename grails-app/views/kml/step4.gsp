@@ -38,11 +38,8 @@
                         <tbody>
 
                             <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="migrations">Migrations File:</label>
-                                </td>
                                 <td valign="top" class="value">
-                                    <input type="file" id="migrations" name="migrations" />
+                                    Migrations File:<input type="file" id="migrations" name="migrations" />
                                 </td>
                             </tr>
 
