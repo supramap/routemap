@@ -215,8 +215,9 @@ td.errors input {
 }
 
 table {
+    margin-left: 20px;
     border: 1px solid #ccc;
-    width: 100%
+    width: 80%
 }
 tr {
     border: 0;
@@ -268,7 +269,7 @@ th.desc a {
     border-left: 1px solid #ddd;
 }
 .list th:hover, .list tr:hover {
-    background: #b2d1ff;
+    background: #BFD9EA;
 }
 
 .paginateButtons {

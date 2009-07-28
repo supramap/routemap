@@ -24,13 +24,13 @@
                     <thead>
                         <tr>
                         
-                   	        <g:sortableColumn property="name" title="Name" />
+                            <g:sortableColumn property="name" title="Name" />
 
                             <g:sortableColumn property="description" title="Description" />
                         
-                   	        <g:sortableColumn property="dateCreated" title="Date Created" />
-                        
-                   	        <g:sortableColumn property="lastUpdated" title="Last Updated" />
+                            <g:sortableColumn property="dateCreated" title="Date Created" />
+
+                            <g:sortableColumn property="lastUpdated" title="Last Updated" />
                         
                         </tr>
                     </thead>

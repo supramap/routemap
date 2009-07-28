@@ -13,7 +13,7 @@
       <div id="Container">
         
         <g:layoutBody />
-              <div id="footer"></div>
+      <div id="footer"></div>
       </div>
     </body>	
 </html>
