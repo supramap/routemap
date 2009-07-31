@@ -25,15 +25,16 @@
             </div>
             </g:hasErrors>
                 <p style="width:80%">
-                    You will need to do an analysis on your own machine(s).  There are several things you need before you begin the creation process:<br/>
+                    There are several things you need before you begin the creation process:<br/>
                     1) TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/">here</a>.<br/>
-                    3) Several input files (sample input files will be provided throughout the walkthrough):<br/><br/>
-                    Datafile - a file containing phylogenetic data, such as DNA sequences in TNT format.<br/><br/>
-                    Geographic datafile - a TNT format file corresponding taxon-to-taxon in indentical order to the datafile.<br/>
+                    2) Two input files:<br/><br/>
+                    Sequence datafile (<a href="${createLinkTo(dir:'files',file:'nycoordinates.csv')}">sample</a>)
+                    - a file containing phylogenetic data, such as DNA sequences in TNT format.<br/><br/>
+                    Geographic datafile (<a href="${createLinkTo(dir:'files',file:'nycoordinates.csv')}">sample</a>)
+                    - a comma separated (csv) file containing a list of each taxon, followed by a location name, latitude, and longitude.
                     This file should contain a single multi-state character and a list of character state names. Note that TNT limits a character to 31 states.<br/><br/>
-                    Coordinates - a comma separated (csv) file containing a list of all geographic locations, their latitudes and longitudes in decimal degrees.<br/><br/>
                     NOTE: If you already have a coordinates.csv and migrations.csv, go <g:link action="altCreate">here</g:link> to generate a kml.</p>
-                </p>
+                </p><br/>
             <g:form action="step1" method="post" enctype="multipart/form-data">
                 <input type="submit" value="Next" />
             </g:form>

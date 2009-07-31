@@ -14,8 +14,8 @@
           <li><g:link action="list">List Kmls</g:link></li>
 	</ul>
       </div>
-        <div id="content">
-            <h1>Step 3: collect information about transformation events</h1>
+        <div id="Content">
+            <h1>Step 3: name the kml and give a description</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -24,32 +24,12 @@
                 <g:renderErrors bean="${kmlInstance}" as="list" />
             </div>
             </g:hasErrors>
-
-                <p style="width:80%">
-                    Download the generated tnt script <g:link action="download" params="[file:'transmissions.script',content:'text/plain']">here</g:link>.<br/>
-                    It should resemble <a href="${createLinkTo(dir:'files',file:'nytransmissions.script')}">this</a>.
-                </p><br/>
-                <p style="width:80%">
-                    Start tnt again and perform the following operations:<br/><br/>
-                    1) Load the geographic datafile and expand the tree buffer.  <a href="${createLinkTo(dir:'files',file:'nygeo.tnt')}">Sample File</a><br/>
-                    tnt*>proc nygeo.tnt; hold 10000;<br/><br/>
-                    2) Load the trees saved in step 1.<br/>
-                    tnt*>shortread nytrees.ctf;<br/><br/>
-                    3) Run the script that you downloaded at the beginning of this step.  This will take several minutes.<br/>
-                    tnt*>proc tnt_transmissions.script<br/><br/>
-                    4) Exit tnt<br/>
-                    tnt*>zzz<br/><br/>
-                    5) Run the <a href="${createLinkTo(dir:'files',file:'checkpairs.sh')}">checkpairs</a>
-                    script with the coordinate csv as argument to ensure that you have all the needed components.  This will take several minutes.<br/>
-                    ./checkpairs.sh nycoordinates.csv<br/>
-                    If the script tells you that there were missing files, the file missingfiles.txt will tell you which, and the TNT script missing.script will produce the missing files.<br/><br/>
-                    6) Run the <a href="${createLinkTo(dir:'files',file:'makecsv.sh')}">makecsv</a>
-                    script to create the table of transmission events.<br/>
-                    ./makecsv.sh coordinates.csv > migrations.csv<br/>
-
-                </p>
-             <g:form action="step4" method="post" enctype="multipart/form-data">
-                <input type="submit" value="Next" /></span>
+            <g:form action="save" method="post"  enctype="multipart/form-data">
+              <p>
+                Name (required):<input type="text" id="name" name="name" value="${fieldValue(bean:kmlInstance,field:'name')}"/><br/><br/>
+                Description (optional):<input type="text" id="description" name="description" value="${fieldValue(bean:kmlInstance,field:'description')}"/>
+              </p><br/>
+              <input type="submit" value="Create" />
             </g:form>
         </div>
     </body>

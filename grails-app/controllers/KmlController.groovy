@@ -86,24 +86,39 @@ class KmlController {
 
     def step1 = {}
 
-    def step2 = {}
-
     def generateScript = {
         session.folder = KmlService.tempFolder("${session.folder}")
 
-        MultipartFile coordinates = request.getFile('coordinates')
+        MultipartFile data = request.getFile('data')
+        MultipartFile coords = request.getFile('coords')
 
-        if (!coordinates.empty) {
-            coordinates.transferTo(new File("/tmp/routemap/${session.folder}/coordinates"))
-            def problems = StatePairsService.convert("${session.folder}")
+        if (!coords.empty || !data.empty) {
+            data.transferTo(new File("${session.folder}/data"))
+            coords.transferTo(new File("${session.folder}/coords"))
+            def problems = KmlService.checkFiles(session.folder)
             if (problems) {
                 flash.problems = problems
+                redirect action:step1
+            } else {
+                KmlService.writeScript(session.folder)
                 redirect action:step2
             }
-            def script = new File("/tmp/routemap/${session.folder}/transmissions.script")
-            redirect action:step3
         }
         else {
+            flash.message = "Files cannot be empty"
+            redirect action:step1
+        }
+    }
+
+    def step2 = {}
+    
+    def getLog = {
+        MultipartFile migrations = request.getFile('tntlog')
+        
+        if (!migrations.empty) {
+            migrations.transferTo(new File("${session.folder}/tntlog"))
+            redirect action:step3
+        } else {
             flash.message = "File cannot be empty"
             redirect action:step2
         }
@@ -111,41 +126,18 @@ class KmlController {
 
     def step3 = {}
 
-    def step4 = {}
-    
-    def getMigrations = {
-        MultipartFile migrations = request.getFile('migrations')
-        
-        if (!migrations.empty) {
-            migrations.transferTo(new File("/tmp/routemap/${session.folder}/migrations"))
-            redirect action:step5
-        }
-        else {
-            flash.message = "File cannot be empty"
-            redirect action:step4
-        }
-
-        def problems = SanityChecksService.checkCSV("/tmp/routemap/${session.folder}/migrations", "/tmp/routemap/${session.folder}/coordinates")
-        if (problems) {
-            flash.problems = problems
-            redirect action:step4
-        }
-    }
-
-    def step5 = {}
-
     def save = {
         def kmlInstance = new Kml();
         kmlInstance.name = params.name
         kmlInstance.description = params.description
 
-        def error = BuildKMLService.convert("/tmp/routemap/${session.folder}/migrations", "/tmp/routemap/${session.folder}/coordinates", session.folder)
+        def error = BuildKMLService.convert("${session.folder}/migrations", "${session.folder}/coords", session.folder)
         if (error != null) {
             flash.message = "${error}"
             redirect(action:create,model:[kmlInstance:kmlInstance])
         }
 
-        def transmissions = new File("/tmp/routemap/${session.folder}/transmissions.kml")
+        def transmissions = new File("${session.folder}/transmissions.kml")
         kmlInstance.data = transmissions.readBytes()
 
         if(!kmlInstance.hasErrors() && kmlInstance.save()) {
@@ -156,7 +148,7 @@ class KmlController {
             redirect(action:create,model:[kmlInstance:kmlInstance])
         }
 
-        new AntBuilder().delete(dir: "/tmp/routemap/${session.folder}") //remove temp directory
+        new AntBuilder().delete(dir: "${session.folder}") //remove temp directory
     }
 
     def altCreate = {}
@@ -168,15 +160,15 @@ class KmlController {
         MultipartFile migrations = request.getFile('migrations')
 
         if (!coordinates.empty && !migrations.empty) {
-            coordinates.transferTo(new File("/tmp/routemap/${session.folder}/coordinates"))
-            migrations.transferTo(new File("/tmp/routemap/${session.folder}/migrations"))
+            coordinates.transferTo(new File("${session.folder}/coordinates"))
+            migrations.transferTo(new File("${session.folder}/migrations"))
         }
         else {
             flash.message = "Coordinates and migrations cannot be empty"
             redirect action:altCreate
         }
 
-        def problems = SanityChecksService.checkCSV("/tmp/routemap/${session.folder}/migrations", "/tmp/routemap/${session.folder}/coordinates")
+        def problems = SanityChecksService.checkCSV("${session.folder}/migrations", "${session.folder}/coordinates")
         if (problems) {
             flash.problems = problems
             redirect action:altCreate
@@ -197,7 +189,7 @@ class KmlController {
             data = download.data
         }
         else { //If the file is something else
-            download = new File("/tmp/routemap/${session.folder}/${params.file}")
+            download = new File("${session.folder}/${params.file}")
             name = download.getName()
             content = params.content           
             data = download.readBytes()
