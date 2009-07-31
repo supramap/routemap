@@ -26,7 +26,7 @@
             </g:hasErrors>
                 <p style="width:80%">
                     There are several things you need before you begin the creation process:<br/>
-                    1) TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/">here</a>.<br/>
+                    1) TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">here</a>.<br/>
                     2) Two input files:<br/><br/>
                     Sequence datafile (<a href="${createLinkTo(dir:'files',file:'nycoordinates.csv')}">sample</a>)
                     - a file containing phylogenetic data, such as DNA sequences in TNT format.<br/><br/>
