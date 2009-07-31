@@ -137,7 +137,7 @@ class KmlService {
         i = 0
         coordFile.splitEachLine(',') { curLine -> //Uses the locations map to find the location id of each taxa, then writes it to output
             i++
-            if (i > 1 && curLine != null)
+            if (i > 1 && curLine[0] && curLine[1])
                 output.append("${curLine[0]}\t${locMap.get(curLine[1])}\n")
         }
         output.append(";\ncnames\n{\n${characters-1} Geography\n")
