@@ -1,6 +1,15 @@
 import org.springframework.web.multipart.MultipartFile
 
 class KmlController {
+
+    def beforeInterceptor = [action:this.&auth]
+
+    def auth() {
+        if(!session.user) {
+            redirect(controller:"user", action:"login")
+            return false
+        }
+    }
     
     def index = { redirect(action:list,params:params) }
 
@@ -8,18 +17,24 @@ class KmlController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
+        def kmls = Kml.findAllByUser(session.user)
+        def count = Kml.countByUser(session.user)
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ kmlInstanceList: Kml.list( params ), kmlInstanceTotal: Kml.count() ]
+        [ kmlInstanceList: kmls, kmlInstanceTotal: count ]
     }
 
     def show = {
         def kmlInstance = Kml.get( params.id )
-
+        def owner = kmlInstance.user.id
+        def getter = session.user.id
         if(!kmlInstance) {
             flash.message = "Kml not found with id ${params.id}"
             redirect action:list
+        } else if (owner != getter){
+            response.sendError(403)
+        } else {
+            return [ kmlInstance : kmlInstance ]
         }
-        else { return [ kmlInstance : kmlInstance ] }
     }
 
     def delete = {
@@ -90,11 +105,11 @@ class KmlController {
         session.folder = KmlService.tempFolder("${session.folder}")
 
         MultipartFile data = request.getFile('data')
-        MultipartFile coords = request.getFile('coords')
+        MultipartFile coordinates = request.getFile('coordinates')
 
-        if (!coords.empty || !data.empty) {
+        if (!coordinates.empty || !data.empty) {
             data.transferTo(new File("${session.folder}/data"))
-            coords.transferTo(new File("${session.folder}/coords"))
+            coordinates.transferTo(new File("${session.folder}/coordinates"))
             def problems = KmlService.checkFiles(session.folder)
             if (problems) {
                 flash.problems = problems
@@ -130,8 +145,9 @@ class KmlController {
         def kmlInstance = new Kml();
         kmlInstance.name = params.name
         kmlInstance.description = params.description
+        kmlInstance.user = session.user
 
-        def error = BuildKMLService.convert("${session.folder}/migrations", "${session.folder}/coords", session.folder)
+        def error = BuildKMLService.convert("${session.folder}/migrations", "${session.folder}/coordinates", session.folder)
         if (error != null) {
             flash.message = "${error}"
             redirect(action:create,model:[kmlInstance:kmlInstance])

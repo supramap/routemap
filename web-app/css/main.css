@@ -28,13 +28,14 @@ body {
 
 #header {
 	position: relative;
-    height:151px;
+        height:151px;
 	background: #caced1 url(header.jpg?z=82220) no-repeat center;
 	padding: 0;
 	color: #fff;
 	margin-left:auto;
-    margin-right:auto;
+        margin-right:auto;
 	width:820px;
+        text-align: right;
 }
 
 #footer {
@@ -88,6 +89,11 @@ body {
 #nav1 ul li a:hover {
 	background: #222222 url( selectedMenu.jpg?z=82220 ) repeat-x;
 	color: #FFFFFF;
+}
+
+#loginHeader {
+  color: #fff;
+  margin-right: 20px;
 }
 
 /* End added things */
@@ -184,9 +190,9 @@ input:focus, select:focus, textarea:focus {
 
 .message {
     background: #FFFFFF url(../images/skin/information.png) 8px 50% no-repeat;
-    border: 1px solid #ccc;
     color: #006dba;
-    margin: 10px 0 5px 0;
+    width: 75%;
+    margin: 10px 0px 5px 20px;
     padding: 5px 5px 5px 30px
 }
 
@@ -280,6 +286,8 @@ th.desc a {
     font-size: 10px;
     overflow: hidden;
     padding: 10px 3px;
+    margin-left: 20px;
+    width: inherit;
 }
 .paginateButtons a {
     background: #fff;
@@ -318,6 +326,8 @@ th.desc a {
     margin-top: 5px;
     overflow: hidden;
     padding: 0;
+    margin-left: 20px;
+    /*width: 80%;*/
 }
 
 .buttons input {

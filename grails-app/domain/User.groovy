@@ -3,6 +3,7 @@ class User {
     String password
     String name
     String email
+    String role = "user"
 
     static hasMany = [kmls:Kml]
 

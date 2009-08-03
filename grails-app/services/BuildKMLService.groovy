@@ -7,6 +7,8 @@ class BuildKMLService {
     private static String origin, destination, origin2, destination2;
 
     public static String convert (String f1, String f2, String folder) {
+        println f1
+        println f2
         String error = readInputFiles(f1,f2);
         describeMigrations();
         writeKML(folder);

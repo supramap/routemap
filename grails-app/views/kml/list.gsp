@@ -54,6 +54,7 @@
             <div class="paginateButtons">
                 <g:paginate total="${kmlInstanceTotal}" />
             </div>
+            <br/>
         </div>
     </body>
 </html>

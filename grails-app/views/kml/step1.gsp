@@ -27,7 +27,7 @@
             <g:form action="generateScript" method="post" enctype="multipart/form-data">
               <p>
                 TNT Data:<input type="file" id="data" name="data" /><br/>
-                Coordinates CSV:<input type="file" id="coords" name="coords" />
+                Coordinates CSV:<input type="file" name="coordinates" />
               </p><br/>
               <input type="submit" value="Next" />
             </g:form>

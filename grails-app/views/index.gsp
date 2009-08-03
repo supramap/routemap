@@ -47,7 +47,7 @@ function createNetworkLink() {
 </script>
     </head>
     <body onload="init()" id='body'>
-      <div id="header"></div>
+      <div id="header"><div id="loginHeader"><g:loginControl/></div></div>
       <div id="Container">
       <div id="nav1">
 	<ul id="menus">

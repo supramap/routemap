@@ -6,10 +6,10 @@
         <g:javascript library="application" />
     </head>
     <body>
-        <div id="spinner" class="spinner" style="display:none;">
-            <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner" />
-        </div>
-      <div id="header"></div>
+      <div id="spinner" class="spinner" style="display:none;">
+        <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner" />
+      </div>
+      <div id="header"><div id="loginHeader"><g:loginControl/></div></div>
       <div id="Container">
         
         <g:layoutBody />
