@@ -4,6 +4,9 @@ class Kml {
     byte[] data
     Date dateCreated
     Date lastUpdated
+    User user
+
+    static belongsTo = [user:User]
 
     static constraints = {
         name(nullable: false, blank: false)
