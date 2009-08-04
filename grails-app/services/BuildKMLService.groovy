@@ -22,110 +22,110 @@ class BuildKMLService {
                 OutputStreamWriter out = new OutputStreamWriter(bout, "utf-8");
 
                 out.write("<?xml version=\"1.0\" ");
-                out.write("encoding=\"utf-8\"?>\r\n");
-                out.write("<kml xmlns=\"http://earth.google.com/kml/2.1\">\r\n");
-                out.write("\t<Document>\r\n");
-                out.write("\t\t<Name>Transmissions</Name><open>1</open>\r\n");
+                out.write("encoding=\"utf-8\"?>\n");
+                out.write("<kml xmlns=\"http://earth.google.com/kml/2.1\">\n");
+                out.write("\t<Document>\n");
+                out.write("\t\t<Name>Transmissions</Name><open>1</open>\n");
 
                 origin2 = ""; destination2 = "";
 
                 //sources
-                out.write("\t\t<Folder><name>Outgoing</name><open>0</open>\r\n");
+                out.write("\t\t<Folder><name>Outgoing</name><open>0</open>\n");
                 for (int j=0; j<sources.length; j++) {
                         origin = sources[j];
                         for (int i=0; i<sinks.length; i++) {
                                 if (!migrations[i][j].equals("0")) {
                                         if (!origin2.equals(origin) && !origin2.equals("")) {
-                                                out.write("\t\t</Folder>\r\n");
+                                                out.write("\t\t</Folder>\n");
                                         }
                                         if (!origin2.equals(origin)) {
-                                                out.write("\t\t<Folder><name>" + origin + "</name><open>0</open>\r\n");
+                                                out.write("\t\t<Folder><name>" + origin + "</name><open>0</open>\n");
                                         }
-                                        out.write("\t\t\t<Style id=\"s" + i + "_" + j + "\">\r\n");
-                                        out.write("\t\t\t\t<LineStyle>\r\n");
-                                        out.write("\t\t\t\t\t<width>" + migrations[i][j] + "</width>\r\n");
+                                        out.write("\t\t\t<Style id=\"s" + i + "_" + j + "\">\n");
+                                        out.write("\t\t\t\t<LineStyle>\n");
+                                        out.write("\t\t\t\t\t<width>" + migrations[i][j] + "</width>\n");
                                         if (!migrations[j][i].equals("0")) //bidirectional
-                                                out.write("\t\t\t\t\t<color>ff00ddff</color>\r\n");
+                                                out.write("\t\t\t\t\t<color>ff00ddff</color>\n");
                                         else
-                                                out.write("\t\t\t\t\t<color>ff0000ff</color>\r\n");
-                                        out.write("\t\t\t\t</LineStyle>\r\n");
-                                        out.write("\t\t\t</Style>\r\n");
-                                        out.write("\t\t\t<Placemark><name>" + origin + " to " + sinks[i] + "</name>\r\n");
+                                                out.write("\t\t\t\t\t<color>ff0000ff</color>\n");
+                                        out.write("\t\t\t\t</LineStyle>\n");
+                                        out.write("\t\t\t</Style>\n");
+                                        out.write("\t\t\t<Placemark><name>" + origin + " to " + sinks[i] + "</name>\n");
                                         out.write("\t\t\t<visibility>1</visibility>");
-                                        out.write("\t\t\t\t<styleUrl>#s" + i + "_" + j + "</styleUrl>\r\n");
-                                        out.write("\t\t\t\t<MultiGeometry>\r\n");
-                                        out.write("\t\t\t\t\t<LineString>\r\n");
-                                        out.write("\t\t\t\t\t\t<tessellate>1</tessellate>\r\n");
-                                        out.write("\t\t\t\t\t\t<altitudeMode>relative</altitudeMode>\r\n");
-                                        out.write("\t\t\t\t\t\t<coordinates>" + getCoordinates(sources[j]) + ",0 " + getCoordinates(sinks[i]) + ",0 </coordinates>\r\n");
-                                        out.write("\t\t\t\t\t</LineString>\r\n");
-                                        out.write("\t\t\t\t</MultiGeometry>\r\n");
-                                        out.write("\t\t\t</Placemark>\r\n");
+                                        out.write("\t\t\t\t<styleUrl>#s" + i + "_" + j + "</styleUrl>\n");
+                                        out.write("\t\t\t\t<MultiGeometry>\n");
+                                        out.write("\t\t\t\t\t<LineString>\n");
+                                        out.write("\t\t\t\t\t\t<tessellate>1</tessellate>\n");
+                                        out.write("\t\t\t\t\t\t<altitudeMode>relative</altitudeMode>\n");
+                                        out.write("\t\t\t\t\t\t<coordinates>" + getCoordinates(sources[j]) + ",0 " + getCoordinates(sinks[i]) + ",0 </coordinates>\n");
+                                        out.write("\t\t\t\t\t</LineString>\n");
+                                        out.write("\t\t\t\t</MultiGeometry>\n");
+                                        out.write("\t\t\t</Placemark>\n");
                                         origin2 = origin;
                                 }
                         }
                 }
-                out.write("\t\t</Folder>\r\n");
-                out.write("\t\t</Folder>\r\n");
+                out.write("\t\t</Folder>\n");
+                out.write("\t\t</Folder>\n");
 
                 //destinations
-                out.write("\t\t<Folder><name>Incoming</name><open>0</open>\r\n");
+                out.write("\t\t<Folder><name>Incoming</name><open>0</open>\n");
                 for (int i=0; i<sinks.length; i++) {
                         destination = sinks[i]; origin = null;
                         for (int j=0; j<sources.length; j++) {
                                 if (!migrations[i][j].equals("0")) {
                                         if (!destination2.equals(destination) && !destination2.equals("")) {
-                                                out.write("\t\t</Folder>\r\n");
+                                                out.write("\t\t</Folder>\n");
                                         }
                                         if (!destination2.equals(destination)) {
-                                                out.write("\t\t<Folder><name>" + destination + "</name><open>0</open>\r\n");
+                                                out.write("\t\t<Folder><name>" + destination + "</name><open>0</open>\n");
                                         }
-                                        out.write("\t\t<Style id=\"s" + i + "_" + j + "\">\r\n");
-                                        out.write("\t\t\t<LineStyle>\r\n");
-                                        out.write("\t\t\t\t<width>2.0</width>\r\n");
+                                        out.write("\t\t<Style id=\"s" + i + "_" + j + "\">\n");
+                                        out.write("\t\t\t<LineStyle>\n");
+                                        out.write("\t\t\t\t<width>2.0</width>\n");
                                         if (!migrations[j][i].equals("0")) //bidirectional
-                                                out.write("\t\t\t\t\t<color>ff00ddff</color>\r\n");
+                                                out.write("\t\t\t\t\t<color>ff00ddff</color>\n");
                                         else
-                                                out.write("\t\t\t\t<color>ff00ff00</color>\r\n");
-                                        out.write("\t\t\t</LineStyle>\r\n");
-                                        out.write("\t\t</Style>\r\n");
-                                        out.write("\t\t<Placemark><name>" + sources[j] + " to " + destination + "</name>\r\n");
+                                                out.write("\t\t\t\t<color>ff00ff00</color>\n");
+                                        out.write("\t\t\t</LineStyle>\n");
+                                        out.write("\t\t</Style>\n");
+                                        out.write("\t\t<Placemark><name>" + sources[j] + " to " + destination + "</name>\n");
                                         out.write("\t\t<visibility>1</visibility>");
-                                        out.write("\t\t\t<styleUrl>#s" + i + "_" + j + "</styleUrl>\r\n");
-                                        out.write("\t\t\t<MultiGeometry>\r\n");
-                                        out.write("\t\t\t\t<LineString>\r\n");
-                                        out.write("\t\t\t\t\t<tessellate>1</tessellate>\r\n");
-                                        out.write("\t\t\t\t\t<altitudeMode>relative</altitudeMode>\r\n");
-                                        out.write("\t\t\t\t\t<coordinates>" + getCoordinates(sources[j]) + ",0 " + getCoordinates(sinks[i]) + ",0 </coordinates>\r\n");
-                                        out.write("\t\t\t\t</LineString>\r\n");
-                                        out.write("\t\t\t</MultiGeometry>\r\n");
-                                        out.write("\t\t</Placemark>\r\n");
+                                        out.write("\t\t\t<styleUrl>#s" + i + "_" + j + "</styleUrl>\n");
+                                        out.write("\t\t\t<MultiGeometry>\n");
+                                        out.write("\t\t\t\t<LineString>\n");
+                                        out.write("\t\t\t\t\t<tessellate>1</tessellate>\n");
+                                        out.write("\t\t\t\t\t<altitudeMode>relative</altitudeMode>\n");
+                                        out.write("\t\t\t\t\t<coordinates>" + getCoordinates(sources[j]) + ",0 " + getCoordinates(sinks[i]) + ",0 </coordinates>\n");
+                                        out.write("\t\t\t\t</LineString>\n");
+                                        out.write("\t\t\t</MultiGeometry>\n");
+                                        out.write("\t\t</Placemark>\n");
                                         destination2 = destination;
                                 }
                         }
                 }
-                out.write("\t\t</Folder>\r\n");
-                out.write("\t\t</Folder>\r\n");
+                out.write("\t\t</Folder>\n");
+                out.write("\t\t</Folder>\n");
 
                 //add placemarks for every location in the coordinates array
-                out.write("\t\t<Folder><name>locations</name><open>0</open>\r\n");
+                out.write("\t\t<Folder><name>locations</name><open>0</open>\n");
                 for (int i=0; i<coordinates.length; i++) {
-                        out.write("\t\t<Placemark>\r\n");
-                        out.write("\t\t\t<name>" + coordinates[i][0] + "</name>\r\n");
-                        out.write("\t\t\t<Point>\r\n");
-                        out.write("\t\t\t\t<coordinates>" + coordinates[i][2] + "," + coordinates[i][1] + ",0</coordinates>\r\n");
-                        out.write("\t\t\t</Point>\r\n");
-                        out.write("\t\t\t<Style>\r\n");
-                        out.write("\t\t\t\t<LabelStyle>\r\n");
-                        out.write("\t\t\t\t\t<scale>1.0</scale>\r\n");
-                        out.write("\t\t\t\t</LabelStyle>\r\n");
-                        out.write("\t\t\t</Style>\r\n");
-                        out.write("\t\t</Placemark>\r\n");
+                        out.write("\t\t<Placemark>\n");
+                        out.write("\t\t\t<name>" + coordinates[i][0] + "</name>\n");
+                        out.write("\t\t\t<Point>\n");
+                        out.write("\t\t\t\t<coordinates>" + coordinates[i][2] + "," + coordinates[i][1] + ",0</coordinates>\n");
+                        out.write("\t\t\t</Point>\n");
+                        out.write("\t\t\t<Style>\n");
+                        out.write("\t\t\t\t<LabelStyle>\n");
+                        out.write("\t\t\t\t\t<scale>1.0</scale>\n");
+                        out.write("\t\t\t\t</LabelStyle>\n");
+                        out.write("\t\t\t</Style>\n");
+                        out.write("\t\t</Placemark>\n");
                 }
-                out.write("\t\t</Folder>\r\n");
+                out.write("\t\t</Folder>\n");
 
-                out.write("\t</Document>\r\n");
-                out.write("</kml>\r\n");
+                out.write("\t</Document>\n");
+                out.write("</kml>\n");
                 out.flush();
                 out.close();
         }
