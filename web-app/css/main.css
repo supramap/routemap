@@ -95,6 +95,16 @@ body {
   margin-right: 25px;
 }
 
+#loginHeader a, a:visited {
+    color:#9CC3DE;
+    text-decoration:none;
+}
+
+#loginHeader a:hover {
+	color:#93C600;
+	text-decoration:underline;
+}
+
 /* End added things */
 
 .spinner {
