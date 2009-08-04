@@ -1,0 +1,4 @@
+class HelperController {
+
+    def contact = { }
+}

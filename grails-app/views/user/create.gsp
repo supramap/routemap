@@ -16,7 +16,7 @@
       </div>
     <div id="Content">
         <div class="body" style="float: none;">
-            <h1>Create User</h1>
+            <h1>Create Account</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>

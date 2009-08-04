@@ -12,6 +12,7 @@
                 <li><a href="${resource(dir:'')}">Home</a></li>
 		<li><g:link action="create">New Kml</g:link></li>
 		<li><g:link action="list">List Kmls</g:link></li>
+                <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
 	</ul>
       </div>
         <div id="Content">

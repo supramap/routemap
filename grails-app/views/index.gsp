@@ -60,6 +60,7 @@ function createNetworkLink() {
           <li><a class="current" href="${resource(dir:'')}">Home</a></li>
           <li><g:link controller="kml" action="create">New Kml</g:link></li>
           <li><g:link controller="kml" action="list">List Kmls</g:link></li>
+          <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
 	</ul>
       </div>
         <div id="Content">
@@ -70,7 +71,6 @@ function createNetworkLink() {
         <ul style="margin-left:20px; width:80%">
           <li>To create a kml, click <g:link controller="kml" action="preparation">here</g:link>.</li>
           <li>To view kmls that have already been created, click <g:link controller="kml">here</g:link>.</li>
-          <li>If you want to complete the entire process offline without the help of the web tutorial, the necessary files can be found <a href="http://people.mbi.ohio-state.edu/rhovmoller/routemap/walkthrough.zip">here</a>.</li>
         </ul>
         <br/>
         <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
