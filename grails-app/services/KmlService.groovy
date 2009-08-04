@@ -16,7 +16,7 @@ class KmlService {
     public static LinkedHashMap checkFiles(String folder) {
         def problems = [:] //Map of all the problems to be returned. Key is the error number and value is the message.
         def dataFile = new File("${folder}/data")
-        def coordFile = new File("${folder}/coords")
+        def coordFile = new File("${folder}/coordinates")
         /*
          * The following replaces all the newline characters with the unix format
          */
@@ -42,9 +42,9 @@ class KmlService {
             if (lineNum > 1 && fields[0] && fields[1] && fields[2]  && fields[3]) { //First line doesn't containt data
                 csvTaxa.put fields[0],taxNum //Adds every taxa to the map
                 taxNum++
-                if (locMap.get(curLine[1]) == null) { //Adds one of each location to the locMap
-                    locMap.put(curLine[1],locNum)
-                    locNum++
+                if (fields[1] && locMap.get(fields[1]) == null && lineNum > 1) {
+                    locMap.put(fields[1],locNum)
+                    ++locNum
                 }
                 try { //Checks to make sure lat/long are floats
                     latitude = Float.parseFloat(fields[2])
@@ -71,14 +71,14 @@ class KmlService {
         def tntTaxa = [:]
         taxNum = 0
         lineNum = 0
-        dataFile.eachLine { fields ->
+        dataFile.splitEachLine(' ') { fields ->
             lineNum++
-            if (lineNum > 2) {
+            if (fields != null && lineNum > 2 && fields[0] != ';' && fields[0] != 'proc') {
                 tntTaxa.put fields[0],taxNum
                 taxNum++
             }
         }
-        if (taxNum > 30) { //Tnt restricts the number of lactions to 31
+        if (locNum > 31) { //Tnt restricts the number of lactions to 31
             problems.put "Error${errNum}","There must be under 31 locations"
         }
         tntTaxa.each { taxon ->
@@ -90,10 +90,10 @@ class KmlService {
         /*
          * The following makes sure location names don't contain parts of other location names
          */
-        locMap.each() { Loc1 ->
-            migLocations.each { Loc2
-                if (loc2.key.count(Loc1.key) > 0 && Loc1.key != Loc2.key) {
-                    problems.put "Error${errNum}","Location ${it} and location ${curloc} have conflicting names."
+        locMap.each() { loc1 ->
+            locMap.each() { loc2 ->
+                if (loc2.key.count(loc1.key) > 0 && loc1.key != loc2.key) {
+                    problems.put "Error${errNum}","Location ${loc1} and location ${loc2} have conflicting names."
                     errNum++
                 }
             }
@@ -103,7 +103,7 @@ class KmlService {
 
     public static void writeScript(String folder) { //Produces a tnt script for the user
         def dataFile = new File("${folder}/data")
-        def coordFile = new File("${folder}/coords")
+        def coordFile = new File("${folder}/coordinates")
         def output = new File("${folder}/tntscript.tnt")
         def characters //Number of characters in each sequence
         output.append("mx 1000\nnstates 32\nxread\n'dataset'\n")
@@ -114,7 +114,7 @@ class KmlService {
                 characters = Integer.parseInt(curLine[2])+1
                 output.append("${characters} ${curLine[3]}\n")
                 output.append("&[dna]\n")
-            } else if (i > 2 && curLine[0] != ';' && curLine[0] != 'proc') {
+            } else if (curLine != null && i > 2 && curLine[0] != ';' && curLine[0] != 'proc') {
                 output.append("${curLine[0]}\t${curLine[1]}\n")
             }
         }

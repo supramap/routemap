@@ -203,8 +203,7 @@ textarea {
 }
 
 div.errors {
-    background: #DEDEDE url(../images/skin/exclamation.png) 8px 50% no-repeat;
-    border: 1px solid red;
+    background: #FFFFFF url(../images/skin/exclamation.png) 8px 50% no-repeat;
     color: #cc0000;
     margin: 10px 0px 5px 15px;
     padding: 7px 5px 5px 30px
