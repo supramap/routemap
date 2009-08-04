@@ -24,11 +24,33 @@
                 <g:renderErrors bean="${kmlInstance}" as="list" />
             </div>
             </g:hasErrors>
+            <br/>
             <g:form action="save" method="post"  enctype="multipart/form-data">
-              <p>
-                Name (required):<input type="text" id="name" name="name" value="${fieldValue(bean:kmlInstance,field:'name')}"/><br/><br/>
-                Description (optional):<input type="text" id="description" name="description" value="${fieldValue(bean:kmlInstance,field:'description')}"/>
-              </p><br/>
+              <div class="dialog" style="width:50%;">
+                    <table>
+                        <tbody>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="name">Name (required):</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="text" id="data" name="data" value="${fieldValue(bean:kmlInstance,field:'name')}"/>
+                                </td>
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="name">Description (optional):</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="text" id="coordinates" name="coordinates" value="${fieldValue(bean:kmlInstance,field:'description')}"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+              </div>
+              <br/>
               <input type="submit" value="Create" />
             </g:form>
         </div>

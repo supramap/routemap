@@ -142,10 +142,6 @@ textarea {
 	vertical-align: top;
 }
 
-input:focus, select:focus, textarea:focus {
-    border: 1px solid #b2d1ff;
-}
-
 .body {
     float: left;
     margin: 0 15px 10px 15px;
@@ -331,7 +327,7 @@ th.desc a {
     font-weight: bold;
     margin-left: 3px;
     overflow: visible;
-    padding: 2px 6px;
+    padding: 2px 6px
 }
 .buttons input.delete {
     background: transparent url(../images/skin/database_delete.png) 5px 50% no-repeat;

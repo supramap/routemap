@@ -24,11 +24,33 @@
                 <div class="errors">${it.key}: ${it.value}</div>
             </g:each>
             </g:if>
+            <br/>
             <g:form action="generateScript" method="post" enctype="multipart/form-data">
-              <p>
-                TNT Data:<input type="file" id="data" name="data" /><br/>
-                Coordinates CSV:<input type="file" name="coordinates" />
-              </p><br/>
+              <div class="dialog" style="width:55%;">
+                    <table>
+                        <tbody>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="name">TNT Data:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="file" id="data" name="data" />
+                                </td>
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="name">Coordinates CSV:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="file" id="coordinates" name="coordinates" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+              </div>
+              <br/>
               <input type="submit" value="Next" />
             </g:form>
         </div>
