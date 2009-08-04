@@ -49,7 +49,7 @@ body {
 
  #nav1 {
 	clear: both;
-	margin: 0 auto;
+	margin: auto auto auto 20px;
 	padding: 0;
 	background: #9CC3DE url(menu.jpg?z=82220) repeat-x;
 	font: bold 16px/40px "Trebuchet MS", Arial, Tahoma, Sans-serif;
@@ -62,8 +62,8 @@ body {
 #nav1 ul {
 	float: left;
 	list-style: none;
-	margin:0;
-	padding: 0 ;
+	margin: 0;
+	padding: 0;
 }
 
 #nav1 ul li {
@@ -93,7 +93,7 @@ body {
 #loginHeader {
     color: #fff;
     margin-right: 23px;
-    padding-top: 135px
+    padding-top: 133px
 }
 
 #loginHeader a, a:visited {
@@ -160,7 +160,7 @@ textarea {
 
 .nav {
 	clear: both;
-	margin: 0 auto;
+	margin: 0 0 0 20px;
 	padding: 0;
 	background: #9CC3DE url(menu.jpg?z=82220) repeat-x;
 	font: bold 16px/40px "Trebuchet MS", Arial, Tahoma, Sans-serif;

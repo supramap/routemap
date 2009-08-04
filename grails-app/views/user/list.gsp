@@ -11,7 +11,8 @@
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
             <span class="menuButton"><g:link class="create" action="create">New User</g:link></span>
         </div>
-        <div class="body">
+	<div id="content">
+        <div id="body" style="float: left;">
             <h1>User List</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -55,6 +56,8 @@
             <div class="paginateButtons">
                 <g:paginate total="${userInstanceTotal}" />
             </div>
+	<br/>
         </div>
+	</div>
     </body>
 </html>

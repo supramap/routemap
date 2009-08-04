@@ -15,7 +15,7 @@
 	</ul>
       </div>
     <div id="Content">
-        <div class="body" style="float: none;">
+        <div id="body" style="float: none;">
             <h1>Create Account</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>

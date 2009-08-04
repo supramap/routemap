@@ -4,15 +4,16 @@
     <title>Login</title>
   </head>
   <body>
-    <div id="nav1">
+      <div id="nav1">
 	<ul id="menus">
           <li><a href="${resource(dir:'')}">Home</a></li>
           <li><g:link controller="kml" action="create">New Kml</g:link></li>
           <li><g:link controller="kml" action="list">List Kmls</g:link></li>
+          <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
 	</ul>
       </div>
     <div id="Content">
-    <div class="body" style="float: none;">
+    <div id="body" style="float: none;">
       <h1>Login</h1>
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
