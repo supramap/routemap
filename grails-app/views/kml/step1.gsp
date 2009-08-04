@@ -20,12 +20,14 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:if test="${flash.problems}">
-            <g:each in="${flash.problems}" var="it">
+            <g:elseif test="${flash.problems}">
+              <g:each in="${flash.problems}" var="it">
                 <div class="errors">${it.key}: ${it.value}</div>
-            </g:each>
-            </g:if>
-            <br/>
+              </g:each>
+            </g:elseif>
+            <g:else>
+              <br/>
+            </g:else>
             <g:form action="generateScript" method="post" enctype="multipart/form-data">
               <div class="dialog" style="width:55%;">
                     <table>

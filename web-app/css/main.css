@@ -34,7 +34,7 @@ body {
 	margin-left:auto;
         margin-right:auto;
 	width:820px;
-        text-align: right;
+        text-align:right;
 }
 
 #footer {
@@ -91,8 +91,9 @@ body {
 }
 
 #loginHeader {
-  color: #fff;
-  margin-right: 25px;
+    color: #fff;
+    margin-right: 23px;
+    padding-top: 135px
 }
 
 #loginHeader a, a:visited {
@@ -101,8 +102,8 @@ body {
 }
 
 #loginHeader a:hover {
-	color:#93C600;
-	text-decoration:underline;
+    color:#93C600;
+    text-decoration:underline;
 }
 
 /* End added things */
@@ -197,16 +198,16 @@ textarea {
     background: #FFFFFF url(../images/skin/information.png) 8px 50% no-repeat;
     color: #006dba;
     width: 80%;
-    margin: 10px 0px 5px 20px;
-    padding: 5px 5px 5px 30px
+    margin: 10px 0px 5px 15px;
+    padding: 7px 5px 5px 30px
 }
 
 div.errors {
     background: #DEDEDE url(../images/skin/exclamation.png) 8px 50% no-repeat;
     border: 1px solid red;
     color: #cc0000;
-    margin: 20px 0px 5px 20px;
-    padding: 5px 5px 5px 30px;
+    margin: 10px 0px 5px 15px;
+    padding: 7px 5px 5px 30px
 }
 div.errors ul {
     list-style: none;

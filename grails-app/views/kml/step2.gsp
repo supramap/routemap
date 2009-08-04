@@ -22,17 +22,20 @@
             It should resemble <a href="${createLinkTo(dir:'files',file:'nytransmissions.script')}">this</a>.<br/>
             2) Copy the script to the directory where tnt is installed.  Run the script.<br/>
             3) The script will produce a log file called tntlog.txt: upload it in the form below.
-        </p><br/>
-        <g:if test="${flash.message}">
-          <div class="message">${flash.message}</div>
-        </g:if>
-        <g:if test="${flash.problems}">
-          <g:each in="${flash.problems}" var="it">
-            <div class="errors">${it.key}: ${it.value}</div>
-          </g:each>
-        </g:if>
+        </p>
+          <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+            </g:if>
+            <g:elseif test="${flash.problems}">
+              <g:each in="${flash.problems}" var="it">
+                <div class="errors">${it.key}: ${it.value}</div>
+              </g:each>
+            </g:elseif>
+            <g:else>
+              <br/>
+          </g:else>
         <g:form action="getLog" method="post" enctype="multipart/form-data">
-          <p>
+          <p style="margin-left:25px;">
             Tnt Log:<input type="file" id="tntlog" name="tntlog" />
           </p><br/>
           <input type="submit" value="Next" />

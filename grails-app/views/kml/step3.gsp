@@ -20,12 +20,14 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${kmlInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${kmlInstance}" as="list" />
-            </div>
-            </g:hasErrors>
-            <br/>
+            <g:elseif test="${flash.problems}">
+              <g:each in="${flash.problems}" var="it">
+                <div class="errors">${it.key}: ${it.value}</div>
+              </g:each>
+            </g:elseif>
+            <g:else>
+              <br/>
+            </g:else>
             <g:form action="save" method="post"  enctype="multipart/form-data">
               <div class="dialog" style="width:50%;">
                     <table>

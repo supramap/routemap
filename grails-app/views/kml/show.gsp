@@ -50,11 +50,7 @@ function createNetworkLink() {
     </head>
     <body onload="init()" id="body">
       <div id="header">
-        <div id="loginHeader"><br/><br/><g:loginControl/>
-        <g:if test="${session.user != null && session.user.role == 'admin'}">
-          <br/><g:link controller="user" action="list">Manage Users</g:link>
-        </g:if>
-        </div>
+        <div id="loginHeader"><g:loginControl/></div>
       </div>
       <div id="Container">
       <div id="nav1">
@@ -116,7 +112,7 @@ function createNetworkLink() {
         <br/>
         <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
           <div id="map3d"></div>
-        </div><br/>
+        </div>
         </div>
         <div id="footer"></div>
     </div>

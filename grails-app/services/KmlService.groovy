@@ -106,7 +106,7 @@ class KmlService {
         def coordFile = new File("${folder}/coords")
         def output = new File("${folder}/tntscript.tnt")
         def characters //Number of characters in each sequence
-        output.append("mx 1000\nxread\n'dataset'\n")
+        output.append("mx 1000\nnstates 32\nxread\n'dataset'\n")
         def i = 0 //Keeps track of line number
         dataFile.splitEachLine(' ') { curLine -> //Writes the sequence data block
             i++
@@ -128,7 +128,7 @@ class KmlService {
             if (locNum == 10) {
                 locNum = 'a' as char //Locations are labeled 1-9 and then a-z
             }
-            if (locMap.get(curLine[1]) == null && i > 1) {
+            if (curLine[1] && locMap.get(curLine[1]) == null && i > 1) {
                 locMap.put(curLine[1],locNum)
                 locList += curLine[1]
                 ++locNum
