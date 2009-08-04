@@ -10,6 +10,18 @@ class KmlController {
             return false
         }
     }
+
+    def ownsKml(kmlInstance) { //Checks to see if the current user owns the argument kml
+        def owner = kmlInstance.user.id
+        def getter = session.user.id
+        def role = session.user.role
+        if (owner != getter && role != "admin") {
+            return false
+        }
+        else {
+            return true
+        }
+    }
     
     def index = { redirect(action:list,params:params) }
 
@@ -31,13 +43,10 @@ class KmlController {
 
     def show = {
         def kmlInstance = Kml.get( params.id )
-        def owner = kmlInstance.user.id
-        def getter = session.user.id
-        def role = session.user.role
         if(!kmlInstance) {
             flash.message = "Kml not found with id ${params.id}"
             redirect action:list
-        } else if (owner != getter && role != "admin"){
+        } else if (!ownsKml(kmlInstance)){
             response.sendError(403)
         } else {
             return [ kmlInstance : kmlInstance ]
@@ -47,14 +56,19 @@ class KmlController {
     def delete = {
         def kmlInstance = Kml.get( params.id )
         if(kmlInstance) {
-            try {
-                kmlInstance.delete(flush:true)
-                flash.message = "Kml ${params.id} deleted"
-                redirect action:list
+            if (ownsKml(kmlInstance)) {
+                try {
+                    kmlInstance.delete(flush:true)
+                    flash.message = "Kml ${params.id} deleted"
+                    redirect action:list
+                }
+                catch(org.springframework.dao.DataIntegrityViolationException e) {
+                    flash.message = "Kml ${params.id} could not be deleted"
+                    redirect(action:show,id:params.id)
+                }
             }
-            catch(org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "Kml ${params.id} could not be deleted"
-                redirect(action:show,id:params.id)
+            else {
+                response.sendError(403)
             }
         }
         else {
@@ -69,6 +83,8 @@ class KmlController {
         if(!kmlInstance) {
             flash.message = "Kml not found with id ${params.id}"
             redirect action:list
+        } else if (!ownsKml(kmlInstance)) {
+            response.sendError(403)
         }
         else {
             return [ kmlInstance : kmlInstance ]
@@ -78,14 +94,18 @@ class KmlController {
     def update = {
         def kmlInstance = Kml.get( params.id )
         if(kmlInstance) {
-            if(params.version) {
-                def version = params.version.toLong()
-                if(kmlInstance.version > version) {
-                    
-                    kmlInstance.errors.rejectValue("version", "kml.optimistic.locking.failure", "Another user has updated this Kml while you were editing.")
-                    render(view:'edit',model:[kmlInstance:kmlInstance])
-                    return
+            if (ownsKml(kmlInstance)) {
+                if(params.version) {
+                    def version = params.version.toLong()
+                    if(kmlInstance.version > version) {
+
+                        kmlInstance.errors.rejectValue("version", "kml.optimistic.locking.failure", "Another user has updated this Kml while you were editing.")
+                        render(view:'edit',model:[kmlInstance:kmlInstance])
+                        return
+                    }
                 }
+            } else {
+                response.sendError(403)
             }
             kmlInstance.properties = params
             if(!kmlInstance.hasErrors() && kmlInstance.save()) {
@@ -207,9 +227,14 @@ class KmlController {
 
         if (params.file ==  null) { //If the file is a kmlInstance
             download = Kml.get(params.id)
-            name = download.name.replaceAll("\\s+","_")+".kml"
-            content = "application/vnd.google-earth.kml+xml"
-            data = download.data
+            if (ownsKml(download)) {
+                name = download.name.replaceAll("\\s+","_")+".kml"
+                content = "application/vnd.google-earth.kml+xml"
+                data = download.data
+            }
+            else {
+                response.sendError(403)
+            }
         }
         else { //If the file is something else
             download = new File("${session.folder}/${params.file}")
@@ -217,7 +242,7 @@ class KmlController {
             content = params.content           
             data = download.readBytes()
         }
-
+        
         response.setContentType("${content}")
         response.setHeader("Content-disposition", "attachment;filename=${name}")
         response.outputStream << new ByteArrayInputStream(data)
