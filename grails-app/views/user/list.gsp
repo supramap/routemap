@@ -7,13 +7,10 @@
         <title>User List</title>
     </head>
     <body>
-    <div id="nav1">
-	<ul id="menus">
-          <li><a href="${resource(dir:'')}">Home</a></li>
-          <li><g:link controller="kml" action="create">New Kml</g:link></li>
-          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
-	</ul>
-      </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><g:link class="create" action="create">New User</g:link></span>
+        </div>
         <div class="body">
             <h1>User List</h1>
             <g:if test="${flash.message}">

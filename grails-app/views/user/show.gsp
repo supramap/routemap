@@ -12,7 +12,7 @@
             <span class="menuButton"><g:link class="list" action="list">User List</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New User</g:link></span>
         </div>
-        <div class="body">
+        <div class="body" style="float: none;">
             <h1>Show User</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>

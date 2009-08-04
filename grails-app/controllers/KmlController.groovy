@@ -33,10 +33,11 @@ class KmlController {
         def kmlInstance = Kml.get( params.id )
         def owner = kmlInstance.user.id
         def getter = session.user.id
+        def role = session.user.role
         if(!kmlInstance) {
             flash.message = "Kml not found with id ${params.id}"
             redirect action:list
-        } else if (owner != getter){
+        } else if (owner != getter && role != "admin"){
             response.sendError(403)
         } else {
             return [ kmlInstance : kmlInstance ]

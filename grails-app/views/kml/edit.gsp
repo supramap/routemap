@@ -7,12 +7,14 @@
         <title>Edit Kml</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Kml List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Kml</g:link></span>
-        </div>
-        <div class="body">
+      <div id="nav1">
+	<ul id="menus">
+                <li><a href="${resource(dir:'')}">Home</a></li>
+		<li><g:link action="create">New Kml</g:link></li>
+		<li><g:link action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
+        <div id="Content">
             <h1>Edit Kml</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -44,42 +46,6 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:kmlInstance,field:'description','errors')}">
                                     <input type="text" id="description" name="description" value="${fieldValue(bean:kmlInstance,field:'description')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="data">Data:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:kmlInstance,field:'data','errors')}">
-                                    <input type="file" id="data" name="data" />
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="dateCreated">Date Created:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:kmlInstance,field:'dateCreated','errors')}">
-                                    <g:datePicker name="dateCreated" value="${kmlInstance?.dateCreated}" precision="minute" ></g:datePicker>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="lastUpdated">Last Updated:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:kmlInstance,field:'lastUpdated','errors')}">
-                                    <g:datePicker name="lastUpdated" value="${kmlInstance?.lastUpdated}" precision="minute" ></g:datePicker>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="user">User:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:kmlInstance,field:'user','errors')}">
-                                    <g:select optionKey="id" from="${User.list()}" name="user.id" value="${kmlInstance?.user?.id}" ></g:select>
                                 </td>
                             </tr> 
                         

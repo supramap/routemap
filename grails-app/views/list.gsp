@@ -12,8 +12,8 @@
                 <li><a href="${resource(dir:'')}">Home</a></li>
 		<li><g:link action="create">New Kml</g:link></li>
 		<li><g:link class ="current" action="list">List Kmls</g:link></li>
-	</ul>
-      </div>
+            </ul>
+        </div>
         <div class="body">
             <h1>Kml List</h1>
             <g:if test="${flash.message}">
@@ -51,9 +51,10 @@
                     </tbody>
                 </table>
             </div>
-            <div class="paginateButtons">
-                <g:paginate total="${kmlInstanceTotal}" />
+              <div class="paginateButtons">
+                  <g:paginate total="${kmlInstanceTotal}" />
+              </div>
             </div>
-        </div>
+            <br/>
     </body>
 </html>

@@ -12,7 +12,7 @@
 	</ul>
       </div>
     <div id="Content">
-    <div class="body">
+    <div class="body" style="float: none;">
       <h1>Login</h1>
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
