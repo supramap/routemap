@@ -45,12 +45,11 @@
           <span class="button">
             <input class="save" type="submit" value="Login" />
           </span>
+          <span class="button">
+            <g:actionSubmit class="create" action="create" value="New Account" />
+          </span>
         </div>
       </g:form>
-      <br/>
-      <p>
-        <a href="/routemap/user/create">Create new account</a>
-      </p>
     </div>
     </div>
   </body>
