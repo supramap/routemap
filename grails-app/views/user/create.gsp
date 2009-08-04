@@ -64,7 +64,16 @@
                                 <td valign="top" class="value ${hasErrors(bean:userInstance,field:'password','errors')}">
                                     <input type="password" id="password" name="password" value="${fieldValue(bean:userInstance,field:'password')}"/>
                                 </td>
-                            </tr> 
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="confirm">Confirm Password:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="password" id="confirm" name="confirm"/>
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>

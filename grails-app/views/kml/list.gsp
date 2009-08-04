@@ -7,14 +7,14 @@
         <title>Kml List</title>
     </head>
     <body>
-      <div id="nav1">
+    <div id="nav1">
 	<ul id="menus">
-                <li><a href="${resource(dir:'')}">Home</a></li>
-		<li><g:link action="create">New Kml</g:link></li>
-		<li><g:link class ="current" action="list">List Kmls</g:link></li>
+          <li><a href="${resource(dir:'')}">Home</a></li>
+          <li><g:link controller="kml" action="create">New Kml</g:link></li>
+          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
 	</ul>
       </div>
-        <div id="Content">
+        <div class="body">
             <h1>Kml List</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -24,13 +24,17 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="name" title="Name" />
-
-                            <g:sortableColumn property="description" title="Description" />
+                   	        <g:sortableColumn property="id" title="Id" />
                         
-                            <g:sortableColumn property="dateCreated" title="Date Created" />
-
-                            <g:sortableColumn property="lastUpdated" title="Last Updated" />
+                   	        <g:sortableColumn property="name" title="Name" />
+                        
+                   	        <g:sortableColumn property="description" title="Description" />
+                        
+                   	        <g:sortableColumn property="data" title="Data" />
+                        
+                   	        <g:sortableColumn property="dateCreated" title="Date Created" />
+                        
+                   	        <g:sortableColumn property="lastUpdated" title="Date Updated" />
                         
                         </tr>
                     </thead>
@@ -38,14 +42,18 @@
                     <g:each in="${kmlInstanceList}" status="i" var="kmlInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
+                            <td>${fieldValue(bean:kmlInstance, field:'id')}</td>
+                        
                             <td><g:link action="show" id="${kmlInstance.id}">${fieldValue(bean:kmlInstance, field:'name')}</g:link></td>
                         
                             <td>${fieldValue(bean:kmlInstance, field:'description')}</td>
-
+                        
+                            <td>${fieldValue(bean:kmlInstance, field:'data')}</td>
+                        
                             <td>${fieldValue(bean:kmlInstance, field:'dateCreated')}</td>
                         
                             <td>${fieldValue(bean:kmlInstance, field:'lastUpdated')}</td>
-
+                        
                         </tr>
                     </g:each>
                     </tbody>
@@ -54,7 +62,6 @@
             <div class="paginateButtons">
                 <g:paginate total="${kmlInstanceTotal}" />
             </div>
-            <br/>
         </div>
     </body>
 </html>

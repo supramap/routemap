@@ -119,13 +119,19 @@ class UserController {
     }
 
     def save = {
-        def userInstance = new User(params)
-        if(!userInstance.hasErrors() && userInstance.save()) {
-            flash.message = "User ${userInstance.id} created"
-            redirect(uri: "/")
+        if (params.password != params.confirm) {
+            flash.message = "Passwords do not match"
+            redirect(uri: "/user/create")
         }
         else {
-            render(view:'create',model:[userInstance:userInstance])
+            def userInstance = new User(params)
+            if(!userInstance.hasErrors() && userInstance.save()) {
+                flash.message = "User ${userInstance.id} created"
+                redirect(uri: "/user/login")
+            }
+            else {
+                render(view:'create',model:[userInstance:userInstance])
+            }
         }
     }
 }

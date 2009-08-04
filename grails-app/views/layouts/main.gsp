@@ -9,7 +9,13 @@
       <div id="spinner" class="spinner" style="display:none;">
         <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner" />
       </div>
-      <div id="header"><div id="loginHeader"><g:loginControl/></div></div>
+      <div id="header">
+        <div id="loginHeader"><br/><br/><g:loginControl/>
+        <g:if test="${session.user != null && session.user.role == 'admin'}">
+          <br/><g:link controller="user" action="list">Manage Users</g:link>
+        </g:if>
+        </div>
+      </div>
       <div id="Container">
         
         <g:layoutBody />

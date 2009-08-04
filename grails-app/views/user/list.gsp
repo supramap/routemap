@@ -7,10 +7,13 @@
         <title>User List</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create">New User</g:link></span>
-        </div>
+    <div id="nav1">
+	<ul id="menus">
+          <li><a href="${resource(dir:'')}">Home</a></li>
+          <li><g:link controller="kml" action="create">New Kml</g:link></li>
+          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
+	</ul>
+      </div>
         <div class="body">
             <h1>User List</h1>
             <g:if test="${flash.message}">
@@ -37,9 +40,9 @@
                     <g:each in="${userInstanceList}" status="i" var="userInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${userInstance.id}">${fieldValue(bean:userInstance, field:'id')}</g:link></td>
+                            <td>${fieldValue(bean:userInstance, field:'id')}</td>
                         
-                            <td>${fieldValue(bean:userInstance, field:'login')}</td>
+                            <td><g:link action="show" id="${userInstance.id}">${fieldValue(bean:userInstance, field:'login')}</g:link></td>
                         
                             <td>${fieldValue(bean:userInstance, field:'password')}</td>
                         

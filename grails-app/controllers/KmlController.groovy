@@ -17,8 +17,14 @@ class KmlController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
-        def kmls = Kml.findAllByUser(session.user)
-        def count = Kml.countByUser(session.user)
+        def kmls, count
+        if (session.user.role == "admin") {
+            kmls = Kml.list()
+            count = Kml.count()
+        } else {
+            kmls = Kml.findAllByUser(session.user)
+            count = Kml.countByUser(session.user)
+        }
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         [ kmlInstanceList: kmls, kmlInstanceTotal: count ]
     }

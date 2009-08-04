@@ -93,7 +93,7 @@ body {
 
 #loginHeader {
   color: #fff;
-  margin-right: 20px;
+  margin-right: 25px;
 }
 
 /* End added things */
@@ -200,7 +200,7 @@ div.errors {
     background: #DEDEDE url(../images/skin/exclamation.png) 8px 50% no-repeat;
     border: 1px solid red;
     color: #cc0000;
-    margin: 10px 0 5px 0;
+    margin: 20px 0px 5px 20;
     padding: 5px 5px 5px 30px;
 }
 div.errors ul {
@@ -208,9 +208,7 @@ div.errors ul {
     padding: 0;	
 }
 div.errors li {
-    background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
     line-height: 16px;
-    padding-left: 30px;
 }
 
 td.errors select {
@@ -223,7 +221,6 @@ td.errors input {
 table {
     margin-left: 20px;
     border: 1px solid #ccc;
-    width: 80%
 }
 tr {
     border: 0;
@@ -287,7 +284,6 @@ th.desc a {
     overflow: hidden;
     padding: 10px 3px;
     margin-left: 20px;
-    width: inherit;
 }
 .paginateButtons a {
     background: #fff;

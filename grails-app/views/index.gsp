@@ -47,7 +47,13 @@ function createNetworkLink() {
 </script>
     </head>
     <body onload="init()" id='body'>
-      <div id="header"><div id="loginHeader"><g:loginControl/></div></div>
+      <div id="header">
+        <div id="loginHeader"><br/><br/><g:loginControl/>
+        <g:if test="${session.user != null && session.user.role == 'admin'}">
+          <br/><g:link controller="user" action="list">Manage Users</g:link>
+        </g:if>
+        </div>
+      </div>
       <div id="Container">
       <div id="nav1">
 	<ul id="menus">
