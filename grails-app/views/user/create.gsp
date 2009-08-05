@@ -25,7 +25,7 @@
                 <g:renderErrors bean="${userInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save" method="post" >
+            <g:form action="save" method="post" name="form1">
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -82,6 +82,7 @@
                     <span class="button"><input class="save" type="submit" value="Create" /></span>
                 </div>
             </g:form>
+            <script language="javascript">document.form1.name.focus()</script>
         </div>
     </div>
     </body>

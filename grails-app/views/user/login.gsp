@@ -18,7 +18,7 @@
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
-      <g:form action="authenticate" method="post" >
+      <g:form action="authenticate" method="post" name="form1">
         <div class="dialog">
           <table>
             <tbody>
@@ -51,6 +51,7 @@
           </span>
         </div>
       </g:form>
+      <script language="javascript">document.form1.login.focus()</script>
     </div>
     </div>
   </body>

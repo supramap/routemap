@@ -23,30 +23,12 @@
                 <g:renderErrors bean="${userInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form method="post" >
+            <g:form method="post" name="form1">
                 <input type="hidden" name="id" value="${userInstance?.id}" />
                 <input type="hidden" name="version" value="${userInstance?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="login">Login:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'login','errors')}">
-                                    <input type="text" id="login" name="login" value="${fieldValue(bean:userInstance,field:'login')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="password">Password:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'password','errors')}">
-                                    <input type="password" id="password" name="password" value="${fieldValue(bean:userInstance,field:'password')}"/>
-                                </td>
-                            </tr> 
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
@@ -64,7 +46,25 @@
                                 <td valign="top" class="value ${hasErrors(bean:userInstance,field:'email','errors')}">
                                     <input type="text" id="email" name="email" value="${fieldValue(bean:userInstance,field:'email')}"/>
                                 </td>
-                            </tr> 
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="login">Login:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'login','errors')}">
+                                    <input type="text" id="login" name="login" value="${fieldValue(bean:userInstance,field:'login')}"/>
+                                </td>
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="password">Password:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'password','errors')}">
+                                    <input type="password" id="password" name="password" value="${fieldValue(bean:userInstance,field:'password')}"/>
+                                </td>
+                            </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
@@ -72,12 +72,12 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:userInstance,field:'kmls','errors')}">
                                     
-<ul>
-<g:each var="k" in="${userInstance?.kmls?}">
-    <li><g:link controller="kml" action="show" id="${k.id}">${k?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="kml" params="['user.id':userInstance?.id]" action="create">Add Kml</g:link>
+                            <ul>
+                            <g:each var="k" in="${userInstance?.kmls?}">
+                                <li><g:link controller="kml" action="show" id="${k.id}">${k?.encodeAsHTML()}</g:link></li>
+                            </g:each>
+                            </ul>
+                            <g:link controller="kml" params="['user.id':userInstance?.id]" action="create">Add Kml</g:link>
 
                                 </td>
                             </tr> 
@@ -90,6 +90,7 @@
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>
             </g:form>
+            <script language="javascript">document.form1.name.focus()</script>
         </div>
 	</div>
     </body>

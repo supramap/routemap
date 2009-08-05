@@ -29,9 +29,9 @@
                     There are several things you need before you begin the creation process:<br/>
                     1) TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">here</a>.<br/>
                     2) Two input files:<br/><br/>
-                    Sequence datafile (<a href="${createLinkTo(dir:'files',file:'nycoordinates.csv')}">sample</a>)
+                    Sequence datafile (<a href="${createLinkTo(dir:'files',file:'sample.tnt')}">sample</a>)
                     - a file containing phylogenetic data, such as DNA sequences in TNT format.<br/><br/>
-                    Geographic datafile (<a href="${createLinkTo(dir:'files',file:'nycoordinates.csv')}">sample</a>)
+                    Geographic datafile (<a href="${createLinkTo(dir:'files',file:'sample.csv')}">sample</a>)
                     - a comma separated (csv) file containing a list of each taxon, followed by a location name, latitude, and longitude.
                     This file should contain a single multi-state character and a list of character state names. Note that TNT limits a character to 31 states.<br/><br/>
                     NOTE: If you already have a coordinates.csv and migrations.csv, go <g:link action="altCreate">here</g:link> to generate a kml.</p>

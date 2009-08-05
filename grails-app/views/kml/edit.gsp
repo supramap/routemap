@@ -25,7 +25,7 @@
                 <g:renderErrors bean="${kmlInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form method="post"  enctype="multipart/form-data">
+            <g:form method="post"  name="form1" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="${kmlInstance?.id}" />
                 <input type="hidden" name="version" value="${kmlInstance?.version}" />
                 <div class="dialog">
@@ -58,6 +58,7 @@
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>
             </g:form>
+            <script language="javascript">document.form1.name.focus()</script>
         </div>
     </body>
 </html>

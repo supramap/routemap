@@ -31,7 +31,7 @@
                 <g:renderErrors bean="${kmlInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="presave" method="post"  enctype="multipart/form-data">
+            <g:form action="presave" method="post" name="form1" enctype="multipart/form-data">
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -79,6 +79,7 @@
                     <span class="button"><input class="save" type="submit" value="Create" /></span>
                 </div>
             </g:form>
+            <script language="javascript">document.form1.name.focus()</script>
         </div>
     </body>
 </html>

@@ -11,3 +11,7 @@ if (Ajax && (Ajax != null)) {
 	  }
 	});
 }
+
+function setFocus() {
+    document.myform.myinput.focus();
+}

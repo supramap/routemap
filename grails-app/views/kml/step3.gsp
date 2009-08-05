@@ -28,7 +28,7 @@
             <g:else>
               <br/>
             </g:else>
-            <g:form action="save" method="post"  enctype="multipart/form-data">
+            <g:form action="save" method="post" name="form1" enctype="multipart/form-data">
               <div class="dialog" style="width:50%;">
                     <table>
                         <tbody>
@@ -38,7 +38,7 @@
                                     <label for="name">Name (required):</label>
                                 </td>
                                 <td valign="top">
-                                    <input type="text" id="data" name="data" value="${fieldValue(bean:kmlInstance,field:'name')}"/>
+                                    <input type="text" id="name" name="name" value="${fieldValue(bean:kmlInstance,field:'name')}"/>
                                 </td>
                             </tr>
 
@@ -47,7 +47,7 @@
                                     <label for="name">Description (optional):</label>
                                 </td>
                                 <td valign="top">
-                                    <input type="text" id="coordinates" name="coordinates" value="${fieldValue(bean:kmlInstance,field:'description')}"/>
+                                    <input type="text" id="description" name="description" value="${fieldValue(bean:kmlInstance,field:'description')}"/>
                                 </td>
                             </tr>
                         </tbody>
@@ -56,6 +56,7 @@
               <br/>
               <input type="submit" value="Create" />
             </g:form>
+            <script language="javascript">document.form1.name.focus()</script>
         </div>
     </body>
 </html>
