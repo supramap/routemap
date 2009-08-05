@@ -16,7 +16,7 @@ class UserController {
     def login = {}
 
     def authenticate = {
-        def user = User.findByLoginAndPassword(params.login, params.password)
+        def user = User.findByLoginAndPassword(params.login, params.password.encodeAsHash())
         if(user){
           session.user = user
           flash.message = "Hello ${user.name}!"
@@ -98,6 +98,7 @@ class UserController {
                 }
             }
             userInstance.properties = params
+            userInstance.password = params.password.encodeAsHash()
             if(!userInstance.hasErrors() && userInstance.save()) {
                 flash.message = "User ${params.id} updated"
                 redirect(action:show,id:userInstance.id)
@@ -125,6 +126,7 @@ class UserController {
         }
         else {
             def userInstance = new User(params)
+            userInstance.password = params.password.encodeAsHash()
             if(!userInstance.hasErrors() && userInstance.save()) {
                 flash.message = "User ${userInstance.id} created"
                 redirect(uri: "/user/login")
