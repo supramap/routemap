@@ -136,7 +136,7 @@ class KmlController {
 
         if (!coordinates.empty || !data.empty) {
             data.transferTo(new File("${session.folder}/data"))
-            coordinates.transferTo(new File("${session.folder}/coordinates"))
+            coordinates.transferTo(new File("${session.folder}/coords"))
             def problems = KmlService.checkFiles(session.folder)
             if (problems) {
                 flash.problems = problems
@@ -159,6 +159,7 @@ class KmlController {
         
         if (!migrations.empty) {
             migrations.transferTo(new File("${session.folder}/tntlog"))
+            KmlService.writeInputs(session.folder)
             redirect action:step3
         } else {
             flash.message = "File cannot be empty"

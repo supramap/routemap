@@ -16,7 +16,7 @@ class KmlService {
     public static LinkedHashMap checkFiles(String folder) {
         def problems = [:] //Map of all the problems to be returned. Key is the error number and value is the message.
         def dataFile = new File("${folder}/data")
-        def coordFile = new File("${folder}/coordinates")
+        def coordFile = new File("${folder}/coords")
         /*
          * The following replaces all the newline characters with the unix format
          */
@@ -101,7 +101,7 @@ class KmlService {
         return problems //Returns the map of warnings and errors
     }
 
-    public static LinkedHashMap altCheckFiles(String migrations, String coordinates)
+    public static LinkedHashMap altCheckFiles(String migrations, String coordinates) //Checks files uploaded for altCreate action
     {
         def migLocations = [] //List of locations from the migration file
         def coordLocations = []//List of locations from the locations file
@@ -182,7 +182,7 @@ class KmlService {
 
     public static void writeScript(String folder) { //Produces a tnt script for the user
         def dataFile = new File("${folder}/data")
-        def coordFile = new File("${folder}/coordinates")
+        def coordFile = new File("${folder}/coords")
         def output = new File("${folder}/tntscript.tnt")
         def characters //Number of characters in each sequence
         output.append("mx 1000\nnstates 32\nxread\n'dataset'\n")
@@ -231,5 +231,62 @@ class KmlService {
             }
         }
         output.append("log /;\nzzz;\nproc/;\n")
+    }
+
+    public static void writeInputs(String folder) {
+        def tntIn = new File("${folder}/tntlog")
+        def coordIn = new File("${folder}/coords")
+        def migOut = new File("${folder}/migrations")
+        def coordOut = new File("${folder}/coordinates")
+        /*
+         * The following block of code writes the coordinates input for the BuildKmlService
+         */
+        def locMap = [:] //Keeps track of which locations have been added to the list
+        def locList = [] //A list of all locations
+        def lineNum = 0
+        coordOut.append("Label,Lat,Long\n")
+        coordIn.splitEachLine(',') { curLine ->
+            lineNum++
+            if (curLine[1] && curLine[2] && curLine[3] && locMap.get(curLine[1]) == null && lineNum > 1) {
+                    locMap.put(curLine[1],lineNum)
+                    locList += curLine[1]
+                    coordOut.append("${curLine[1]},${curLine[2]},${curLine[3]}\n")
+            }
+        }
+        /*
+         * The following block of code writes the migrations input for the BuildKmlService
+         */
+	migOut.write(",")
+        locList.eachWithIndex { curLoc,i ->
+            migOut.append("${curLoc}")
+            if (i != (locList.size()-1)) {
+                migOut.append(",")
+            } else {
+                migOut.append("\n")
+            }
+        }
+        def i = 0 //Current row location number
+        def j = 0 //Current column location number
+        tntIn.splitEachLine(' ') { curLine ->
+            if (curLine.size() == 6 && curLine[0] == "Char") {
+                if (j == 0) {
+                    migOut.append("${locList[i]},")
+                }
+                if (i == j) {
+                    migOut.append("0,")
+		    j++
+                }
+                migOut.append("${curLine[5].find(/[0-9]*\)/)-')'}") //Searches for the second number in (min-max) and adds it
+                if (j == locList.size()-1) {
+                    migOut.append("\n")
+                    i++
+                    j = 0
+                } else {
+                    migOut.append(",")
+                    j++
+                }
+            }
+        }
+	migOut.append("0") //For the last row, the (i == j) test will never occur, so 0 must be added
     }
 }
