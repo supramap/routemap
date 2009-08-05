@@ -211,7 +211,7 @@ class KmlController {
             redirect action:altCreate
         }
 
-        def problems = SanityChecksService.checkCSV("${session.folder}/migrations", "${session.folder}/coordinates")
+        def problems = KmlService.altCheckFiles("${session.folder}/migrations", "${session.folder}/coordinates")
         if (problems) {
             flash.problems = problems
             redirect action:altCreate
