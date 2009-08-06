@@ -31,7 +31,7 @@
                     2) Two input files (<a href="${createLinkTo(dir:'files',file:'samples.zip')}">Download Samples</a>):
                 </p>
                 <ul style="margin-left:60px; width:80%">
-                  <li>Sequence datafile - a file containing phylogenetic data, such as DNA sequences in TNT format.</li>
+                  <li>Sequence datafile - a file containing phylogenetic data, such as DNA sequences.  This can be a fasta or tnt datafile.</li>
                   <li>
                     Geographic datafile - a comma separated (csv) file containing a list of each taxon, followed by a location name, latitude, and longitude.
                     This file should contain a single multi-state character and a list of character state names. Note that TNT limits a character to 31 states.
