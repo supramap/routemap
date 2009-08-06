@@ -28,7 +28,7 @@
                 <p style="width:80%">
                     There are several things you need before you begin the creation process:<br/>
                     1) TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">here</a>.<br/>
-                    2) Two input files (<a href="${createLinkTo(dir:'files',file:'samples.zip')}" target="_blank">Download Samples</a>):
+                    2) Two input files (<a href="${createLinkTo(dir:'files',file:'samples.zip')}">Download Samples</a>):
                 </p>
                 <ul style="margin-left:60px; width:80%">
                   <li>Sequence datafile - a file containing phylogenetic data, such as DNA sequences in TNT format.</li>

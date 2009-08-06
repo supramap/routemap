@@ -12,7 +12,6 @@ class UserController {
         }
     }
 
-
     def login = {}
 
     def authenticate = {
@@ -20,7 +19,7 @@ class UserController {
         if(user){
           session.user = user
           flash.message = "Hello ${user.name}!"
-          redirect(controller:"kml", action:"list")
+          redirect(uri: "/")
         }else {
           flash.message = "Sorry, ${params.login}. Please try again."
           redirect(action:"login")
