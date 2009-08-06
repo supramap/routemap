@@ -28,11 +28,16 @@
                 <p style="width:80%">
                     There are several things you need before you begin the creation process:<br/>
                     1) TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">here</a>.<br/>
-                    2) Two input files (<a href="${createLinkTo(dir:'files',file:'samples.zip')}" target="_blank">Download Samples</a>):<br/><br/>
-                    Sequence datafile - a file containing phylogenetic data, such as DNA sequences in TNT format.<br/><br/>
+                    2) Two input files (<a href="${createLinkTo(dir:'files',file:'samples.zip')}" target="_blank">Download Samples</a>):
+                </p>
+                <ul style="margin-left:60px; width:80%">
+                  <li>Sequence datafile - a file containing phylogenetic data, such as DNA sequences in TNT format.</li>
+                  <li>
                     Geographic datafile - a comma separated (csv) file containing a list of each taxon, followed by a location name, latitude, and longitude.
                     This file should contain a single multi-state character and a list of character state names. Note that TNT limits a character to 31 states.
-                </p><br/>
+                  </li>
+                </ul>
+                <br/>
             <g:form action="step1" method="post" enctype="multipart/form-data">
                 <input type="submit" value="Next" />
             </g:form>

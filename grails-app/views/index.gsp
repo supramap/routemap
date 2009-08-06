@@ -62,7 +62,7 @@ function createNetworkLink() {
         <div id="Content">
         <h1 style="margin-left:20px;">Welcome to Routemap</h1>
         <p style="margin-left:20px;width:80%">
-          Routemap produces a keyhole markup file (kml) that displays disease transmission events implied by genetic sequence data on pathogens.<br/>
+          Routemap produces a keyhole markup file (kml) that displays disease transmission events implied by genetic sequence data on pathogens.
         </p>
         <ul style="margin-left:20px; width:80%">
           <li>To create a kml, click <g:link controller="kml" action="preparation">here</g:link>.</li>

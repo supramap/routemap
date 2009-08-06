@@ -17,9 +17,10 @@
       </div>
       <div id="content">
         <h1>Step 2: download the tnt script and run it.  Upload the results.</h1>
+        <br/>
         <p style="width:80%">
             1) Download the generated tnt script <g:link action="download" params="[file:'tntscript.tnt',content:'text/plain']">here</g:link>.
-        It should resemble <a href="${createLinkTo(dir:'files',file:'tntscript.tnt')}" target="_blank">this</a>.<br/>
+               It should resemble <a href="${createLinkTo(dir:'files',file:'tntscript.tnt')}" target="_blank">this</a>.<br/>
             2) Copy the script to the directory where tnt is installed and run it with tnt.<br/>
             3) The script will produce a log file called tntlog.txt: upload it in the form below.
         </p>
