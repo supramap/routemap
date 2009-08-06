@@ -22,11 +22,20 @@ class KmlService {
          */
         String text = dataFile.getText()
         text = text.replaceAll("\r\n|\n\r|\r","\n")
+        text = text.replaceAll("\t"," ")
         dataFile.write(text)
 
         text = coordFile.getText()
         text = text.replaceAll("\r\n|\n\r|\r","\n")
         coordFile.write(text)
+        /*
+         * The following checks if the sequence data is tnt or fasta.  Fastas are converted to tnt.
+         */
+        def tmp
+        dataFile.withReader { line -> tmp = line.readLine().trim()}
+            if (tmp.find(/>/)) {
+                fastaToTNT("${folder}")
+        }
         /*
          * The following checks to make sure all the lats/longs are in bounds.  It also builds a map of taxa and a map of locations
          */
@@ -112,8 +121,7 @@ class KmlService {
         return problems //Returns the map of warnings and errors
     }
 
-    public static LinkedHashMap altCheckFiles(String migrations, String coordinates) //Checks files uploaded for altCreate action
-    {
+    public static LinkedHashMap altCheckFiles(String migrations, String coordinates) { //Checks files uploaded for altCreate action
         def migLocations = [] //List of locations from the migration file
         def coordLocations = []//List of locations from the locations file
         def problems = [:] //Map of all the problems to be returned. Key is 'Error' or 'Warning' and Value is the message.
@@ -305,5 +313,33 @@ class KmlService {
             }
         }
 	migOut.append("0") //For the last row, the (i == j) test will never occur, so 0 must be added
+    }
+
+    private static void fastaToTNT(String folder) {
+        def fasta = new File("${folder}/data")
+        def temp = new File("${folder}/temp")
+        def taxNum = 0
+        fasta.splitEachLine(' ') { curLine ->
+            if (curLine) {
+                if (curLine[0].find(/>/) != null) {
+                    temp.append("\n${curLine[0]-'>'} ")
+                    taxNum++
+                } else {
+                    temp.append("${curLine[0]}")
+                }
+            }
+        }
+        fasta.write("nstates dna;\nxread 'input' ")
+        def lineNum = 0
+        def firstTax
+        temp.eachLine { curLine ->
+            lineNum++
+            if (lineNum == 2) {
+                def tmp = curLine.tokenize(' ')
+                fasta.append("${tmp[1].trim().size()} ${taxNum}\n${curLine}\n")
+            } else if (lineNum > 3) {
+                fasta.append("${curLine.trim()}\n")
+            }
+        }
     }
 }
