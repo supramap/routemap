@@ -13,7 +13,7 @@ class KmlService {
         return folder
     }
 
-    public static LinkedHashMap checkFiles(String folder) {
+    public static LinkedHashMap checkFiles(String folder, String outGroup) {
         def problems = [:] //Map of all the problems to be returned. Key is the error number and value is the message.
         def dataFile = new File("${folder}/data")
         def coordFile = new File("${folder}/coords")
@@ -73,6 +73,9 @@ class KmlService {
         lineNum = 0
         dataFile.splitEachLine(' ') { fields ->
             lineNum++
+            if (lineNum == 3 && fields[0] == "outgroup") {
+                outGroup = fields[1]-';'
+            }
             if (fields != null && lineNum > 2 && fields[0] != ';' && fields[0] != 'proc') {
                 tntTaxa.put fields[0],taxNum
                 taxNum++
@@ -96,6 +99,14 @@ class KmlService {
                     problems.put "Error${errNum}","Location ${loc1} and location ${loc2} have conflicting names."
                     errNum++
                 }
+            }
+        }
+        /*
+         * The following checks to make sure the outgroup exists
+         */
+        if (outGroup != "" && outGroup != null) {
+            if (tntTaxa.get("${outGroup}") == null || csvTaxa.get("${outGroup}") == null) {
+                problems.put "Error${errNum}","The outgroup, ${outGroup}, does not exist in the dataset."
             }
         }
         return problems //Returns the map of warnings and errors
@@ -180,7 +191,7 @@ class KmlService {
         return problems //Returns the map of warnings and errors
     }
 
-    public static void writeScript(String folder) { //Produces a tnt script for the user
+    public static void writeScript(String folder, String dataType, String outGroup) { //Produces a tnt script for the user
         def dataFile = new File("${folder}/data")
         def coordFile = new File("${folder}/coords")
         def output = new File("${folder}/tntscript.tnt")
@@ -192,7 +203,9 @@ class KmlService {
             if (i == 2) {
                 characters = Integer.parseInt(curLine[2])+1
                 output.append("${characters} ${curLine[3]}\n")
-                output.append("&[dna]\n")
+                output.append("&[${dataType}]\n")
+            } else if (curLine == 3 && curLine[0] == "outgroup") {
+                outGroup = curLine[1]-';'
             } else if (curLine != null && i > 2 && curLine[0] != ';' && curLine[0] != 'proc') {
                 output.append("${curLine[0]}\t${curLine[1]}\n")
             }
@@ -219,7 +232,11 @@ class KmlService {
             if (i > 1 && curLine[0] && curLine[1])
                 output.append("${curLine[0]}\t${locMap.get(curLine[1])}\n")
         }
-        output.append(";\ncnames\n{\n${characters-1} Geography\n")
+        output.append(";\n")
+        if (outGroup != null) {
+            output.append("outgroup ${outGroup};")
+        }
+        output.append("cnames\n{\n${characters-1} Geography\n")
         locList.each { curLoc -> output.append("${curLoc}\n") } //Outputs the list of locations, one location per line
         output.append(";;\nhold 10000\nccode ] ${characters-1};\nxm = hits 100;\n")
         output.append("ccode ] 0.${characters-2};\nccode [ ${characters-1};\nlog tntlog.txt\n")

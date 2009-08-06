@@ -35,7 +35,16 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="name">TNT Data:</label>
+                                    <label for="name">Data Type:</label>
+                                </td>
+                                <td valign="top">
+                                    <g:select id="datatype" name="datatype" from="${['dna','prot']}" />
+                                </td>
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="name">Sequence Data:</label>
                                 </td>
                                 <td valign="top">
                                     <input type="file" id="data" name="data" />
@@ -50,6 +59,16 @@
                                     <input type="file" id="coordinates" name="coordinates" />
                                 </td>
                             </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="name">Outgroup (optional):</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="text" id="outgroup" name="outgroup" />
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
               </div>

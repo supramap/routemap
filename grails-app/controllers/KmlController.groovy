@@ -137,12 +137,12 @@ class KmlController {
         if (!coordinates.empty || !data.empty) {
             data.transferTo(new File("${session.folder}/data"))
             coordinates.transferTo(new File("${session.folder}/coords"))
-            def problems = KmlService.checkFiles(session.folder)
+            def problems = KmlService.checkFiles(session.folder, params.outgroup)
             if (problems) {
                 flash.problems = problems
                 redirect action:step1
             } else {
-                KmlService.writeScript(session.folder)
+                KmlService.writeScript(session.folder, params.datatype, params.outgroup)
                 redirect action:step2
             }
         }
