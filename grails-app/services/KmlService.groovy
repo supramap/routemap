@@ -102,6 +102,7 @@ class KmlService {
         if (outGroup != "" && outGroup != null) {
             if (seqTaxa.get(outGroup) == null) {
                 problems.put "Error${errNum}","The outgroup, ${outGroup}, does not exist in the dataset."
+                errNum++
             }
         }
         return problems //Returns the map of warnings and errors

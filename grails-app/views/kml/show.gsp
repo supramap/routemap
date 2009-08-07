@@ -101,13 +101,16 @@ function createNetworkLink() {
                     </tbody>
                 </table>
             </div>
+            <g:form>
             <div class="buttons">
               <span class="button"><g:link style="margin-left:10px;" action="download" params="[id:params.id,file:'kml',content:'application/vnd.google-earth.kml+xml',name:'.kml']">Download Kml</g:link> | </span>
               <span class="button"><g:link action="download" params="[id:params.id,file:'seqs',content:'text/plain',name:'.fasta']">Download Sequences</g:link> | </span>
               <span class="button"><g:link action="download" params="[id:params.id,file:'coords',content:'text/plain',name:'.csv']">Download Coordinates</g:link></span>
+              <input type="hidden" name="id" value="${kmlInstance?.id}" />
               <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
               <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
             </div>
+            </g:form>
         <br/>
         <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
           <div id="map3d"></div>
