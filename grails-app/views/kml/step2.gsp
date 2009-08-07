@@ -21,7 +21,7 @@
         <p style="width:80%">
             1) Download the generated tnt script <g:link action="download" params="[file:'tntscript.tnt',content:'text/plain']">here</g:link>.
                It should resemble <a href="${createLinkTo(dir:'files',file:'tntscript.tnt')}" target="_blank">this</a>.<br/>
-            2) Copy the script to the directory where tnt is installed and run it with tnt.<br/>
+            2) Run the downloaded script from a terminal: $tnt proc tntscript.tnt<br/>
             3) The script will produce a log file called tntlog.txt: upload it in the form below.
         </p>
           <g:if test="${flash.message}">

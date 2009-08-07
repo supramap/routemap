@@ -47,7 +47,7 @@
                                     <label for="name">Sequence Data:</label>
                                 </td>
                                 <td valign="top">
-                                    <input type="file" id="data" name="data" />
+                                    <input type="file" id="sequences" name="sequences" />
                                 </td>
                             </tr>
 

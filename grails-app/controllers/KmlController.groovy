@@ -131,11 +131,11 @@ class KmlController {
     def generateScript = {
         session.folder = KmlService.tempFolder("${session.folder}")
 
-        MultipartFile data = request.getFile('data')
+        MultipartFile sequences = request.getFile('sequences')
         MultipartFile coordinates = request.getFile('coordinates')
 
-        if (!coordinates.empty || !data.empty) {
-            data.transferTo(new File("${session.folder}/data"))
+        if (!coordinates.empty || !sequences.empty) {
+            sequences.transferTo(new File("${session.folder}/seqs"))
             coordinates.transferTo(new File("${session.folder}/coords"))
             def problems = KmlService.checkFiles(session.folder, params.outgroup)
             if (problems) {
@@ -181,8 +181,13 @@ class KmlController {
             redirect(action:create,model:[kmlInstance:kmlInstance])
         }
 
+        /* Read the inputs and kml into a byte array for storage */
         def transmissions = new File("${session.folder}/transmissions.kml")
-        kmlInstance.data = transmissions.readBytes()
+        def sequences = new File("${session.folder}/seqs")
+        def coordinates = new File("${session.folder}/coords")
+        kmlInstance.kml = transmissions.readBytes()
+        kmlInstance.seqs = sequences.readBytes()
+        kmlInstance.coords = coordinates.readBytes()
 
         if(!kmlInstance.hasErrors() && kmlInstance.save()) {
             flash.message = "Kml ${kmlInstance.id} created"
@@ -195,49 +200,27 @@ class KmlController {
         new AntBuilder().delete(dir: "${session.folder}") //remove temp directory
     }
 
-    def altCreate = {}
-
-    def presave = {
-        session.folder = KmlService.tempFolder("${session.folder}")
-
-        MultipartFile coordinates = request.getFile('coordinates')
-        MultipartFile migrations = request.getFile('migrations')
-
-        if (!coordinates.empty && !migrations.empty) {
-            coordinates.transferTo(new File("${session.folder}/coordinates"))
-            migrations.transferTo(new File("${session.folder}/migrations"))
-        }
-        else {
-            flash.message = "Coordinates and migrations cannot be empty"
-            redirect action:altCreate
-        }
-
-        def problems = KmlService.altCheckFiles("${session.folder}/migrations", "${session.folder}/coordinates")
-        if (problems) {
-            flash.problems = problems
-            redirect action:altCreate
-        }
-        else
-            save()
-    }
-
     def download = {
-        String name, content
         def download
+        String name, content
         byte[] data
-
-        if (params.file ==  null) { //If the file is a kmlInstance
+   
+        if (params.file == 'kml' || params.file == 'seqs' || params.file == 'coords') {
             download = Kml.get(params.id)
             if (ownsKml(download)) {
-                name = download.name.replaceAll("\\s+","_")+".kml"
-                content = "application/vnd.google-earth.kml+xml"
-                data = download.data
-            }
-            else {
+                name = download.name.replaceAll("\\s+","_")+params.name
+                content = params.content
+                if (params.file == 'kml') {
+                    data = download.kml
+                } else if (params.file == 'seqs') {
+                    data = download.seqs
+                } else if (params.file == 'coords') {
+                    data = download.coords
+                }
+            }else {
                 response.sendError(403)
             }
-        }
-        else { //If the file is something else
+        } else { //If the tntscript
             download = new File("${session.folder}/${params.file}")
             name = download.getName()
             content = params.content           
