@@ -114,7 +114,7 @@ class KmlService {
          * The following checks to make sure the outgroup exists
          */
         if (outGroup != "" && outGroup != null) {
-            if (tntTaxa.get("${outGroup}") == null || csvTaxa.get("${outGroup}") == null) {
+            if (tntTaxa.get(outGroup) == null) {
                 problems.put "Error${errNum}","The outgroup, ${outGroup}, does not exist in the dataset."
             }
         }
