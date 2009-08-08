@@ -77,7 +77,7 @@ class KmlService {
             } 
         }
         if (locNum > 31) { //Tnt restricts the number of lactions to 31
-            problems.put "Error${errNum}","There must be under 31 locations"
+            problems.put "Error${errNum}","Too many locations: ${locNum}.  The csv may contain a max of 31 unique placenames."
         }
         seqTaxa.each { taxon ->
             if (csvTaxa.get(taxon.key) == null) {
