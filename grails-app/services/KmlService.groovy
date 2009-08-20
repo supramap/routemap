@@ -39,7 +39,7 @@ class KmlService {
         def latitude, longitude
         coordFile.splitEachLine(',') {fields ->
             lineNum++
-            if (lineNum > 1 && fields[0] && fields[1] && fields[2]  && fields[3]) { //First line doesn't containt data
+            if (lineNum > 1 && fields[0] && fields[1] && fields[2]  && fields[3]) { //First line doesn't contain data
                 if (csvTaxa.get(fields[0]) == null) {
                     csvTaxa.put fields[0],taxNum //Adds every taxa to the map
                     taxNum++
@@ -47,7 +47,7 @@ class KmlService {
                     problems.put "Error${errNum}","Taxon ${fields[0]} is in the csv multiple times."
                     errNum++
                 }
-                if (fields[1] && locMap.get(fields[1]) == null && lineNum > 1) {
+                if (lineNum > 1 && fields[1] && locMap.get(fields[1]) == null) {
                     if (fields[1].find(' ') != null) {
                         problems.put "Error${errNum}","Locations ${fields[1]} contains spaces.  Placenames must be one word."
                         errNum++
@@ -160,7 +160,7 @@ class KmlService {
             if (locNum == 10) {
                 locNum = 'a' as char //Locations are labeled 1-9 and then a-z
             }
-            if (curLine[1] && locMap.get(curLine[1]) == null && lineNum > 1) {
+            if (lineNum > 1 && curLine[1] && locMap.get(curLine[1]) == null) {
                 locMap.put(curLine[1],locNum)
                 locList += curLine[1]
                 ++locNum
@@ -205,7 +205,7 @@ class KmlService {
         coordOut.append("Label,Lat,Long\n")
         coordIn.splitEachLine(',') { curLine ->
             lineNum++
-            if (curLine[1] && curLine[2] && curLine[3] && locMap.get(curLine[1]) == null && lineNum > 1) {
+            if (lineNum > 1 && curLine[1] && curLine[2] && curLine[3] && locMap.get(curLine[1]) == null) {
                     locMap.put(curLine[1],lineNum)
                     locList += curLine[1]
                     coordOut.append("${curLine[1]},${curLine[2]},${curLine[3]}\n")

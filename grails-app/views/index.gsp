@@ -64,10 +64,6 @@ function createNetworkLink() {
         <p style="margin-left:20px;width:80%">
           Routemap produces a keyhole markup file (kml) that displays disease transmission events implied by genetic sequence data on pathogens.
         </p>
-        <ul style="margin-left:20px; width:80%">
-          <li>To create a kml, click <g:link controller="kml" action="preparation">here</g:link>.</li>
-          <li>To view kmls that have already been created, click <g:link controller="kml">here</g:link>.</li>
-        </ul>
         <br/>
         <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
           <div id="map3d"></div>
