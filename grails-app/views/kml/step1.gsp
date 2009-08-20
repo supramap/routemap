@@ -17,6 +17,7 @@
       </div>
         <div id="Content">
             <h1>Step 1: upload the tnt sequence file and the coordinates csv</h1>
+            <p style="margin-left:20px;">First time using routemap?  To see what you need, go <g:link action="preparation">here</g:link>.<p>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -59,16 +60,20 @@
                                     <input type="file" id="coordinates" name="coordinates" />
                                 </td>
                             </tr>
-                            
+
                             <tr class="prop">
+                              <td><a id="displayText" href="javascript:toggle();">Show Advanced</a></td>
+                            </tr>
+
+                            <tr id="advanced" class="advanced">
                                 <td valign="top" class="name">
-                                    <label for="name">Outgroup (optional):</label>
+                                    <label for="name">Outgroup:</label>
                                 </td>
                                 <td valign="top">
                                     <input type="text" id="outgroup" name="outgroup" />
                                 </td>
                             </tr>
-
+                            
                         </tbody>
                     </table>
               </div>

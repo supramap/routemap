@@ -10,3 +10,16 @@ function showHideSpinner() {
         document.getElementById("spinner").style.visibility = "visible";
     }
 }
+
+function toggle() {
+	var ele = document.getElementById("advanced");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "table-row") {
+    		ele.style.display = "none";
+		text.innerHTML = "Show Advanced";
+  	}
+	else {
+		ele.style.display = "table-row";
+		text.innerHTML = "Hide Advanced";
+	}
+}

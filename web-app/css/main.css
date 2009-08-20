@@ -309,6 +309,12 @@ th.desc a {
 .prop {
     padding: 5px;
 }
+
+.advanced {
+    padding: 5px;
+    display: none;
+}
+
 .prop .name {
     text-align: left;
     width: 15%;

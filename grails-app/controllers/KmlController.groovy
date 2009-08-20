@@ -122,7 +122,7 @@ class KmlController {
         }
     }
 
-    def create = {redirect action:preparation}
+    def create = {redirect action:step1}
 
     def preparation = {}
 
