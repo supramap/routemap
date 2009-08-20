@@ -40,9 +40,18 @@ class KmlService {
         coordFile.splitEachLine(',') {fields ->
             lineNum++
             if (lineNum > 1 && fields[0] && fields[1] && fields[2]  && fields[3]) { //First line doesn't containt data
-                csvTaxa.put fields[0],taxNum //Adds every taxa to the map
-                taxNum++
+                if (csvTaxa.get(fields[0]) == null) {
+                    csvTaxa.put fields[0],taxNum //Adds every taxa to the map
+                    taxNum++
+                } else {
+                    problems.put "Error${errNum}","Taxon ${fields[0]} is in the csv multiple times."
+                    errNum++
+                }
                 if (fields[1] && locMap.get(fields[1]) == null && lineNum > 1) {
+                    if (fields[1].find(' ') != null) {
+                        problems.put "Error${errNum}","Locations ${fields[1]} contains spaces.  Placenames must be one word."
+                        errNum++
+                    }
                     locMap.put(fields[1],locNum)
                     ++locNum
                 }
@@ -135,7 +144,6 @@ class KmlService {
             if (lineNum == 2) {
                 def tmp = curLine.tokenize('\t')
                 characters = tmp[1].trim().size()+1
-                println "***${characters}***"
                 output.append("${characters} ${taxNum}\n&[${dataType}]\n${curLine}\n")
             } else if (lineNum > 2) {
                 output.append("${curLine.trim()}\n")
