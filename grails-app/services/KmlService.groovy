@@ -176,7 +176,6 @@ class KmlService {
         if (outGroup != null && outGroup != "") {
             output.append("outgroup ${outGroup};")
         }
-        println "***${characters}***"
         output.append("cnames\n{\n${characters-1} Geography\n")
         locList.each { curLoc -> output.append("${curLoc}\n") } //Outputs the list of locations, one location per line
         /* Write additional options */

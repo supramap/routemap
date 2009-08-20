@@ -1,17 +1,12 @@
-var Ajax;
-if (Ajax && (Ajax != null)) {
-	Ajax.Responders.register({
-	  onCreate: function() {
-        if($('spinner') && Ajax.activeRequestCount>0)
-          Effect.Appear('spinner',{duration:0.5,queue:'end'});
-	  },
-	  onComplete: function() {
-        if($('spinner') && Ajax.activeRequestCount==0)
-          Effect.Fade('spinner',{duration:0.5,queue:'end'});
-	  }
-	});
-}
-
-function setFocus() {
-    document.myform.myinput.focus();
+function showHideSpinner() {
+    var divstyle = new String();
+    divstyle = document.getElementById("spinner").style.visibility;
+    if(divstyle.toLowerCase()=="visible" || divstyle == "")
+    {
+        document.getElementById("spinner").style.visibility = "hidden";
+    }
+    else
+    {
+        document.getElementById("spinner").style.visibility = "visible";
+    }
 }
