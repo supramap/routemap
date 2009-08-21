@@ -144,7 +144,7 @@ class KmlService {
             if (lineNum == 2) {
                 def tmp = curLine.tokenize('\t')
                 characters = tmp[1].trim().size()+1
-                output.append("${characters} ${taxNum}\n&[${params["dataType"]}]\n${curLine}\n")
+                output.append("${characters} ${taxNum}\n&[${params.dataType}]\n${curLine}\n")
             } else if (lineNum > 2) {
                 output.append("${curLine.trim()}\n")
             }
@@ -173,34 +173,34 @@ class KmlService {
                 output.append("${curLine[0]}\t${locMap.get(curLine[1])}\n")
         }
         output.append(";\n")
-        if (params["outGroup"] != null && params["outGroup"] != "") {
-            output.append("outgroup ${params["outGroup"]};")
+        if (params.outGroup != "") {
+            output.append("outgroup ${params.outGroup};")
         }
         output.append("cnames\n{\n${characters-1} Geography\n")
         locList.each { curLoc -> output.append("${curLoc}\n") } //Outputs the list of locations, one location per line
         /* Write additional options */
         output.append(";;\nhold 10000;\nccode ] ${characters-1};\n")
         /* The following checks the params map for advanced options, and modified the xm= line accordingly */
-        if (params["treeFile"] == "on") {
-            if (params["treeType"] == "parenthetical") {
-                output.append("tread ${params["treeName"]}\n")
+        if (params.treeFile == "on") {
+            if (params.treeType == "parenthetical") {
+                output.append("tread ${params.treeName}\n")
             } else {
-                output.append("shortread ${params["treeName"]}\n")
+                output.append("shortread ${params.treeName}\n")
             }
-        } else if (params["custom"] != null && params["custom"] != "") {
-            output.append("${params["custom"]}\n")
+        } else if (params.custom != "") {
+            output.append("${params.custom}\n")
         } else {
             output.append("xm =")
             def hits = 100 //Default number of hits
-            if (params["hits"] != null && params["hits"] != "") {
-                hits = params["hits"]
+            if (params.hits != "") {
+                hits = params.hits
             }
             output.append(" hits ${hits}")
-            if (params["searchLevel"] != null && params["searchLevel"] != "") {
-                output.append(" level ${params["searchLevel"]}")
+            if (params.searchLevel != "") {
+                output.append(" level ${params.searchLevel}")
             }
-            if (params["treeLength"] != null && params["treeLength"] != "") {
-                output.append(" giveupscore ${params["treeLength"]}")
+            if (params.treeLength != "") {
+                output.append(" giveupscore ${params.treeLength}")
             }
             output.append(";\n")
         }
@@ -213,11 +213,11 @@ class KmlService {
             }
         }
         output.append("log /;\n")
-        if (params["save"] == "on") { //Checks to see if the user wishes to save the trees found during search
-            if (params["saveType"] == "parenthetical") {
-                output.append("taxname=;\ntsave* ${params["saveName"]};\n")
+        if (params.save == "on") { //Checks to see if the user wishes to save the trees found during search
+            if (params.saveType == "parenthetical") {
+                output.append("taxname=;\ntsave* ${params.saveName};\n")
             } else {
-                output.append("tsave ${params["saveName"]}\n")
+                output.append("tsave ${params.saveName}\n")
             }
             output.append("save;\ntsave /;\n")
         }

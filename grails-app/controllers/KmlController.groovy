@@ -134,7 +134,16 @@ class KmlController {
         MultipartFile sequences = request.getFile('sequences')
         MultipartFile coordinates = request.getFile('coordinates')
 
-        if (!coordinates.empty || !sequences.empty) {
+        if (coordinates.empty || sequences.empty) {
+            flash.message = "Files cannot be empty"
+            redirect action:step1
+        } else if (params.treeFile == "on" && params.treeName == "") {
+            flash.message = "You must specify the name of the tree file"
+            redirect action:step1
+        } else if (params.save == "on" && params.saveName == "") {
+            flash.message = "You must specify the name of the save file"
+            redirect action:step1
+        } else {
             sequences.transferTo(new File("${session.folder}/seqs"))
             coordinates.transferTo(new File("${session.folder}/coords"))
             def problems = KmlService.checkFiles(session.folder, params.outgroup)
@@ -145,10 +154,6 @@ class KmlController {
                 KmlService.writeScript(session.folder, params)
                 redirect action:step2
             }
-        }
-        else {
-            flash.message = "Files cannot be empty"
-            redirect action:step1
         }
     }
 
