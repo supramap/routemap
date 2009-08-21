@@ -99,7 +99,7 @@ class KmlService {
          */
         locMap.each() { loc1 ->
             locMap.each() { loc2 ->
-                if (loc2.key.count(loc1.key) > 0 && loc1.key != loc2.key) {
+                if (loc2.key.count(loc1.key) > 0 && loc1.key != loc2.key) { //Checks to see if loc2 contains loc1
                     problems.put "Error${errNum}","Location ${loc1} and location ${loc2} have conflicting names."
                     errNum++
                 }
@@ -179,7 +179,7 @@ class KmlService {
         output.append("cnames\n{\n${characters-1} Geography\n")
         locList.each { curLoc -> output.append("${curLoc}\n") } //Outputs the list of locations, one location per line
         /* Write additional options */
-        output.append(";;\nhold 10000\nccode ] ${characters-1};\n")
+        output.append(";;\nhold 10000;\nccode ] ${characters-1};\n")
         /* The following checks the params map for advanced options, and modified the xm= line accordingly */
         if (params["treeFile"] == "on") {
             if (params["treeType"] == "parenthetical") {
@@ -202,7 +202,7 @@ class KmlService {
             if (params["treeLength"] != null && params["treeLength"] != "") {
                 output.append(" giveupscore ${params["treeLength"]}")
             }
-            output.append("\n")
+            output.append(";\n")
         }
         output.append("ccode ] 0.${characters-2};\nccode [ ${characters-1};\nlog tntlog.txt\n")
         locList.eachWithIndex { locA,j ->
