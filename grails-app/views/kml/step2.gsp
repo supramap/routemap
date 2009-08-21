@@ -38,7 +38,7 @@
           <p style="margin-left:25px;">
             Tnt Log:<input type="file" id="tntlog" name="tntlog" />
           </p><br/>
-          <input type="submit" value="Next" onclick="this.disabled=1; showHideSpinner();"/>
+          <input type="submit" value="Next" onclick="this.disabled=1; showSpinner();"/>
           <img id="spinner" src="${createLinkTo(dir:'images', file:'ajax-loader.gif')}" alt="Please Wait..." style="visibility:hidden;"/>
         </g:form>
       </div>

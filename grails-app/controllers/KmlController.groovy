@@ -142,7 +142,7 @@ class KmlController {
                 flash.problems = problems
                 redirect action:step1
             } else {
-                KmlService.writeScript(session.folder, params.datatype, params.outgroup)
+                KmlService.writeScript(session.folder, params)
                 redirect action:step2
             }
         }

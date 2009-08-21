@@ -27,8 +27,9 @@
             </g:hasErrors>
                 <p style="width:80%">
                     There are several things you need before you begin the creation process:<br/>
-                    1) TNT analysis for trees and character evolution: <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">Download Here</a><br/>
-                    2) Two input files: <a href="${createLinkTo(dir:'files',file:'routemap-samples.zip')}">Download Samples</a>
+                    1) Make sure that javascript is enabled in your browser.<br/>
+                    2) TNT analysis for trees and character evolution: <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">Download Here</a><br/>
+                    3) Two input files: <a href="${createLinkTo(dir:'files',file:'routemap-samples.zip')}">Download Samples</a>
                 </p>
                 <ul style="margin-left:60px; width:80%">
                   <li>
@@ -36,7 +37,8 @@
                   </li>
                   <li>
                     Geographic datafile - a comma separated (csv) file containing a list of each taxon, followed by a location name, latitude, and longitude.
-                    <br/>NOTE: TNT limits the number of unique placenames to 31 and the first line of the file must be a header similar to that found in the sample file.
+                    The first line of the file must be a header similar to that found in the sample file.
+                    <br/>NOTE: TNT limits the number of unique placenames to 31, and placenames cannot contain spaces.
                   </li>
                 </ul>
                 <br/>

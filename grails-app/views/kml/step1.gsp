@@ -30,7 +30,7 @@
               <br/>
             </g:else>
             <g:form action="generateScript" method="post" enctype="multipart/form-data">
-              <div class="dialog" style="width:55%;">
+              <div class="dialog" style="width:61%;">
                     <table>
                         <tbody>
 
@@ -39,13 +39,13 @@
                                     <label for="name">Data Type:</label>
                                 </td>
                                 <td valign="top">
-                                    <g:select id="datatype" name="datatype" from="${['dna','prot']}" />
+                                    <g:select id="dataType" name="dataType" from="${['dna','prot']}" />
                                 </td>
                             </tr>
 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="name">Sequence Data:</label>
+                                    <label for="name">Sequence fasta:</label>
                                 </td>
                                 <td valign="top">
                                     <input type="file" id="sequences" name="sequences" />
@@ -54,7 +54,7 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="name">Coordinates CSV:</label>
+                                    <label for="name">Coordinates csv:</label>
                                 </td>
                                 <td valign="top">
                                     <input type="file" id="coordinates" name="coordinates" />
@@ -62,15 +62,107 @@
                             </tr>
 
                             <tr class="prop">
-                              <td><a id="displayText" href="javascript:toggle();">Show Advanced</a></td>
+                              <td valign="top" class="name">
+                                <a id="displayText" href="javascript:toggleAdvanced();">Show Advanced</a>
+                              </td>
                             </tr>
 
-                            <tr id="advanced" class="advanced">
+                            <tr id="advanced1" class="advanced">
                                 <td valign="top" class="name">
                                     <label for="name">Outgroup:</label>
                                 </td>
                                 <td valign="top">
-                                    <input type="text" id="outgroup" name="outgroup" />
+                                    <input type="text" id="outGroup" name="outGroup" />
+                                </td>
+                            </tr>
+
+                            <tr id="advanced2" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Search level:</label>
+                                </td>
+                                <td valign="top">
+                                    <g:select id="searchLevel" name="searchLevel" from="${0..10}" noSelection="['':' ']" />
+                                </td>
+                            </tr>
+
+                            <tr id="advanced3" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Tree length to hit:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="text" id="treeLength" name="treeLength" />
+                                </td>
+                            </tr>
+
+                            <tr id="advanced4" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Hits to minimum length:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="text" id="hits" name="hits" />
+                                </td>
+                            </tr>
+
+                            <tr id="advanced5" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Load trees from file:</label>
+                                </td>
+                                <td valign="top">
+                                    <g:checkBox id="treeFile" name="treeFile" value="${false}" onclick="toggleOptions('tree');" />
+                                </td>
+                            </tr>
+
+                            <tr id="tree1" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">File name:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="text" id="treeName" name="treeName" />
+                                </td>
+                            </tr>
+
+                            <tr id="tree2" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Tree type:</label>
+                                </td>
+                                <td valign="top">
+                                    <g:select id="treeType" name="treeType" from="${['parenthetical','compact']}" />
+                                </td>
+                            </tr>
+
+                            <tr id="advanced6" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Save trees to file:</label>
+                                </td>
+                                <td valign="top">
+                                    <g:checkBox id="save" name="save" value="${false}" onclick="toggleOptions('output');" />
+                                </td>
+                            </tr>
+
+                            <tr id="output1" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">File name:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="text" id="saveName" name="saveName" />
+                                </td>
+                            </tr>
+
+                            <tr id="output2" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Tree type:</label>
+                                </td>
+                                <td valign="top">
+                                    <g:select id="saveType" name="saveType" from="${['parenthetical','compact']}" />
+                                </td>
+                            </tr>
+
+                            <tr id="advanced7" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Custom search parameters:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="text" id="custom" name="custom" />
                                 </td>
                             </tr>
                             
@@ -78,7 +170,7 @@
                     </table>
               </div>
               <br/>
-              <input type="submit" value="Next" onclick="this.disabled=1; showHideSpinner();"/>
+              <input type="submit" value="Next" onclick="this.disabled=1; showSpinner();"/>
               <img id="spinner" src="${createLinkTo(dir:'images', file:'ajax-loader.gif')}" alt="Please Wait..." style="visibility:hidden;"/>
             </g:form>
         </div>
