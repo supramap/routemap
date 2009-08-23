@@ -10,7 +10,6 @@ class BuildKMLService {
         println f1
         println f2
         String error = readInputFiles(f1,f2);
-        describeMigrations();
         writeKML(folder);
         return error;
     }
