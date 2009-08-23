@@ -30,7 +30,7 @@ class BuildKMLService {
                 origin2 = ""; destination2 = "";
 
                 //sources
-                out.write("\t\t<Folder><name>Outgoing</name><open>0</open>\n");
+                out.write("\t\t<Folder><name>Incoming</name><open>0</open>\n");
                 for (int j=0; j<sources.length; j++) {
                         origin = sources[j];
                         for (int i=0; i<sinks.length; i++) {
@@ -50,7 +50,7 @@ class BuildKMLService {
                                                 out.write("\t\t\t\t\t<color>ff0000ff</color>\n");
                                         out.write("\t\t\t\t</LineStyle>\n");
                                         out.write("\t\t\t</Style>\n");
-                                        out.write("\t\t\t<Placemark><name>" + origin + " to " + sinks[i] + "</name>\n");
+                                        out.write("\t\t\t<Placemark><name>" + sinks[i] + " to " + origin + "</name>\n");
                                         out.write("\t\t\t<visibility>1</visibility>");
                                         out.write("\t\t\t\t<styleUrl>#s" + i + "_" + j + "</styleUrl>\n");
                                         out.write("\t\t\t\t<MultiGeometry>\n");
@@ -69,7 +69,7 @@ class BuildKMLService {
                 out.write("\t\t</Folder>\n");
 
                 //destinations
-                out.write("\t\t<Folder><name>Incoming</name><open>0</open>\n");
+                out.write("\t\t<Folder><name>Outgoing</name><open>0</open>\n");
                 for (int i=0; i<sinks.length; i++) {
                         destination = sinks[i]; origin = null;
                         for (int j=0; j<sources.length; j++) {
@@ -89,7 +89,7 @@ class BuildKMLService {
                                                 out.write("\t\t\t\t<color>ff00ff00</color>\n");
                                         out.write("\t\t\t</LineStyle>\n");
                                         out.write("\t\t</Style>\n");
-                                        out.write("\t\t<Placemark><name>" + sources[j] + " to " + destination + "</name>\n");
+                                        out.write("\t\t<Placemark><name>" + destination + " to " + sources[j] + "</name>\n");
                                         out.write("\t\t<visibility>1</visibility>");
                                         out.write("\t\t\t<styleUrl>#s" + i + "_" + j + "</styleUrl>\n");
                                         out.write("\t\t\t<MultiGeometry>\n");

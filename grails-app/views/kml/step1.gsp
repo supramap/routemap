@@ -170,7 +170,7 @@
                     </table>
               </div>
               <br/>
-              <input type="submit" value="Next" onclick="this.disabled=1; showSpinner();"/>
+              <input type="submit" value="Next" onclick="showSpinner();"/>
               <img id="spinner" src="${createLinkTo(dir:'images', file:'ajax-loader.gif')}" alt="Please Wait..." style="visibility:hidden;"/>
             </g:form>
         </div>

@@ -183,9 +183,9 @@ class KmlService {
         /* The following checks the params map for advanced options, and modified the xm= line accordingly */
         if (params.treeFile == "on") {
             if (params.treeType == "parenthetical") {
-                output.append("tread ${params.treeName}\n")
+                output.append("proc ${params.treeName};\n")
             } else {
-                output.append("shortread ${params.treeName}\n")
+                output.append("shortread ${params.treeName};\n")
             }
         } else if (params.custom != "") {
             output.append("${params.custom}\n")
@@ -204,7 +204,7 @@ class KmlService {
             }
             output.append(";\n")
         }
-        output.append("ccode ] 0.${characters-2};\nccode [ ${characters-1};\nlog tntlog.txt\n")
+        output.append("ccode ] 0.${characters-2};\nccode [ ${characters-1};\nlog tntlog.txt;\n")
         locList.eachWithIndex { locA,j ->
             locList.eachWithIndex { locB,k ->
                 if (j != k) {
