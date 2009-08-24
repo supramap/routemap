@@ -10,8 +10,9 @@
       <div id="nav1">
 	<ul id="menus">
           <li><a href="${resource(dir:'')}">Home</a></li>
-          <li><g:link class="current" action="create">New Kml</g:link></li>
-          <li><g:link action="list">List Kmls</g:link></li>
+          <li><g:link controller="kml" action="create" class="current">New Kml</g:link></li>
+          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
+          <li><g:link controller="helper" action="help">Help</g:link></li>
           <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
 	</ul>
       </div>

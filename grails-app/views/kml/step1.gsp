@@ -10,16 +10,17 @@
       <div id="nav1">
 	<ul id="menus">
           <li><a href="${resource(dir:'')}">Home</a></li>
-          <li><g:link class="current" action="create">New Kml</g:link></li>
-          <li><g:link action="list">List Kmls</g:link></li>
+          <li><g:link controller="kml" action="create" class="current">New Kml</g:link></li>
+          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
+          <li><g:link controller="helper" action="help">Help</g:link></li>
           <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
 	</ul>
       </div>
         <div id="Content">
             <h1>Step 1: upload the tnt sequence file and the coordinates csv</h1>
             <p style="margin-left:20px;">
-              First time using routemap?  To see what you need, go <g:link action="preparation">here</g:link>.<br/>
-              If you need help with advanced options, visit the <g:link class="current" controller="helper" action="help" target="_blank">help page</g:link>.
+              New to routemap or not sure what the advanced options do?
+              Visit the <g:link class="current" controller="helper" action="help" target="_blank">help page</g:link>.
             <p>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>

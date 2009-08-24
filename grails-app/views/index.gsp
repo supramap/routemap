@@ -53,9 +53,10 @@ function createNetworkLink() {
       <div id="Container">
       <div id="nav1">
 	<ul id="menus">
-          <li><a class="current" href="${resource(dir:'')}">Home</a></li>
+          <li><a href="${resource(dir:'')}" class="current">Home</a></li>
           <li><g:link controller="kml" action="create">New Kml</g:link></li>
           <li><g:link controller="kml" action="list">List Kmls</g:link></li>
+          <li><g:link controller="helper" action="help">Help</g:link></li>
           <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
 	</ul>
       </div>

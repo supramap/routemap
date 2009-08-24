@@ -12,7 +12,8 @@
           <li><a href="${resource(dir:'')}">Home</a></li>
           <li><g:link controller="kml" action="create">New Kml</g:link></li>
           <li><g:link controller="kml" action="list">List Kmls</g:link></li>
-          <li><g:link class="current" controller="helper" action="contact">Contact Us</g:link></li>
+          <li><g:link controller="helper" action="help">Help</g:link></li>
+          <li><g:link controller="helper" action="contact" class="current">Contact Us</g:link></li>
 	</ul>
       </div>
         <div id="Content">
