@@ -363,6 +363,10 @@ p {
     margin-left:40px;
 }
 
+textarea {
+    margin-left:20px;
+}
+
 input {
     margin-left:20px;
 }

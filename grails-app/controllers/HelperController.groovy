@@ -1,4 +1,4 @@
 class HelperController {
-
-    def contact = { }
+    def contact = {}
+    def help = {}
 }

@@ -17,7 +17,10 @@
       </div>
         <div id="Content">
             <h1>Step 1: upload the tnt sequence file and the coordinates csv</h1>
-            <p style="margin-left:20px;">First time using routemap?  To see what you need, go <g:link action="preparation">here</g:link>.<p>
+            <p style="margin-left:20px;">
+              First time using routemap?  To see what you need, go <g:link action="preparation">here</g:link>.<br/>
+              If you need help with advanced options, visit the <g:link class="current" controller="helper" action="help" target="_blank">help page</g:link>.
+            <p>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -81,13 +84,13 @@
                                     <label for="name">Search level:</label>
                                 </td>
                                 <td valign="top">
-                                    <g:select id="searchLevel" name="searchLevel" from="${0..10}" noSelection="['':' ']" />
+                                    <g:select id="searchLevel" name="searchLevel" from="${0..10}" noSelection="['':' ']" disabled="no"/>
                                 </td>
                             </tr>
 
                             <tr id="advanced3" class="advanced">
                                 <td valign="top" class="name">
-                                    <label for="name">Tree length to hit:</label>
+                                    <label for="name">Treelength to hit:</label>
                                 </td>
                                 <td valign="top">
                                     <input type="text" id="treeLength" name="treeLength" />

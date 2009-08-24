@@ -82,7 +82,7 @@ class UserController {
             redirect(action:list)
         }
         else {
-            return [ userInstance : userInstance ]
+            return [userInstance:userInstance]
         }
     }
 
@@ -115,24 +115,24 @@ class UserController {
     }
 
     def create = {
-        def userInstance = new User()
-        userInstance.properties = params
-        return ['userInstance':userInstance]
+        def userInstance = new User(params)
+        return [userInstance:userInstance]
     }
 
     def save = {
-        if (params.password != params.confirm) {
+        if (params.accept == null) {
+            flash.message = "You must accept the EULA to create an account"
+            redirect(action:create, params:params)
+        }else if (params.password != params.confirm) {
             flash.message = "Passwords do not match"
             redirect(uri: "/user/create")
-        }
-        else {
+        } else {
             def userInstance = new User(params)
             userInstance.password = params.password.encodeAsHash()
             if(!userInstance.hasErrors() && userInstance.save()) {
-                flash.message = "User ${userInstance.id} created"
+                flash.message = "User ${userInstance.login} created"
                 redirect(uri: "/user/login")
-            }
-            else {
+            } else {
                 render(view:'create',model:[userInstance:userInstance])
             }
         }

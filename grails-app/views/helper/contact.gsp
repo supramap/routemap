@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Preparation</title>
+        <title>Contact Us</title>
     </head>
     <body>
       <div id="nav1">
