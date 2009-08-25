@@ -18,7 +18,6 @@ class UserController {
         def user = User.findByLoginAndPassword(params.login, params.password.encodeAsHash())
         if(user){
           session.user = user
-          flash.message = "Hello ${user.name}!"
           redirect(uri: "/")
         }else {
           flash.message = "Sorry, ${params.login}. Please try again."
@@ -91,8 +90,7 @@ class UserController {
         if(userInstance) {
             if(params.version) {
                 def version = params.version.toLong()
-                if(userInstance.version > version) {
-                    
+                if(userInstance.version > version) {                   
                     userInstance.errors.rejectValue("version", "user.optimistic.locking.failure", "Another user has updated this User while you were editing.")
                     render(view:'edit',model:[userInstance:userInstance])
                     return

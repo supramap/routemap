@@ -124,8 +124,6 @@ class KmlController {
 
     def create = {redirect action:step1}
 
-    def preparation = {}
-
     def step1 = {}
 
     def generateScript = {

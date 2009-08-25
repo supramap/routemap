@@ -18,22 +18,27 @@
       </div>
         <div id="Content">
           <h1>Preparation</h1>
-           <p style="width:80%">
-                    There are several things you need before you begin the creation process:<br/>
-                    1) Make sure that javascript is enabled in your browser.<br/>
-                    2) TNT analysis for trees and character evolution: <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">Download Here</a><br/>
-                    3) Two input files: <a href="${createLinkTo(dir:'files',file:'routemap-samples.zip')}">Download Samples</a>
-                </p>
-                <ul style="margin-left:60px; width:80%">
-                  <li>
-                    Sequence datafile - a fasta file containing phylogenetic data, such as DNA sequences.
-                  </li>
-                  <li>
-                    Geographic datafile - a comma separated (csv) file containing a list of each taxon, followed by a location name, latitude, and longitude.
-                    The first line of the file must be a header similar to that found in the sample file.
-                    <br/>NOTE: TNT limits the number of unique placenames to 31, and placenames cannot contain spaces.
-                  </li>
-                </ul>
+            <p style="width:80%">
+              There are several things you need before you begin the creation process:<br/><br/>
+              1) Make sure that javascript is enabled in your browser.<br/><br/>
+              2) Create a routemap account: register <g:link controller="user" action="create" >here</g:link>.<br/><br/>
+              3) Download TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">here</a>.<br/><br/>
+              4) Make two input files: <a href="${createLinkTo(dir:'files',file:'routemap-samples.zip')}">Download Samples</a><br/>
+            </p>
+            <ul style="margin-left:60px; width:80%">
+              <li>
+                Sequence datafile - a fasta file containing phylogenetic data, such as DNA sequences.
+              </li>
+              <li>
+                Geographic datafile - a comma separated (csv) file containing a list of each taxon, followed by a location name, latitude, and longitude.
+                The first line of the file must be a header similar to that found in the sample file.
+                <br/>NOTE: TNT limits the number of unique placenames to 31, and placenames cannot contain spaces.
+              </li>
+            </ul>
+            <br/>
+            <p>
+              Once these steps are completed, click 'New Kml' at the top of the page to begin the creation process.
+            </p>
             <h1>Advanced Options</h1>
                 <p style="width:80%">
                     Outgroup: Specify an outgroup.  By default, the first taxa in the fasta is used.<br/><br/>
