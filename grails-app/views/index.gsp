@@ -1,9 +1,11 @@
+
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <!-- <meta name="layout" content="main" /> -->
         <title>Routemap</title>
-	<link rel="stylesheet" href="/routemap/css/main.css" />
+	<link rel="stylesheet" href="${createLinkTo(dir:'css',file:'main.css')}" />
 <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRS9YGKqOGxgfx2l_jtyOo5t-hQf3hR-Zt7QMAfiHHg_i1NCnP0OGrc8_g"> </script>
 <script type="text/javascript">
 google.load("earth", "1");
@@ -53,7 +55,7 @@ function createNetworkLink() {
       <div id="Container">
       <div id="nav1">
 	<ul id="menus">
-          <li><a href="${resource(dir:'')}" class="current">Home</a></li>
+          <li><a href="/" class="current">Home</a></li>
           <li><g:link controller="kml" action="create">New Kml</g:link></li>
           <li><g:link controller="kml" action="list">List Kmls</g:link></li>
           <li><g:link controller="helper" action="help">Help</g:link></li>
