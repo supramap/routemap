@@ -13,18 +13,6 @@ class KmlController {
             return false
         }
     }
-
-    def ownsKml(kmlInstance) { //Checks to see if the current user owns the argument kml
-        def owner = kmlInstance.user.id
-        def getter = session.user.id
-        def role = session.user.role
-        if (owner != getter && role != "admin") {
-            return false
-        }
-        else {
-            return true
-        }
-    }
     
     def index = { redirect(action:list,params:params) }
 
@@ -46,17 +34,17 @@ class KmlController {
         if(!kmlInstance) {
             flash.message = "Kml not found with id ${params.id}"
             redirect action:list
-        } else if (!ownsKml(kmlInstance)){
-            response.sendError(403)
-        } else {
+        } else if (session.user?.ownsKml(kmlInstance)){
             return [ kmlInstance : kmlInstance ]
+        } else {
+            response.sendError(403)
         }
     }
 
     def delete = {
         def kmlInstance = Kml.get( params.id )
         if(kmlInstance) {
-            if (ownsKml(kmlInstance)) {
+            if (session.user?.ownsKml(kmlInstance)) {
                 try {
                     kmlInstance.delete(flush:true)
                     flash.message = "Kml ${params.id} deleted"
@@ -83,18 +71,17 @@ class KmlController {
         if(!kmlInstance) {
             flash.message = "Kml not found with id ${params.id}"
             redirect action:list
-        } else if (!ownsKml(kmlInstance)) {
-            response.sendError(403)
-        }
-        else {
+        } else if (session.user?.ownsKml(kmlInstance)){
             return [ kmlInstance : kmlInstance ]
+        } else {
+            response.sendError(403)
         }
     }
 
     def update = {
         def kmlInstance = Kml.get( params.id )
         if(kmlInstance) {
-            if (ownsKml(kmlInstance)) {
+            if (session.user?.ownsKml(kmlInstance)) {
                 if(params.version) {
                     def version = params.version.toLong()
                     if(kmlInstance.version > version) {
@@ -210,7 +197,7 @@ class KmlController {
    
         if (params.file == 'kml' || params.file == 'seqs' || params.file == 'coords') {
             download = Kml.get(params.id)
-            if (ownsKml(download)) {
+            if (session.user?.ownsKml(download)) {
                 name = download.name.replaceAll("\\s+","_")+params.name
                 content = params.content
                 if (params.file == 'kml') {

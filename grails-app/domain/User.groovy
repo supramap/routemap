@@ -13,4 +13,12 @@ class User {
         name(nullable: false, blank: false)
         email(blank: false, nullable: false, email: true)
     }
+
+    public boolean ownsKml(Kml kmlInstance) {
+        if (id == kmlInstance.user.id || role == "admin") {
+            return true
+        } else {
+            return false
+        }
+    }
 }
