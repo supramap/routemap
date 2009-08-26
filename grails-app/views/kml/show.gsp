@@ -6,7 +6,7 @@
         <!-- <meta name="layout" content="main" /> -->
         <title>Show Kml</title>
 	<link rel="stylesheet" href="/routemap/css/main.css" />
-<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRTcn_-zYPKvuGhF03K7CRCK0gn1chQ4BJbLKMAJh60-GTgOKuUpkyFKrQ"> </script>
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRS9YGKqOGxgfx2l_jtyOo5t-hQf3hR-Zt7QMAfiHHg_i1NCnP0OGrc8_g"> </script>
 <script type="text/javascript">
 google.load("earth", "1");
 
