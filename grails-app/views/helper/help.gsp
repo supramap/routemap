@@ -45,7 +45,9 @@
                     Search level: The search level. Higher level = more thorough search, but slower.<br/><br/>
                     Treelength to hit: The length of the most parsimonious trees if you know it. This could speed up the tree collection.<br/><br/>
                     Hits to minimum length: The number of independent hits to minimum length during search.<br/><br/>
-                    Load trees from file: Load trees from a treefile instead of performing a search. Trees needs to be in a format readble by tnt.<br/><br/>
+                    Load trees from file: Load trees from a treefile instead of performing a search. Trees needs to be in a format readble by tnt.
+                    To use this option, specify the filename of the treefile.  When you run the downloaded tntscript,
+                    make sure the specified treefile is present in the same folder as the script.<br/><br/>
                     Save trees to file: Save the trees found during search to a file.<br/><br/>
                     Custom search parameters: Replace the search parameters with custom commands.  Completely replaces the xm= line in the tnt script.
                 </p><br/>
