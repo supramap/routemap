@@ -7,8 +7,6 @@ class BuildKMLService {
     private static String origin, destination, origin2, destination2;
 
     public static String convert (String f1, String f2, String folder) {
-        println f1
-        println f2
         String error = readInputFiles(f1,f2);
         writeKML(folder);
         return error;
@@ -85,7 +83,7 @@ class BuildKMLService {
                                         if (!migrations[j][i].equals("0")) //bidirectional
                                                 out.write("\t\t\t\t\t<color>ff00ddff</color>\n");
                                         else
-                                                out.write("\t\t\t\t<color>ff00ff00</color>\n");
+                                                out.write("\t\t\t\t<color>ff0000ff</color>\n");
                                         out.write("\t\t\t</LineStyle>\n");
                                         out.write("\t\t</Style>\n");
                                         out.write("\t\t<Placemark><name>" + destination + " to " + sources[j] + "</name>\n");
