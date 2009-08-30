@@ -40,11 +40,11 @@ class BuildKMLService {
                                         }
                                         out.write("\t\t\t<Style id=\"s" + i + "_" + j + "\">\n");
                                         out.write("\t\t\t\t<LineStyle>\n");
-                                        out.write("\t\t\t\t\t<width>" + migrations[i][j] + "</width>\n");
+                                        out.write("\t\t\t\t\t<width>1.5</width>\n"); //migrations[j][i]
                                         if (!migrations[j][i].equals("0")) //bidirectional
                                                 out.write("\t\t\t\t\t<color>ff00ddff</color>\n");
                                         else
-                                                out.write("\t\t\t\t\t<color>ff00ff00</color>\n");
+                                                out.write("\t\t\t\t\t<color>ff0000ff</color>\n");
                                         out.write("\t\t\t\t</LineStyle>\n");
                                         out.write("\t\t\t</Style>\n");
                                         out.write("\t\t\t<Placemark><name>" + sinks[i] + " to " + origin + "</name>\n");
@@ -79,7 +79,7 @@ class BuildKMLService {
                                         }
                                         out.write("\t\t<Style id=\"s" + i + "_" + j + "\">\n");
                                         out.write("\t\t\t<LineStyle>\n");
-                                        out.write("\t\t\t\t<width>2.0</width>\n");
+                                        out.write("\t\t\t\t<width>1.5</width>\n"); //migrations[i][j]
                                         if (!migrations[j][i].equals("0")) //bidirectional
                                                 out.write("\t\t\t\t\t<color>ff00ddff</color>\n");
                                         else
