@@ -13,9 +13,10 @@
             <p style="width:80%">
               There are several things you need before you begin the creation process:<br/><br/>
               1) Make sure that javascript is enabled in your browser.<br/><br/>
-              2) Create a routemap account: register <g:link controller="user" action="create" >here</g:link>.<br/><br/>
-              3) Download TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">here</a>.<br/><br/>
-              4) Make two input files: <a href="${createLinkTo(dir:'files',file:'routemap-samples.zip')}">Download Samples</a><br/>
+              2) (Optional) Download and install the google earth browser plugin.  You can get it <a href="http://earth.google.com/intl/en/plugin/" target="_blank">here</a>.<br/><br/>
+              3) Create a routemap account: register <g:link controller="user" action="create" >here</g:link>.<br/><br/>
+              4) Download TNT analysis for trees and character evolution: available <a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank">here</a>.<br/><br/>
+              5) Make two input files: <a href="${createLinkTo(dir:'files',file:'routemap-samples.zip')}">Download Samples</a><br/>
             </p>
             <ul style="margin-left:60px; width:80%">
               <li>

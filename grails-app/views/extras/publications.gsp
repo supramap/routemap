@@ -7,10 +7,8 @@
     <body>
       <g:myNav current="publications"/>
         <div id="Content">
-          <h1>Publications</h1>
           <h1>Tracking the Geographic Spread of Avian Influenza (H5N1) with Multiple Phylogenetic Trees</h1>
           <h1>Rasmus Hovmoller, Boyan Alexandrov, Jori Hardman, and Daniel A Janies</h1>
-          <h1><a href="${createLinkTo(dir:'files',file:'proofs.pdf')}">Proof</a></h1>
           <h1>Supplementary Data:</h1>
           <ul style="margin-left:20px;">
             <li><a href="${createLinkTo(dir:'files',file:'supplementary_data.zip')}">All Data</a></li>
