@@ -4,15 +4,7 @@
     <title>Login</title>
   </head>
   <body>
-      <div id="nav1">
-	<ul id="menus">
-          <li><a href="/">Home</a></li>
-          <li><g:link controller="kml" action="create">New Kml</g:link></li>
-          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
-          <li><g:link controller="helper" action="help">Help</g:link></li>
-          <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
-	</ul>
-      </div>
+      <g:myNav/>
     <div id="Content">
     <div id="body" style="float: none;">
       <h1>Login</h1>

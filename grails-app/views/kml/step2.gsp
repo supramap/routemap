@@ -7,15 +7,7 @@
         <title>Step 2</title>
     </head>
     <body>
-      <div id="nav1">
-	<ul id="menus">
-          <li><a href="/">Home</a></li>
-          <li><g:link controller="kml" action="create" class="current">New Kml</g:link></li>
-          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
-          <li><g:link controller="helper" action="help">Help</g:link></li>
-          <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
-	</ul>
-      </div>
+      <g:myNav current="new"/>
       <div id="content">
         <h1>Step 2: download the tnt script and run it.  Upload the results.</h1>
         <br/>

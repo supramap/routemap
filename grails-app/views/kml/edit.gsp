@@ -7,15 +7,7 @@
         <title>Edit Kml</title>
     </head>
     <body>
-      <div id="nav1">
-	<ul id="menus">
-          <li><a href="/">Home</a></li>
-          <li><g:link controller="kml" action="create">New Kml</g:link></li>
-          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
-          <li><g:link controller="helper" action="help">Help</g:link></li>
-          <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
-	</ul>
-      </div>
+      <g:myNav/>
         <div id="Content">
             <h1>Edit Kml</h1>
             <g:if test="${flash.message}">

@@ -53,15 +53,7 @@ function createNetworkLink() {
         <div id="loginHeader"><g:loginControl/></div>
       </div>
       <div id="Container">
-      <div id="nav1">
-	<ul id="menus">
-          <li><a href="/" class="current">Home</a></li>
-          <li><g:link controller="kml" action="create">New Kml</g:link></li>
-          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
-          <li><g:link controller="helper" action="help">Help</g:link></li>
-          <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
-	</ul>
-      </div>
+        <g:myNav current="home"/>
         <div id="Content">
         <h1 style="margin-left:20px;">Welcome to Routemap</h1>
         <p style="margin-left:20px;width:80%">

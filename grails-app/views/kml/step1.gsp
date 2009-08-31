@@ -7,15 +7,7 @@
         <title>Step 1</title>
     </head>
     <body>
-      <div id="nav1">
-	<ul id="menus">
-          <li><a href="/">Home</a></li>
-          <li><g:link controller="kml" action="create" class="current">New Kml</g:link></li>
-          <li><g:link controller="kml" action="list">List Kmls</g:link></li>
-          <li><g:link controller="helper" action="help">Help</g:link></li>
-          <li><g:link controller="helper" action="contact">Contact Us</g:link></li>
-	</ul>
-      </div>
+      <g:myNav current="new"/>
         <div id="Content">
             <h1>Step 1: upload the tnt sequence file and the coordinates csv</h1>
             <p style="margin-left:20px;">
