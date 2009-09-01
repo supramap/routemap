@@ -38,15 +38,6 @@
                                     <input type="text" id="name" name="name" value="${fieldValue(bean:userInstance,field:'name')}"/>
                                 </td>
                             </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="email">Email:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'email','errors')}">
-                                    <input type="text" id="email" name="email" value="${fieldValue(bean:userInstance,field:'email')}"/>
-                                </td>
-                            </tr>
 
                             <tr class="prop">
                                 <td valign="top" class="name">
@@ -59,10 +50,10 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="password">Password:</label>
+                                    <label for="email">Email:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'password','errors')}">
-                                    <input type="password" id="password" name="password" value="${fieldValue(bean:userInstance,field:'password')}"/>
+                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'email','errors')}">
+                                    <input type="text" id="email" name="email" value="${fieldValue(bean:userInstance,field:'email')}"/>
                                 </td>
                             </tr>
                         
