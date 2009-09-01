@@ -38,7 +38,7 @@ function createNetworkLink() {
 
     // create a Link object
     var link = ge.createLink("");
-    link.setHref("http://140.254.194.156${g.createLink(action:'download',id:kmlInstance.id)}");
+    link.setHref("http://140.254.80.63${g.createLink(action:'download',id:kmlInstance.id)}");
 
     // attach the Link to the NetworkLink
     networkLink.setLink(link);

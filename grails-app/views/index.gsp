@@ -38,7 +38,7 @@ function createNetworkLink() {
 
     // create a Link object
     var link = ge.createLink("");
-    link.setHref("http://140.254.194.156/routemap/files/nytransmissions.kml");
+    link.setHref("http://140.254.80.63/files/example.kml");
 
     // attach the Link to the NetworkLink
     networkLink.setLink(link);

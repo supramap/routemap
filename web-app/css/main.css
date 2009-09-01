@@ -4,121 +4,18 @@ html * {
 }
 
 body {
-	background-color:#C6C3C6;
-	margin:0;
-	padding:0;
-	text-align:center;
-	color:#525152;
-	font-family:Trebuchet MS, Arial, Tahoma, sans-serif;
-        font-size:9pt;
-}
-
-#Container {
-    width:820px;
-    background:#C6C3C6 url(bg.jpg?z=82220) repeat-y center top;
-    margin:0 auto;
-    text-align:left;
-}
-
-#Content {
-	width: 780px;
-	margin: 20px 20px 20px 20px;
-}
-
-#header {
-	position: relative;
-        height:151px;
-	background: #caced1 url(header.jpg?z=82220) no-repeat center;
-	padding: 0;
-	color: #fff;
-	margin-left:auto;
-        margin-right:auto;
-	width:820px;
-        text-align:right;
-}
-
-#footer {
-	color: #FFFFFF;
-	background: #C6C3C6 url(footer.jpg?z=82220) no-repeat center;
-	clear: both;
-	width:820px;
-	height: 80px;
-	text-align: center;
-	font-size: 8pt;
-}
-
- #nav1 {
-	clear: both;
-	margin: auto auto auto 20px;
-	padding: 0;
-	background: #9CC3DE url(menu.jpg?z=82220) repeat-x;
-	font: bold 16px/40px "Trebuchet MS", Arial, Tahoma, Sans-serif;
-	height: 40px;
-	width: 780px;
-	border-top :0px solid #FFFFFF ;
-	border-bottom : 0px solid #FFFFFF ;
-}
-
-#nav1 ul {
-	float: left;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-#nav1 ul li {
-	display: inline;
-}
-
-#nav1 ul li a {
-	display: block;
-	float: left;
-	padding: 0 14px;
-	color: #FFFFFF;
-	text-decoration: none;
-	text-align:center;
-	border-right: 1px solid #bae1fc ;
-}
-
-#nav1 ul li a.current {
-	background-color:#9CC3DE;
-	color: #FFFFFF;
-}
-
-#nav1 ul li a:hover {
-	background: #222222 url( selectedMenu.jpg?z=82220 ) repeat-x;
-	color: #FFFFFF;
-}
-
-#loginHeader {
-    color: #fff;
-    margin-right: 23px;
-    padding-top: 133px
-}
-
-#loginHeader a, a:visited {
-    color:#9CC3DE;
-    text-decoration:none;
-}
-
-#loginHeader a:hover {
-    color:#93C600;
-    text-decoration:underline;
-}
-
-/* End added things */
-
-.spinner {
-    padding: 5px;
-    position: absolute;
-    right: 0;
+    background-color:#C6C3C6;
+    margin:0;
+    padding:0;
+    color:#525152;
+    font-family:Trebuchet MS, Arial, Tahoma, sans-serif;
+    font-size:9pt;
 }
 
 a, a:visited {
 	color:blue;
 	text-decoration:none;
 }
-
 a:hover {
 	color:#93C600;
 	text-decoration:underline;
@@ -262,7 +159,6 @@ th.asc a {
 th.desc a {
     background-image: url(../images/skin/sorted_desc.gif);
 }
-
 .odd {
     background: #f7f7f7;
 }
@@ -309,12 +205,6 @@ th.desc a {
 .prop {
     padding: 5px;
 }
-
-.advanced {
-    padding: 5px;
-    display: none;
-}
-
 .prop .name {
     text-align: left;
     width: 15%;
@@ -334,7 +224,6 @@ th.desc a {
     overflow: hidden;
     padding: 0;
 }
-
 .buttons input {
     background: transparent;
     border: 0;
@@ -359,6 +248,101 @@ th.desc a {
     padding-left: 28px;
 }
 
+/* Added stuff */
+
+#Container {
+    width:820px;
+    background:#C6C3C6 url(bg.jpg?z=82220) repeat-y center top;
+    margin:0 auto;
+    text-align:left;
+}
+
+#Content {
+    width: 780px;
+    margin: 20px 20px 20px 20px;
+}
+
+#header {
+    position: relative;
+    height:151px;
+    background: #caced1 url(header.jpg?z=82220) no-repeat center;
+    padding: 0;
+    color: #fff;
+    margin-left:auto;
+    margin-right:auto;
+    width:820px;
+    text-align:right;
+}
+
+#footer {
+    color: #FFFFFF;
+    background: #C6C3C6 url(footer.jpg?z=82220) no-repeat center;
+    clear: both;
+    width:820px;
+    height: 80px;
+    text-align: center;
+    font-size: 8pt;
+}
+
+ #nav1 {
+    clear: both;
+    margin: auto auto auto 20px;
+    padding: 0;
+    background: #9CC3DE url(menu.jpg?z=82220) repeat-x;
+    font: bold 16px/40px "Trebuchet MS", Arial, Tahoma, Sans-serif;
+    height: 40px;
+    width: 780px;
+    border-top :0px solid #FFFFFF ;
+    border-bottom : 0px solid #FFFFFF ;
+}
+
+#nav1 ul {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav1 ul li {
+    display: inline;
+}
+
+#nav1 ul li a {
+    display: block;
+    float: left;
+    padding: 0 14px;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align:center;
+    border-right: 1px solid #bae1fc ;
+}
+
+#nav1 ul li a.current {
+    background-color:#9CC3DE;
+    color: #FFFFFF;
+}
+
+#nav1 ul li a:hover {
+    background: #222222 url( selectedMenu.jpg?z=82220 ) repeat-x;
+    color: #FFFFFF;
+}
+
+#loginHeader {
+    color: #fff;
+    margin-right: 23px;
+    padding-top: 133px
+}
+
+#loginHeader a, a:visited {
+    color:#9CC3DE;
+    text-decoration:none;
+}
+
+#loginHeader a:hover {
+    color:#93C600;
+    text-decoration:underline;
+}
+
 p {
     margin-left:40px;
 }
@@ -370,3 +354,10 @@ textarea {
 input {
     margin-left:20px;
 }
+
+.advanced {
+    padding: 5px;
+    display: none;
+}
+
+/* End added stuff */
