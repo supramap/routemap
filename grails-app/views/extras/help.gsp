@@ -43,7 +43,13 @@
                     make sure the specified treefile is present in the same folder as the script.<br/><br/>
                     Save trees to file: Save the trees found during search to a file.<br/><br/>
                     Custom search parameters: Replace the search parameters with custom commands.  Completely replaces the xm= line in the tnt script.
-                </p><br/>
+                </p>
+            <h1>Analyzing results</h1>
+              <p style="width:80%">
+                Bidirectional transmissions are represented by yellow lines.  Unidirectional transmissions are either green (outgoing) or red (incoming).
+                Because Google Earth does not allow directional lines, the only way to ascertain the direction of unidirectional transmissions is to view
+                the transmission descriptions in the folder struction under "Temporary Places."
+              </p>
         </div>
     </body>
 </html>
