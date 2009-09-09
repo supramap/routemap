@@ -6,6 +6,7 @@
         <!-- <meta name="layout" content="main" /> -->
         <title>Show Kml</title>
 	<link rel="stylesheet" href="${createLinkTo(dir:'css',file:'main.css')}" />
+<script type="text/javascript" src="/js/application.js"></script>
 <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRS9YGKqOGxgfx2l_jtyOo5t-hQf3hR-Zt7QMAfiHHg_i1NCnP0OGrc8_g"> </script>
 <script type="text/javascript">
 google.load("earth", "1");
