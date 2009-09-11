@@ -9,6 +9,10 @@
     <body>
       <g:myNav current="help"/>
         <div id="Content">
+          <p style="margin-left:20px;">
+            <b>This application was tested extensively using Mozilla Firefox.  To ensure compatibility consider
+              <a href="http://www.mozilla.com/en-US/firefox/personal.html" target="_blank">switching</a>.</b>
+          </p>
           <h1>Preparation</h1>
             <p style="width:80%">
               There are several things you need before you begin the creation process:<br/><br/>
