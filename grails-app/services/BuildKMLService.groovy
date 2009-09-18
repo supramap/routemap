@@ -6,13 +6,13 @@ class BuildKMLService {
     private static String[][] migrations, coordinates;
     private static String origin, destination, origin2, destination2;
 
-    public static String convert (String f1, String f2, String folder) {
-        String error = readInputFiles(f1,f2);
-        writeKML(folder);
+    public static String convert (String folder, String lineWidths) {
+        String error = readInputFiles("${folder}/migrations","${folder}/coordinates");
+        writeKML("${folder}", lineWidths);
         return error;
     }
 
-    private static String writeKML(String folder) {
+    private static String writeKML(String folder, String lineWidths) {
         try {
                 OutputStream fout= new FileOutputStream(folder+"/transmissions.kml");
                 OutputStream bout= new BufferedOutputStream(fout);
@@ -40,7 +40,11 @@ class BuildKMLService {
                                         }
                                         out.write("\t\t\t<Style id=\"s" + i + "_" + j + "\">\n");
                                         out.write("\t\t\t\t<LineStyle>\n");
-                                        out.write("\t\t\t\t\t<width>1.5</width>\n"); //migrations[j][i]
+                                        if (lineWidths == "on") {
+                                            out.write("\t\t\t\t\t<width>${migrations[j][i]}</width>\n");
+                                        } else {
+                                            out.write("\t\t\t\t\t<width>1.5</width>\n");
+                                        }
                                         if (!migrations[j][i].equals("0")) //bidirectional
                                                 out.write("\t\t\t\t\t<color>ff00ddff</color>\n");
                                         else
@@ -79,7 +83,11 @@ class BuildKMLService {
                                         }
                                         out.write("\t\t<Style id=\"s" + i + "_" + j + "\">\n");
                                         out.write("\t\t\t<LineStyle>\n");
-                                        out.write("\t\t\t\t<width>1.5</width>\n"); //migrations[i][j]
+                                        if (lineWidths == "on") {
+                                            out.write("\t\t\t\t\t<width>${migrations[i][j]}</width>\n");
+                                        } else {
+                                            out.write("\t\t\t\t\t<width>1.5</width>\n");
+                                        }
                                         if (!migrations[j][i].equals("0")) //bidirectional
                                                 out.write("\t\t\t\t\t<color>ff00ddff</color>\n");
                                         else

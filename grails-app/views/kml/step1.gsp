@@ -59,7 +59,7 @@
 
                             <tr class="prop">
                               <td valign="top" class="name">
-                                <a id="displayText" href="javascript:toggleAdvanced();">Show Advanced</a>
+                                <a id="displayText" href="javascript:toggleAdvanced('Show Advanced','Hide Advanced');">Show Advanced</a>
                               </td>
                             </tr>
 

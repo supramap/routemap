@@ -9,7 +9,7 @@
     <body>
       <g:myNav current="new"/>
         <div id="Content">
-            <h1>Step 3: name the kml and give a description</h1>
+            <h1>Step 3: Kml options</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -43,6 +43,22 @@
                                     <input type="text" id="description" name="description" value="${fieldValue(bean:kmlInstance,field:'description')}"/>
                                 </td>
                             </tr>
+
+                            <tr class="prop">
+                              <td valign="top" class="name">
+                                <a id="displayText" href="javascript:toggleAdvanced('Show Advanced','Hide Advanced');">Show Advanced</a>
+                              </td>
+                            </tr>
+
+                            <tr id="advanced1" class="advanced">
+                                <td valign="top" class="name">
+                                    <label for="name">Dynamic Line Widths:</label>
+                                </td>
+                                <td valign="top">
+                                    <g:checkBox id="lineWidths" name="lineWidths" value="${false}" />
+                                </td>
+                            </tr>
+                            
                         </tbody>
                     </table>
               </div>

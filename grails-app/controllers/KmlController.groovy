@@ -165,7 +165,7 @@ class KmlController {
         kmlInstance.description = params.description
         kmlInstance.user = session.user
 
-        def error = BuildKMLService.convert("${session.folder}/migrations", "${session.folder}/coordinates", session.folder)
+        def error = BuildKMLService.convert("${session.folder}",params.lineWidths)
         if (error != null) {
             flash.message = "${error}"
             redirect(action:create,model:[kmlInstance:kmlInstance])
