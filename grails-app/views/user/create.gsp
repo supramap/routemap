@@ -78,16 +78,16 @@
 COPYRIGHT © 2008 THE OHIO STATE UNIVERSITY
 
 ALL RIGHTS RESERVED
+Rasmus Hövmoller, Ph.D., Boyan Alexandrov, Jori Hardman, and Daniel Janies, Ph.D..
+Corresponding Author Daniel.Janies@osumc.edu, 614-292-1202
 
-Dr. Daniel Janies, Ph.D, Daniel.Janies@osumc.edu, 614-292-1202,
+The Ohio State University College of Medicine provides this web-based biogeographic map generator as an informational service. Use of the Service is governed by the terms and conditions provided below. Please read the statements below carefully before accessing or using the Service. By accessing or using the Service, you agree to be bound by all the terms and conditions herein.
 
-The Ohio State University College of Medicine provides this Web-Based Service for mapping geographic transmission route of Infectious diseases (collectively the “Service”) as an informational service. Use of the Service is governed by the terms and conditions provided below. Please read the statements below carefully before accessing or using the Service. By accessing or using the Service, you agree to be bound by all the terms and conditions herein.
-
-Permission is granted to use this Service for individual, clinical, research, or noncommercial educational use only, provided that The Ohio State University and authors of the Service are acknowledged in any publications reporting its use, and the name of The Ohio State University or any of its officers, employees, students or board members is not used in any advertising or publicity pertaining to the use of the Service without specific, written prior authorization. Those desiring to incorporate the Service into commercial products or use the Service for promotional purposes should contact, Technology Licensing and Commercialization, The Ohio State University, 1216 Kinnear Road Columbus, OH 43212-1154 (614) 292-1315, http://tlc.osu.edu/.
+Permission is granted to use this Service for individual, clinical, research, or noncommercial educational use only, provided that The Ohio State University and authors of the Service are acknowledged in any publications reporting its use, and the name of The Ohio State University or any of its officers, employees, students or board members is not used in any advertising or publicity pertaining to the use of the Service without specific, written prior authorization. Those desiring to incorporate the Service into commercial products or use the Service for promotional purposes should contact, Technology Licensing and Commercialization, The Ohio State University, 1960 Kenny Road, Columbus, Ohio, 43210-1063, (614) 292-1315, http://tlc.osu.edu/.
 
 The Service is provided AS IS, WITHOUT REPRESENTATION AS TO ITS FITNESS FOR ANY PURPOSE, AND WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. No guarantees are made with respect to accuracy, completeness, errors, or omissions of content. The Ohio State University has no obligation to provide support, updates, enhancements, or other modifications. In no event will the Ohio State University be liable for any decision made or action taken in reliance upon the information provided through the Service. THE OHIO STATE UNIVERSITY SHALL NOT BE LIABLE FOR ANY COMPENSATORY OR NON-COMPENSATORY DAMAGES, INCLUDING BUT NOT LIMITED TO SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WITH RESPECT TO ANY CLAIM ARISING OUT OF OR IN CONNECTION WITH THE USE OF THE SERVICE, EVEN IF IT HAS BEEN OR IS HEREAFTER ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-By clicking “I Agree”, you agree to the terms and conditions stated above.
+By clicking "I Agree", you agree to the terms and conditions stated above.
                                     </textarea>
                                 </td>
                             </tr>
