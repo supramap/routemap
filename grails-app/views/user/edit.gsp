@@ -7,11 +7,7 @@
         <title>Edit User</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="/">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">User List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New User</g:link></span>
-        </div>
+        <g:myNav/>
 	<div id="content">
         <div id="body" style="float: none;">
             <h1>Edit User</h1>
@@ -41,37 +37,39 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="login">Login:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'login','errors')}">
-                                    <input type="text" id="login" name="login" value="${fieldValue(bean:userInstance,field:'login')}"/>
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="email">Email:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:userInstance,field:'email','errors')}">
                                     <input type="text" id="email" name="email" value="${fieldValue(bean:userInstance,field:'email')}"/>
                                 </td>
                             </tr>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="kmls">Kmls:</label>
+                                    <label for="email">Old Password:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'kmls','errors')}">
-                                    
-                            <ul>
-                            <g:each var="k" in="${userInstance?.kmls?}">
-                                <li><g:link controller="kml" action="show" id="${k.id}">${k?.encodeAsHTML()}</g:link></li>
-                            </g:each>
-                            </ul>
-                            <g:link controller="kml" params="['user.id':userInstance?.id]" action="create">Add Kml</g:link>
+                                <td valign="top">
+                                    <input type="password" id="oldPassword" name="oldPassword"/>
+                                </td>
+                            </tr>
 
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="email">New Password:</label>
                                 </td>
-                            </tr> 
+                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'password','errors')}">
+                                    <input type="password" id="newPassword" name="newPassword"/>
+                                </td>
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="email">Confirm New Password:</label>
+                                </td>
+                                <td valign="top">
+                                    <input type="password" id="confirm" name="confirm"/>
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>

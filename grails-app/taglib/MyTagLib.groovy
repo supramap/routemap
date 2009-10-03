@@ -5,6 +5,8 @@ class MyTagLib {
             out << "["
             if(session.user.role == "admin") {
                 out << """${link(action:"list", controller:"user"){"Manage Users"}} | """
+            } else {
+                out << """${link(action:"show", controller:"user", id:session.user.id){"Account Settings"}} | """
             }
             out << """${link(action:"logout", controller:"user"){"Logout"}}]"""
         } else {

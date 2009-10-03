@@ -7,11 +7,7 @@
         <title>Show User</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="/">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">User List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New User</g:link></span>
-        </div>
+        <g:myNav/>
 	<div id="content">
         <div id="body" style="float: none;">
             <h1>Show User</h1>
@@ -21,26 +17,11 @@
             <div class="dialog">
                 <table>
                     <tbody>
-
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'id')}</td>
-                            
-                        </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name">Login:</td>
                             
                             <td valign="top" class="value">${fieldValue(bean:userInstance, field:'login')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Password:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'password')}</td>
                             
                         </tr>
                     

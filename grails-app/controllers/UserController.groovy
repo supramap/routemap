@@ -5,8 +5,8 @@ class UserController {
     def beforeInterceptor = [action:this.&auth, except:["login", "authenticate", "logout", "create", "save"]]
 
     def auth() {
-        if( !(session?.user?.role == "admin") ){
-            flash.message = "You must be an administrator to perform that task."
+        if(session?.user?.role != "admin" && session?.user?.id.toInteger() != params?.id?.toInteger()){
+            flash.message = "You do not have permission to perform that task."
             redirect(action:"login")
             return false
         }
@@ -19,7 +19,7 @@ class UserController {
         if(user){
           session.user = user
           redirect(uri: "/")
-        }else {
+        } else {
           flash.message = "Sorry, ${params.login}. Please try again."
           redirect(action:"login")
         }
@@ -50,8 +50,7 @@ class UserController {
         if(!userInstance) {
             flash.message = "User not found with id ${params.id}"
             redirect(action:list)
-        }
-        else { return [ userInstance : userInstance ] }
+        } else { return [ userInstance : userInstance ] }
     }
 
     def delete = {
@@ -66,8 +65,7 @@ class UserController {
                 flash.message = "User ${params.id} could not be deleted"
                 redirect(action:show,id:params.id)
             }
-        }
-        else {
+        } else {
             flash.message = "User not found with id ${params.id}"
             redirect(action:list)
         }
@@ -79,8 +77,7 @@ class UserController {
         if(!userInstance) {
             flash.message = "User not found with id ${params.id}"
             redirect(action:list)
-        }
-        else {
+        } else {
             return [userInstance:userInstance]
         }
     }
@@ -96,22 +93,30 @@ class UserController {
                     return
                 }
             }
-            userInstance.properties = params
-            userInstance.password = params.password.encodeAsHash()
-            if(!userInstance.hasErrors() && userInstance.save()) {
-                flash.message = "User ${params.id} updated"
-                redirect(action:show,id:userInstance.id)
-            }
-            else {
-                render(view:'edit',model:[userInstance:userInstance])
-            }
-        }
-        else {
+            userInstance.name = params.name
+            userInstance.email = params.email
+            if (params.newPassword != '' && User.findByLoginAndPassword(session.user.login, params.oldPassword.encodeAsHash()) != null && params.newPassword == params.confirm) {
+                userInstance.password = params.newPassword.encodeAsHash()
+                if(!userInstance.hasErrors() && userInstance.save()) {
+                    flash.message = "User ${params.id} updated"
+                    redirect(action:show,id:userInstance.id)
+                } else {
+                    render(view:'edit',model:[userInstance:userInstance])
+                }
+            } else if (params.newPassword != '' && User.findByLoginAndPassword(session.user.login, params.oldPassword.encodeAsHash()) == null) {
+                flash.message = "The old password was incorrect.  Please try again."
+                redirect(action:edit,id:userInstance.id)
+            } else if (params.newPassword.toString() != '' && params.newPassword != params.confirm) {
+                flash.message = "Passwords do not match.  Please try again."
+                redirect(action:edit,id:userInstance.id)
+            } else {
+                redirect(action:edit,id:userInstance.id)
+            }   
+        } else {
             flash.message = "User not found with id ${params.id}"
-            redirect(action:list)
+            redirect(uri:"/")
         }
     }
-
     def create = {
         def userInstance = new User(params)
         return [userInstance:userInstance]

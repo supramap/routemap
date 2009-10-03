@@ -7,10 +7,7 @@
         <title>User List</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="/">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create">New User</g:link></span>
-        </div>
+        <g:myNav/>
 	<div id="content">
         <div id="body" style="float: left;">
             <h1>User List</h1>

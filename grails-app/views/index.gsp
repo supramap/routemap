@@ -7,7 +7,7 @@
         <title>Routemap</title>
 	<link rel="stylesheet" href="${createLinkTo(dir:'css',file:'main.css')}" />
 <script type="text/javascript" src="/js/application.js"></script>
-<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRTMuHb6cRl936UeYBMQY6LRFbmU_xQawJ-b3-OnT4HQOHUQjgkQ08alUA"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRQd3ipQzzEK5XCGfJKimlyJ8aHXOBQhmRmBr9HXechkHxtkiol-6k5Y1A"></script>
 <script type="text/javascript">
 google.load("earth", "1");
 
