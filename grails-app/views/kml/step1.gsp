@@ -9,7 +9,7 @@
     <body>
       <g:myNav current="new"/>
         <div id="Content">
-            <h1>Step 1: upload the tnt sequence file and the coordinates csv</h1>
+            <h1>Step 1: upload the sequence and coordinate files</h1>
             <p style="margin-left:20px;">
               New to routemap or not sure what the advanced options do?
               Visit the <g:link class="current" controller="extras" action="help" target="_blank">help page</g:link>.

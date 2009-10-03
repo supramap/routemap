@@ -7,7 +7,7 @@
         <title>Routemap</title>
 	<link rel="stylesheet" href="${createLinkTo(dir:'css',file:'main.css')}" />
 <script type="text/javascript" src="/js/application.js"></script>
-<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRS9YGKqOGxgfx2l_jtyOo5t-hQf3hR-Zt7QMAfiHHg_i1NCnP0OGrc8_g"> </script>
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA5uUDbWrxnGTprsjai05OsRTMuHb6cRl936UeYBMQY6LRFbmU_xQawJ-b3-OnT4HQOHUQjgkQ08alUA"></script>
 <script type="text/javascript">
 google.load("earth", "1");
 
@@ -58,8 +58,7 @@ function createNetworkLink() {
         <div id="Content">
         <h1 style="margin-left:20px;">Welcome to Routemap</h1>
         <p style="margin-left:20px;width:95%">
-          Routemap produces a keyhole markup file (kml) that displays disease transmission events implied by genetic sequence data on pathogens.<br/><br/>
-          <b>This application was tested extensively using Mozilla Firefox.  To ensure compatibility consider <a href="http://www.mozilla.com/en-US/firefox/personal.html" target="_blank">switching</a>.</b>
+          Routemap produces a keyhole markup file (kml) that displays disease transmission events implied by genetic sequence data on pathogens.
         </p>
         <br/>
         <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
