@@ -69,5 +69,18 @@ log4j = {
     warn   'org.mortbay.log'
 }
 
-
+//Config for mail plugin
+grails.mail.default.from="server@yourhost.com"
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "infectomics@gmail.com"
+        password = "supra.map!"
+        props = ["mail.smtp.auth":"true",
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
+    }
+}
      

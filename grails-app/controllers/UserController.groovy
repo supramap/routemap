@@ -2,7 +2,7 @@
 
 class UserController {
 
-    def beforeInterceptor = [action:this.&auth, except:["login", "authenticate", "logout", "create", "save"]]
+    def beforeInterceptor = [action:this.&auth, except:["login", "authenticate", "logout", "create", "save", "reset", "resetPass"]]
 
     def auth() {
         if(session?.user?.role != "admin" && session?.user?.id.toInteger() != params?.id?.toInteger()){
@@ -138,6 +138,27 @@ class UserController {
             } else {
                 render(view:'create',model:[userInstance:userInstance])
             }
+        }
+    }
+
+    def reset = {}
+
+    def resetPass = {
+        def userInstance = User.findByLoginAndEmail(params.login, params.email)
+        if (userInstance != null) {
+            def newPass = userInstance.resetPassword(8)
+            if(!userInstance.hasErrors() && userInstance.save()) {
+                sendMail {
+                    to "${userInstance.email}"
+                    subject "Routemap Password"
+                    body "Your routemap password has been reset.  The new password is: ${newPass}\nLogin at routemap.osu.edu, and click 'Manage Account' in the upper right corner to change your password."
+                }
+                flash.message = "An email with the new password has been sent to ${userInstance.email}."
+                redirect(action:login)
+            }
+        } else {
+            flash.message = "No account was found with that login and email."
+            redirect(action:login)
         }
     }
 }

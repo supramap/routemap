@@ -11,7 +11,7 @@
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
-      <g:form action="authenticate" method="post" name="form1">
+      <g:form action="resetPass" method="post" name="form1">
         <div class="dialog">
           <table>
             <tbody>
@@ -26,10 +26,10 @@
 
               <tr class="prop">
                 <td class="name">
-                  <label for="password">Password:</label>
+                  <label for="password">Email:</label>
                 </td>
                 <td>
-                  <input type="password" id="password" name="password"/>
+                  <input type="text" id="email" name="email"/>
                 </td>
               </tr>
             </tbody>
@@ -37,18 +37,11 @@
         </div>
         <div class="buttons">
           <span class="button">
-            <input class="save" type="submit" value="Login" />
-          </span>
-          <span class="button">
-            <g:actionSubmit class="create" action="create" value="New Account" />
+            <input class="save" type="submit" value="Reset Password" />
           </span>
         </div>
       </g:form>
       <script language="javascript">document.form1.login.focus()</script>
-      <br/>
-      <p style="margin-left:20px;">
-        Cant remember your password?  <g:link action="reset">Reset it</g:link>.
-      </p>
     </div>
     </div>
   </body>
