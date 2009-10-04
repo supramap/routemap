@@ -212,7 +212,7 @@ class KmlController {
                 } else if (params.file == 'coords') {
                     data = download.coords
                 }
-            }else {
+            } else {
                 response.sendError(403)
             }
         } else { //If the tntscript
