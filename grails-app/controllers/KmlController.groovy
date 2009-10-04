@@ -195,12 +195,17 @@ class KmlController {
         String name, content
         byte[] data
    
-        if (params.file == 'kml' || params.file == 'seqs' || params.file == 'coords') {
+        if (params.file == 'kml' || params.file == 'seqs' || params.file == 'coords' || params.file == null) {
             download = Kml.get(params.id)
             if (session.user?.ownsKml(download)) {
-                name = download.name.replaceAll("\\s+","_")+params.name
-                content = params.content
-                if (params.file == 'kml') {
+                if (params.file == null) { //Google earth plugin downloading kml
+                    name = "${params.id}.kml"
+                    content = "application/vnd.google-earth.kml+xml"
+                } else {
+                    name = download.name.replaceAll("\\s+","_")+params.name
+                    content = params.content
+                }
+                if (params.file == 'kml' || params.file == null) { //Download link or GE plugin
                     data = download.kml
                 } else if (params.file == 'seqs') {
                     data = download.seqs
