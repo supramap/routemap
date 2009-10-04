@@ -1,13 +1,13 @@
 <html>
   <head>
     <meta name="layout" content="main" />
-    <title>Login</title>
+    <title>Reset</title>
   </head>
   <body>
       <g:myNav/>
     <div id="Content">
     <div id="body" style="float: none;">
-      <h1>Login</h1>
+      <h1>Password Reset</h1>
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
