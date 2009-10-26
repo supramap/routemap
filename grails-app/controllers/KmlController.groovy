@@ -4,15 +4,15 @@ class KmlController {
 
     def beforeInterceptor = [action:this.&auth]
 
-    // the delete, save and update actions only accept POST requests
-    static allowedMethods = [delete:'POST', save:'POST', update:'POST']
-
     def auth() {
         if(!session.user) {
             redirect(controller:"user", action:"login")
             return false
         }
     }
+    
+    // the delete, save and update actions only accept POST requests
+    static allowedMethods = [delete:'POST', save:'POST', update:'POST']
     
     def index = { redirect(action:list,params:params) }
 
@@ -35,6 +35,7 @@ class KmlController {
             flash.message = "Kml not found with id ${params.id}"
             redirect action:list
         } else if (session.user?.ownsKml(kmlInstance)){
+            //kmlInstance.writeTemp()
             return [ kmlInstance : kmlInstance ]
         } else {
             response.sendError(403)
@@ -165,13 +166,7 @@ class KmlController {
         kmlInstance.description = params.description
         kmlInstance.user = session.user
 
-        def error = BuildKMLService.convert("${session.folder}",params.lineWidths)
-        if (error != null) {
-            flash.message = "${error}"
-            redirect(action:create,model:[kmlInstance:kmlInstance])
-        }
-
-        /* Read the inputs and kml into a byte array for storage */
+        KmlService.writeKml("${session.folder}")
         def transmissions = new File("${session.folder}/transmissions.kml")
         def sequences = new File("${session.folder}/seqs")
         def coordinates = new File("${session.folder}/coords")
@@ -195,17 +190,12 @@ class KmlController {
         String name, content
         byte[] data
    
-        if (params.file == 'kml' || params.file == 'seqs' || params.file == 'coords' || params.file == null) {
+        if (params.file == 'kml' || params.file == 'seqs' || params.file == 'coords') {
             download = Kml.get(params.id)
             if (session.user?.ownsKml(download)) {
-                if (params.file == null) { //Google earth plugin downloading kml
-                    name = "${params.id}.kml"
-                    content = "application/vnd.google-earth.kml+xml"
-                } else {
-                    name = download.name.replaceAll("\\s+","_")+params.name
-                    content = params.content
-                }
-                if (params.file == 'kml' || params.file == null) { //Download link or GE plugin
+                name = download.name.replaceAll("\\s+","_")+params.name
+                content = params.content
+                if (params.file == 'kml') {
                     data = download.kml
                 } else if (params.file == 'seqs') {
                     data = download.seqs

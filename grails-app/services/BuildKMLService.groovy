@@ -1,4 +1,4 @@
-class BuildKMLService {
+class BuildKMLService { //Deprecated
 
     boolean transactional = true
 	
@@ -21,8 +21,7 @@ class BuildKMLService {
                 out.write("<?xml version=\"1.0\" ");
                 out.write("encoding=\"utf-8\"?>\n");
                 out.write("<kml xmlns=\"http://earth.google.com/kml/2.1\">\n");
-                out.write("\t<Document>\n");
-                out.write("\t\t<Name>Transmissions</Name><open>1</open>\n");
+                out.write("\t<Document><Name>Transmissions</Name><open>1</open>\n");
 
                 origin2 = ""; destination2 = "";
 

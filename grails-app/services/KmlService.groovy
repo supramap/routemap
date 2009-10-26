@@ -4,7 +4,8 @@ class KmlService {
 
     boolean transactional = true
 
-    public static String tempFolder(String oldFolder) { //Creates a unique temp folder
+    public static String tempFolder(String oldFolder) //Creates a unique temp folder
+    {
         if (oldFolder != null)
             new AntBuilder().delete(dir: "${oldFolder}")
         SimpleDateFormat sdf = new SimpleDateFormat('MMddHHmmss')
@@ -13,7 +14,8 @@ class KmlService {
         return folder
     }
 
-    public static LinkedHashMap checkFiles(String folder, String outGroup) {
+    public static LinkedHashMap checkFiles(String folder, String outGroup)
+    {
         def problems = [:] //Map of all the problems to be returned. Key is the error number and value is the message.
         def dataFile = new File("${folder}/seqs")
         def coordFile = new File("${folder}/coords")
@@ -117,7 +119,8 @@ class KmlService {
         return problems //Returns the map of warnings and errors
     }
 
-    public static void writeScript(String folder, Map params) { //Produces a tnt script for the user
+    public static void writeScript(String folder, Map params) //Produces a tnt script for the user
+    {
         def dataFile = new File("${folder}/seqs")
         def coordFile = new File("${folder}/coords")
         def output = new File("${folder}/tntscript.tnt")
@@ -224,7 +227,8 @@ class KmlService {
         output.append("zzz;\nproc/;\n")
     }
 
-    public static void writeInputs(String folder) {
+    public static void writeInputs(String folder)
+    {
         def tntIn = new File("${folder}/tntlog")
         def coordIn = new File("${folder}/coords")
         def migOut = new File("${folder}/migrations")
@@ -279,5 +283,104 @@ class KmlService {
             }
         }
 	migOut.append("0") //For the last row, the (i == j) test will never occur, so 0 must be added
+    }
+
+    public static void writeKml(String folder) //Produces the final kml
+    {
+        def migFile = new File("${folder}/migrations")
+        def coordFile = new File("${folder}/coordinates")
+        def kmlFile = new File ("${folder}/transmissions.kml")
+        def locMap = [:]
+        def locList = []
+        def migTable = []
+
+        /*
+         * The following builds a list of locations and a map of location names to their coordinates
+         */
+        def lineNum = 0
+        coordFile.splitEachLine(',') { curLine ->
+            lineNum++
+            if (lineNum > 1 && curLine[0] && curLine[1] && curLine[2]) {
+                locList += curLine[0]
+                locMap.put(curLine[0], "${curLine[2]},${curLine[1]}")
+            }
+        }
+
+        /*
+         * The following puts the migrations table into a 2d list
+         */
+        lineNum = 0
+        migFile.splitEachLine(',') { curLine ->
+            lineNum++
+            if (lineNum > 1)
+                migTable[lineNum-2] = curLine
+        }
+
+        /*
+         * Write header and styles for kml
+         */
+        kmlFile.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
+        kmlFile.append("<kml xmlns=\"http://earth.google.com/kml/2.1\">\n")
+        kmlFile.append("\t<Document><Name>Transmissions</Name><open>1</open>\n")
+        kmlFile.append("<Style id=\"sh_outgoing\"><IconStyle><scale>1.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href></Icon></IconStyle><LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle><BalloonStyle><displayMode>hide</displayMode></BalloonStyle><LineStyle><width>0.8</width><color>ff00ff00</color></LineStyle></Style>\n")
+        kmlFile.append("<Style id=\"sn_outgoing\"><IconStyle><scale>2.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href></Icon></IconStyle><LabelStyle><color>ffb5b5b5</color><scale>0.7</scale></LabelStyle><BalloonStyle><displayMode>hide</displayMode> </BalloonStyle><LineStyle><color>00ffffff</color></LineStyle></Style>\n")
+        kmlFile.append("<StyleMap id=\"outgoing\"><Pair><key>normal</key><styleUrl>#sn_outgoing</styleUrl></Pair><Pair><key>highlight</key><styleUrl>#sh_outgoing</styleUrl></Pair></StyleMap>\n")
+        kmlFile.append("<Style id=\"sh_incoming\"><IconStyle><scale>1.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href></Icon></IconStyle><LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle><BalloonStyle><displayMode>hide</displayMode></BalloonStyle><LineStyle><width>0.8</width><color>ff0000ff</color></LineStyle></Style>\n")
+        kmlFile.append("<Style id=\"sn_incoming\"><IconStyle><scale>2.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href></Icon></IconStyle><LabelStyle><color>ffb5b5b5</color><scale>0.7</scale></LabelStyle><BalloonStyle><displayMode>hide</displayMode> </BalloonStyle><LineStyle><color>00ffffff</color></LineStyle></Style>\n")
+        kmlFile.append("<StyleMap id=\"incoming\"><Pair><key>normal</key><styleUrl>#sn_incoming</styleUrl></Pair><Pair><key>highlight</key><styleUrl>#sh_incoming</styleUrl></Pair></StyleMap>\n")
+        
+        /*
+         * Write the outgoing folder
+         */
+        kmlFile.append("\t\t<Folder><name>Outgoing</name><open>0</open>\n")
+        def rowNum = 0
+        def colNum = 0
+        def placeName
+        migTable.each { curRow ->
+            placeName = locList[rowNum]
+            kmlFile.append("\t\t\t<Placemark><name>${placeName} Outgoing</name>\n")
+            kmlFile.append("\t\t\t\t<styleUrl>#outgoing</styleUrl><MultiGeometry>\n")
+            kmlFile.append("\t\t\t\t\t<Point><coordinates>${locMap.get(placeName)}</coordinates></Point>\n")
+            curRow.each { curCol ->
+                if (colNum > 0 && curCol != '0') {
+                    kmlFile.append("\t\t\t\t\t<LineString><tessellate>1</tessellate><altitudeMode>relative</altitudeMode>\n")
+                    kmlFile.append("\t\t\t\t\t\t<coordinates>${locMap.get(placeName)},0 ${locMap.get(locList[colNum-1])},0</coordinates>\n")
+                    kmlFile.append("\t\t\t\t\t</LineString>\n")
+                }
+                colNum++
+            }
+            kmlFile.append("\t\t\t\t</MultiGeometry>\n")
+            kmlFile.append("\t\t\t</Placemark>\n")
+            colNum = 0
+            rowNum++
+        }
+        kmlFile.append("\t\t</Folder>\n")
+
+        /*
+         * Write the incoming folder
+         */
+        kmlFile.append("\t\t<Folder><name>Incoming</name><open>0</open>\n")
+        for (colNum = 1; colNum < migTable.size()+1; colNum++) {
+            placeName = locList[colNum-1]
+            kmlFile.append("\t\t\t<Placemark><name>${placeName} Incoming</name>\n")
+            kmlFile.append("\t\t\t\t<styleUrl>#incoming</styleUrl><MultiGeometry>\n")
+            kmlFile.append("\t\t\t\t\t<Point><coordinates>${locMap.get(placeName)}</coordinates></Point>\n")
+            for (rowNum = 0; rowNum < migTable.size(); rowNum++) {
+                if (migTable[rowNum][colNum] != '0') {
+                    kmlFile.append("\t\t\t\t\t<LineString><tessellate>1</tessellate><altitudeMode>relative</altitudeMode>\n")
+                    kmlFile.append("\t\t\t\t\t\t<coordinates>${locMap.get(placeName)},0 ${locMap.get(locList[rowNum])},0</coordinates>\n")
+                    kmlFile.append("\t\t\t\t\t</LineString>\n")
+                }
+            }
+            kmlFile.append("\t\t\t\t</MultiGeometry>\n")
+            kmlFile.append("\t\t\t</Placemark>\n")
+        }
+        kmlFile.append("\t\t</Folder>\n")
+
+        /*
+         * Close the kml
+         */
+        kmlFile.append("\t</Document>\n")
+        kmlFile.append("</kml>")
     }
 }
