@@ -64,6 +64,12 @@ function createNetworkLink() {
         <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
           <div id="map3d"></div>
         </div>
+        <br/>
+        <p style="margin-left:20px;width:95%">
+          Interactive routemap for geographic transmission of viral strains based on 461 full genomes of pandemic Influenza (H1N1).
+          Click the dot for a location of interest.  Mouse over the dots that arise from your location of interest to see incoming and outgoing transmissions.
+          On mouse over, the green lines represent outgoing routes for spread of H1N1; red lines represent incoming routes for spread of H1N1.
+        </p>
         </div>
         <div id="footer"></div>
       </div>

@@ -50,7 +50,10 @@
                 </p>
             <h1>Analyzing results</h1>
               <p style="width:80%">
-                Bidirectional transmissions are represented by yellow lines.  Unidirectional transmissions are either green (outgoing) or red (incoming).
+                For new-style Kmls: Click the dot for a location of interest.  Mouse over the dots that arise from your location of interest to see incoming and outgoing transmissions.
+                On mouse over, the green lines represent outgoing routes for spread of H1N1; red lines represent incoming routes for spread of H1N1.
+                <br/><br/>
+                For old-style Kmls: Bidirectional transmissions are represented by yellow lines.  Unidirectional transmissions are either green (outgoing) or red (incoming).
                 Because Google Earth does not allow directional lines, the only way to ascertain the direction of unidirectional transmissions is to view
                 the transmission descriptions in the folder struction under "Temporary Places."
               </p>

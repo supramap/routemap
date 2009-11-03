@@ -6,7 +6,7 @@
         <meta name="layout" content="main" />
         <title>Step 2</title>
     </head>
-    <body>
+    <body onload="hideSpinner()">
       <g:myNav current="new"/>
       <div id="content">
         <h1>Step 2: download the tnt script and run it.  Upload the results.</h1>

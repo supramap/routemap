@@ -2,8 +2,12 @@ function showSpinner() {
     document.getElementById("spinner").style.visibility = "visible";
 }
 
+function hideSpinner() {
+    document.getElementById("spinner").style.visibility = "hidden";
+}
+
 function toggleAdvanced(on, off) {
-    for (var i = 1; i <= 7; i++) {
+    for (var i = 1; i <= 10; i++) {
 	var ele = document.getElementById("advanced"+i);
 	var text = document.getElementById("displayText");
 	if (ele.style.display == "table-row") {

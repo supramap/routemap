@@ -6,10 +6,16 @@
         <meta name="layout" content="main" />
         <title>Step 3</title>
     </head>
-    <body>
+    <body onload="hideSpinner()">
       <g:myNav current="new"/>
         <div id="Content">
             <h1>Step 3: Kml options</h1>
+            <p style="margin-left:20px;">
+              A note on old vs new Kml styles:  An example of the new-style for routemaps can be found on the homepage.
+              It features individual nodes for each location, which can be expanded to see incoming and outgoing transmissions.  This is the default style.
+              The old-style routemap has all transmissions on the map at the same time and is a little harder to decipher.
+              For more info on both, check out the <g:link class="current" controller="extras" action="help" target="_blank">help page</g:link>.
+            </p>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -52,10 +58,10 @@
 
                             <tr id="advanced1" class="advanced">
                                 <td valign="top" class="name">
-                                    <label for="name">Dynamic Line Widths:</label>
+                                    <label for="name">Kml Style:</label>
                                 </td>
                                 <td valign="top">
-                                    <g:checkBox id="lineWidths" name="lineWidths" value="${false}" />
+                                    <g:select id="kmlStyle" name="kmlStyle" from="${['New','Old']}" />
                                 </td>
                             </tr>
                             

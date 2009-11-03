@@ -6,7 +6,7 @@
         <meta name="layout" content="main" />
         <title>Step 1</title>
     </head>
-    <body>
+    <body onload="hideSpinner()">
       <g:myNav current="new"/>
         <div id="Content">
             <h1>Step 1: upload the sequence and coordinate files</h1>

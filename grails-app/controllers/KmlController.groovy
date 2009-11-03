@@ -2,7 +2,7 @@ import org.springframework.web.multipart.MultipartFile
 
 class KmlController {
 
-    def beforeInterceptor = [action:this.&auth]
+    def beforeInterceptor = [action:this.&auth, except:["download"]]
 
     def auth() {
         if(!session.user) {
@@ -166,7 +166,11 @@ class KmlController {
         kmlInstance.description = params.description
         kmlInstance.user = session.user
 
-        KmlService.writeKml("${session.folder}")
+        if (params.kmlStyle == "New")
+            KmlService.writeKml("${session.folder}")
+        else if (params.kmlStyle == "Old")
+            AltBuildService.writeKml("${session.folder}")
+
         def transmissions = new File("${session.folder}/transmissions.kml")
         def sequences = new File("${session.folder}/seqs")
         def coordinates = new File("${session.folder}/coords")
