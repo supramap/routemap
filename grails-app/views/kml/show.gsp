@@ -39,7 +39,7 @@ function createNetworkLink() {
 
     // create a Link object
     var link = ge.createLink("");
-    link.setHref("/kml/download/${params.id}");
+    link.setHref("http://routemap.osu.edu/kml/download/${params.id}");
 
     // attach the Link to the NetworkLink
     networkLink.setLink(link);
