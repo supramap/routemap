@@ -115,7 +115,7 @@ class KmlController {
     def step1 = {}
 
     def generateScript = {
-        session.folder = KmlService.tempFolder("${session.folder}")
+        session.folder = "${session.getTempDir()}"
 
         MultipartFile sequences = request.getFile('sequences')
         MultipartFile coordinates = request.getFile('coordinates')
@@ -132,7 +132,7 @@ class KmlController {
         } else {
             sequences.transferTo(new File("${session.folder}/seqs"))
             coordinates.transferTo(new File("${session.folder}/coords"))
-            def problems = KmlService.checkFiles(session.folder, params.outgroup)
+            def problems = KmlService.checkFiles(session.folder, params.outGroup)
             if (problems) {
                 flash.problems = problems
                 redirect action:step1
@@ -185,8 +185,6 @@ class KmlController {
         else {
             redirect(action:create,model:[kmlInstance:kmlInstance])
         }
-
-        new AntBuilder().delete(dir: "${session.folder}") //remove temp directory
     }
 
     def download = {

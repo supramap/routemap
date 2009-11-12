@@ -4,16 +4,6 @@ class KmlService {
 
     boolean transactional = true
 
-    public static String tempFolder(String oldFolder) //Creates a unique temp folder
-    {
-        if (oldFolder != null)
-            new AntBuilder().delete(dir: "${oldFolder}")
-        SimpleDateFormat sdf = new SimpleDateFormat('MMddHHmmss')
-        def folder = "/tmp/routemap/${sdf.format(new Date())}"
-        new File(folder).mkdirs()
-        return folder
-    }
-
     public static LinkedHashMap checkFiles(String folder, String outGroup)
     {
         def problems = [:] //Map of all the problems to be returned. Key is the error number and value is the message.
@@ -307,7 +297,7 @@ class KmlService {
         }
 
         /*
-         * The following puts the migrations table into a 2d list
+         * The following puts the migrations table into a 2d array
          */
         lineNum = 0
         migFile.splitEachLine(',') { curLine ->
