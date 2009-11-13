@@ -36,6 +36,7 @@ class KmlController {
             redirect action:list
         } else if (session.user?.ownsKml(kmlInstance)){
             //Create kml string so ge plugin can parse it
+            session.folder = "${session.getTempDir()}"
             def kmlFile = new File("${session.folder}/kml")
             kmlFile.append(kmlInstance.kml)
             def kml = kmlFile.getText()
