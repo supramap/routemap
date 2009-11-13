@@ -2,7 +2,7 @@ import org.springframework.web.multipart.MultipartFile
 
 class KmlController {
 
-    def beforeInterceptor = [action:this.&auth, except:["download"]]
+    def beforeInterceptor = [action:this.&auth]
 
     def auth() {
         if(!session.user) {
@@ -35,8 +35,11 @@ class KmlController {
             flash.message = "Kml not found with id ${params.id}"
             redirect action:list
         } else if (session.user?.ownsKml(kmlInstance)){
-            //kmlInstance.writeTemp()
-            return [ kmlInstance : kmlInstance ]
+            //Create kml string so ge plugin can parse it
+            def kmlFile = new File("${session.folder}/kml")
+            kmlFile.append(kmlInstance.kml)
+            def kml = kmlFile.getText()
+            return [ kmlInstance : kmlInstance, kml : kml ]
         } else {
             response.sendError(403)
         }

@@ -21,7 +21,7 @@ function initCallback(pluginInstance) {
   ge = pluginInstance;
   ge.getWindow().setVisibility(true); // required!
   ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
-  createNetworkLink();
+  createKmlObject();
   document.getElementById('installed-plugin-version').innerHTML =
     ge.getPluginVersion().toString();
 
@@ -31,21 +31,12 @@ function failureCallback(errorCode) {
   //alert("Failure loading the Google Earth Plugin: " + errorCode);
 }
 
-function createNetworkLink() {
-    var networkLink = ge.createNetworkLink("");
-    networkLink.setDescription("NetworkLink open to fetched content");
-    networkLink.setName("Open NetworkLink");
-    networkLink.setFlyToView(true);
-
-    // create a Link object
-    var link = ge.createLink("");
-    link.setHref("http://routemap.osu.edu/kml/download/${params.id}?file=kml&content=application%2Fvnd.google-earth.kml%2Bxml&name=.kml");
-
-    // attach the Link to the NetworkLink
-    networkLink.setLink(link);
-
-    // add the NetworkLink feature to Earth
-    ge.getFeatures().appendChild(networkLink);
+function createKmlObject() {
+    // create a kml object
+    var kmlString = '${kml}'
+    var kmlObject = ge.parseKml(kmlString);
+    // add the kmlObject to Earth
+    ge.getFeatures().appendChild(kmlObject);
   }
 </script>
     </head>
