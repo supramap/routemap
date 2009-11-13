@@ -33,7 +33,7 @@ function failureCallback(errorCode) {
 
 function createKmlObject() {
     // create a kml object
-    var kmlString = '${kml}'
+    var kmlString = ${kml};
     var kmlObject = ge.parseKml(kmlString);
     // add the kmlObject to Earth
     ge.getFeatures().appendChild(kmlObject);
