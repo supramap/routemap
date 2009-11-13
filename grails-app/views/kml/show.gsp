@@ -32,12 +32,16 @@ function failureCallback(errorCode) {
 }
 
 function createKmlObject() {
+    var kmlBox = document.getElementById('kml-box');
+    var kmlString = kmlBox.value;
     // create a kml object
-    var kmlString = ${kml};
-    var kmlObject = ge.parseKml(kmlString);
-    // add the kmlObject to Earth
-    ge.getFeatures().appendChild(kmlObject);
-  }
+    try {
+      var kmlObject = ge.parseKml(kmlString);
+      ge.getFeatures().appendChild(kmlObject);
+    } catch (ex) {
+      alert('Parse error');
+    }
+}
 </script>
     </head>
     <body onload="init()" id="body">
@@ -100,6 +104,7 @@ function createKmlObject() {
         <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
           <div id="map3d"></div>
         </div>
+        <textarea rows="15" cols="50" id="kml-box" style="visibility:hidden;">${kml}</textarea>
         </div>
         <div id="footer"></div>
     </div>
