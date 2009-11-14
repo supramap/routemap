@@ -104,7 +104,7 @@ function createKmlObject() {
         <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
           <div id="map3d"></div>
         </div>
-        <textarea rows="15" cols="50" id="kml-box" style="visibility:hidden;">${kml}</textarea>
+        <textarea rows="1" cols="1" id="kml-box" style="position:absolute; visibility:hidden;">${kml}</textarea>
         </div>
         <div id="footer"></div>
     </div>
