@@ -1,9 +1,6 @@
 class UrlMappings {
     static mappings = {
-        "/publications" {
-            controller = "extras"
-            action = "publications"
-        }
+        "/publications" (controller: "extras", action: "publications")
 
         "/$controller/$action?/$id?"{
             constraints {

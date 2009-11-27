@@ -17,20 +17,24 @@
                 <table>
                     <thead>
                         <tr>
-                        
-                            <g:sortableColumn property="name" title="Name" />
 
-                            <g:sortableColumn property="description" title="Description" />
+                          <g:sortableColumn property="user" title="Owner" />
                         
-                            <g:sortableColumn property="dateCreated" title="Date Created" />
+                          <g:sortableColumn property="name" title="Name" />
 
-                            <g:sortableColumn property="lastUpdated" title="Last Updated" />
+                          <g:sortableColumn property="description" title="Description" />
+                        
+                          <g:sortableColumn property="dateCreated" title="Date Created" />
+
+                          <g:sortableColumn property="lastUpdated" title="Last Updated" />
                         
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${kmlInstanceList}" status="i" var="kmlInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+
+                            <td>${kmlInstance.user.name}</td>
                         
                             <td><g:link action="show" id="${kmlInstance.id}">${fieldValue(bean:kmlInstance, field:'name')}</g:link></td>
                         

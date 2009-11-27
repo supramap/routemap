@@ -58,33 +58,30 @@ function createKmlObject() {
             <div class="dialog">
                 <table>
                     <tbody>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">Owner:</td>
+                            <td valign="top" class="value">${kmlInstance.user.name}</td>
+                        </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name">Name:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:kmlInstance, field:'name')}</td>
-                            
+                            <td valign="top" class="value">${fieldValue(bean:kmlInstance, field:'name')}</td>                     
                         </tr>
 
                         <tr class="prop">
                             <td valign="top" class="name">Description:</td>
-
                             <td valign="top" class="value">${fieldValue(bean:kmlInstance, field:'description')}</td>
-
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Date Created:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:kmlInstance, field:'dateCreated')}</td>
-                            
+                            <td valign="top" class="name">Date Created:</td>                         
+                            <td valign="top" class="value">${fieldValue(bean:kmlInstance, field:'dateCreated')}</td>                           
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Last Updated:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:kmlInstance, field:'lastUpdated')}</td>
-                            
+                            <td valign="top" class="name">Last Updated:</td>                          
+                            <td valign="top" class="value">${fieldValue(bean:kmlInstance, field:'lastUpdated')}</td>                   
                         </tr>
                     
                     </tbody>
