@@ -65,8 +65,8 @@ function createNetworkLink() {
           On mouse over, the green lines represent outgoing routes for spread of H1N1; red lines represent incoming routes for spread of H1N1.
         </p>
         <br/>
-        <div id="map3d_container" style="margin-left: 20px; border: 5px solid #565656; height: 500px; width: 732px; clear:left;">
-          <div id="map3d"></div>
+        <div id="map3d_container" style="margin: 0 20px 0 20px; border: 5px solid #565656; height: 500px; width: 732px;">
+          <div id="map3d" style="height: 100%;"></div>
         </div>
         </div>
         <div id="footer"></div>

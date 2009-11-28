@@ -5,7 +5,8 @@ html * {
 
 body {
     background-color:#C6C3C6;
-    margin:0;
+    margin:0 auto;
+    text-align: center;
     padding:0;
     color:#525152;
     font-family:Trebuchet MS, Arial, Tahoma, sans-serif;
@@ -268,8 +269,7 @@ th.desc a {
     background: #caced1 url(header.jpg?z=82220) no-repeat center;
     padding: 0;
     color: #fff;
-    margin-left:auto;
-    margin-right:auto;
+    margin: 0 auto;
     width:820px;
     text-align:right;
 }
@@ -280,6 +280,7 @@ th.desc a {
     clear: both;
     width:820px;
     height: 80px;
+    margin: 0 auto;
     text-align: center;
     font-size: 8pt;
 }
