@@ -19,15 +19,15 @@
                     <thead>
                         <tr>
                         
-                   	        <g:sortableColumn property="id" title="Id" />
+                            <g:sortableColumn property="id" title="Id" />
                         
-                   	        <g:sortableColumn property="login" title="Login" />
+                            <g:sortableColumn property="login" title="Login" />
                         
-                   	        <g:sortableColumn property="password" title="Password" />
+                            <g:sortableColumn property="password" title="Password" />
                         
-                   	        <g:sortableColumn property="name" title="Name" />
+                            <g:sortableColumn property="name" title="Name" />
                         
-                   	        <g:sortableColumn property="email" title="Email" />
+                            <g:sortableColumn property="email" title="Email" />
                         
                         </tr>
                     </thead>

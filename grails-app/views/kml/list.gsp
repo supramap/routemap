@@ -7,8 +7,9 @@
         <title>Kml List</title>
     </head>
     <body>
-      <g:myNav current="list"/>
-        <div class="body">
+        <g:myNav current="list"/>
+        <div id="content">
+        <div id="body" style="float: left;">
             <h1>Kml List</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -18,15 +19,15 @@
                     <thead>
                         <tr>
 
-                          <g:sortableColumn property="user" title="Owner" />
+                            <g:sortableColumn property="user" title="Owner" />
                         
-                          <g:sortableColumn property="name" title="Name" />
+                            <g:sortableColumn property="name" title="Name" />
 
-                          <g:sortableColumn property="description" title="Description" />
+                            <g:sortableColumn property="description" title="Description" />
                         
-                          <g:sortableColumn property="dateCreated" title="Date Created" />
+                            <g:sortableColumn property="dateCreated" title="Date Created" />
 
-                          <g:sortableColumn property="lastUpdated" title="Last Updated" />
+                            <g:sortableColumn property="lastUpdated" title="Last Updated" />
                         
                         </tr>
                     </thead>
@@ -52,6 +53,8 @@
             <div class="paginateButtons">
                 <g:paginate total="${kmlInstanceTotal}" />
             </div>
+        <br/>
+        </div>
         </div>
     </body>
 </html>

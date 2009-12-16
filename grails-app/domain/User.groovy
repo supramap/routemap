@@ -4,6 +4,8 @@ class User {
     String name
     String email
     String role = "user"
+    Date dateCreated
+    Date lastUpdated
 
     static hasMany = [kmls:Kml]
 

@@ -19,10 +19,10 @@ class KmlController {
     def list = {
         def kmls, count
         if (session.user.role == "admin") {
-            kmls = Kml.list()
+            kmls = Kml.list( params )
             count = Kml.count()
         } else {
-            kmls = Kml.findAllByUser(session.user)
+            kmls = Kml.findAllByUser(session.user, [sort:params.sort, order:params.order])
             count = Kml.countByUser(session.user)
         }
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
