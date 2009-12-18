@@ -36,11 +36,13 @@ class KmlController {
             redirect action:list
         } else if (session.user?.ownsKml(kmlInstance)){
             //Create kml string so ge plugin can parse it
-            session.folder = "${session.getTempDir()}"
+            def fos = new FileOutputStream("${session.folder}/kml", false)
+            fos.write(kmlInstance.kml)
+            fos.flush()
+            fos.close()
             def kmlFile = new File("${session.folder}/kml")
-            kmlFile.append(kmlInstance.kml)
             def kml = kmlFile.getText()
-            return [ kmlInstance : kmlInstance, kml : kml ]
+	    return [ kmlInstance : kmlInstance, kml : kml ]
         } else {
             response.sendError(403)
         }
@@ -119,8 +121,6 @@ class KmlController {
     def step1 = {}
 
     def generateScript = {
-        session.folder = "${session.getTempDir()}"
-
         MultipartFile sequences = request.getFile('sequences')
         MultipartFile coordinates = request.getFile('coordinates')
 

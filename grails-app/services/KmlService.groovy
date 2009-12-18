@@ -119,7 +119,8 @@ class KmlService {
         def taxNum = 0 //The number of taxa in the fasta
         def lineNum = 0 //Keeps track of line number
         def temp = new File("${folder}/temp") //Temporarily holds the sequences so the they can be counted for taxNum
-        /* Write the data block */
+        temp.write("") //Make sure temp is empty
+	/* Write the data block */
         dataFile.eachLine { curLine ->
             if (curLine) {
                 if (curLine.find(/>/) != null) {
@@ -229,7 +230,7 @@ class KmlService {
         def locMap = [:] //Keeps track of which locations have been added to the list
         def locList = [] //A list of all locations
         def lineNum = 0
-        coordOut.append("Label,Lat,Long\n")
+        coordOut.write("Label,Lat,Long\n")
         coordIn.splitEachLine(',') { curLine ->
             lineNum++
             if (lineNum > 1 && curLine[1] && curLine[2] && curLine[3] && locMap.get(curLine[1]) == null) {
@@ -309,7 +310,7 @@ class KmlService {
         /*
          * Write header and styles for kml
          */
-        kmlFile.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
+        kmlFile.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n")
         kmlFile.append("<kml xmlns=\"http://earth.google.com/kml/2.1\">\n")
         kmlFile.append("\t<Document><Name>Transmissions</Name><open>1</open>\n")
         kmlFile.append("<Style id=\"sh_outgoing\"><IconStyle><scale>1.0</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href></Icon></IconStyle><LabelStyle><color>ffffffff</color><scale>1.0</scale></LabelStyle><BalloonStyle><displayMode>hide</displayMode></BalloonStyle><LineStyle><width>0.8</width><color>ff00ff00</color></LineStyle></Style>\n")

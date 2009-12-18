@@ -23,6 +23,7 @@ class UserController {
         def user = User.findByLoginAndPassword(params.login, params.password.encodeAsHash())
         if(user){
           session.user = user
+	  session.folder = "${session.getTempDir()}" //Get temp directory for the session
           session.setMaxInactiveInterval(3600) //Increase session timeout to 1 hour
           redirect(uri: "/")
         } else {
