@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <!-- <meta name="layout" content="main" /> -->
+        <meta name="layout" content="none" />
         <title>Show Kml</title>
 	<link rel="stylesheet" href="${createLinkTo(dir:'css',file:'main.css')}" />
 <script type="text/javascript" src="/js/application.js"></script>
