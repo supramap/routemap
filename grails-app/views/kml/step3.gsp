@@ -20,7 +20,7 @@
             <div class="message">${flash.message}</div>
             </g:if>
             <g:elseif test="${flash.problems}">
-              <g:each in="${flash.problems}" var="it">
+              <g:each in="${flash.problems}">
                 <div class="errors">${it.key}: ${it.value}</div>
               </g:each>
             </g:elseif>
