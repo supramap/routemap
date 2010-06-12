@@ -13,7 +13,8 @@ class Kml {
     static belongsTo = [user:User]
 
     static constraints = {
-        name(nullable: false, blank: false)
+        kml(maxSize:10405760)
+	name(nullable: false, blank: false)
         description(nullable: false, blank: true)
     }
 }
