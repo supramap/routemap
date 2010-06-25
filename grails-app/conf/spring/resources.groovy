@@ -19,6 +19,6 @@ beans = {
     jdbcUrl = CH.config.dataSource.url
     //connection test settings
     idleConnectionTestPeriod = 2 * 60 * 60 //2 hours
-    testConnectionsOnCheckIn = true
+    testConnectionOnCheckin = true
    }
 }
