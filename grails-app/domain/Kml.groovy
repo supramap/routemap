@@ -14,7 +14,9 @@ class Kml {
 
     static constraints = {
         kml(maxSize:10405760)
-	name(nullable: false, blank: false)
+        seqs(maxSize:10405760)
+        coords(maxSize:10405760)
+		name(nullable: false, blank: false)
         description(nullable: false, blank: true)
     }
 }
